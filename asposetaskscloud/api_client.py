@@ -596,8 +596,7 @@ class ApiClient(object):
                 return datetime.datetime.min
             else:
                 from dateutil.parser import parse
-                result = parse(string)
-                return result
+                return parse(string)
         except ImportError:
             return string
         except ValueError:
@@ -664,7 +663,14 @@ class ApiClient(object):
 		
     @staticmethod
     def __downcase_first_letter(s):
-            if len(s) == 0:
-                return s
-            else:
-                return s[0].lower() + s[1:]
+        length = len(s)
+        i = 0
+        result = ''
+        if s[i].isupper():
+            while length > i:
+                result += s[i].lower()
+                i += 1
+                if length == i + 1 or s[i + 1].islower():
+                    break
+        return result + s[i:]
+

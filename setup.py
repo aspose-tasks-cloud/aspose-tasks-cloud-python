@@ -13,6 +13,7 @@ VERSION = "19.12.0"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = ["urllib3 >= 1.16", "six >= 1.10", "certifi", "python-dateutil"]
+TEST_REQUIRES = []
 
 from os import path
 this_directory = path.abspath(path.dirname(__file__))

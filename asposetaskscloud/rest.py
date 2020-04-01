@@ -41,6 +41,7 @@ try:
 except ImportError:
     raise ImportError('Swagger python client requires urllib3.')
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -312,7 +313,6 @@ class RESTClientObject(object):
             return True
         except:
             return False
-
 
 class ApiException(Exception):
 
