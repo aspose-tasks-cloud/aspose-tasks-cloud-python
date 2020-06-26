@@ -2098,7 +2098,8 @@ class TasksApi(object):
         :param name str : The name of the file. (required)
         :param task_uid int : The unique id of the task to be assigned. (required)
         :param resource_uid int : The unique id of the resource to be assigned. (required)
-        :param units float : The units for the new assignment. Default value is 1.
+        :param units float : The units for the new assignment. If not specified, 'cost' value is used.
+        :param cost float : The cost for a new assignment. If not specified, default value is used.
         :param file_name str : The name of the project document to save changes to. If this parameter is omitted then the changes will be saved to the source project document.
         :param storage str : The document storage.
         :param folder str : The document folder.
@@ -2178,6 +2179,11 @@ class TasksApi(object):
         else:
             if request.units is not None:
                 query_params.append((self.__downcase_first_letter('units'), request.units))  # noqa: E501
+        if '{' + self.__downcase_first_letter('cost') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('cost' + '}'), request.cost if request.cost is not None else '')
+        else:
+            if request.cost is not None:
+                query_params.append((self.__downcase_first_letter('cost'), request.cost))  # noqa: E501
         if '{' + self.__downcase_first_letter('fileName') + '}' in path:
             path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
         else:
@@ -4183,7 +4189,7 @@ class TasksApi(object):
         :param connection_string str : The connection string to the source database. (required)
         :param project_uid str : Uid of the project to import. (required)
         :param filename str : The name of the resulting file. (required)
-        :param format str : Format of the resulting file. The import to Mpp format is not supported.
+        :param format str : Format of the resulting file.
         :param folder str : The document folder.
         :param storage str : The document storage.
         :param database_schema str : Schema of Microsoft project database (if applicable)
@@ -4467,12 +4473,14 @@ class TasksApi(object):
 
         :param is_async bool
         :param name str : The name of the resulting file. (required)
-        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
         :param guid str : Guid of the project to import. (required)
-        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (required)
-        :param format str : Format of the resulting file. The import to Mpp format is not supported.
+        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param user_name str : The user name for the sharepoint site.
+        :param format str : Format of the resulting file.
         :param folder str : The document folder.
         :param storage str : The document storage.
+        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_sharepoint_password str : The password for the SharePoint site.
         :return: AsposeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4520,15 +4528,12 @@ class TasksApi(object):
         # verify the required parameter 'name' is set
         if request.name is None:
             raise ValueError("Missing the required parameter `name` when calling `put_import_project_from_project_online`")  # noqa: E501
-        # verify the required parameter 'site_url' is set
-        if request.site_url is None:
-            raise ValueError("Missing the required parameter `site_url` when calling `put_import_project_from_project_online`")  # noqa: E501
         # verify the required parameter 'guid' is set
         if request.guid is None:
             raise ValueError("Missing the required parameter `guid` when calling `put_import_project_from_project_online`")  # noqa: E501
-        # verify the required parameter 'x_project_online_token' is set
-        if request.x_project_online_token is None:
-            raise ValueError("Missing the required parameter `x_project_online_token` when calling `put_import_project_from_project_online`")  # noqa: E501
+        # verify the required parameter 'site_url' is set
+        if request.site_url is None:
+            raise ValueError("Missing the required parameter `site_url` when calling `put_import_project_from_project_online`")  # noqa: E501
 
         collection_formats = {}
         path = '/tasks/{name}/importfromprojectonline'
@@ -4542,6 +4547,11 @@ class TasksApi(object):
         else:
             if request.site_url is not None:
                 query_params.append((self.__downcase_first_letter('siteUrl'), request.site_url))  # noqa: E501
+        if '{' + self.__downcase_first_letter('userName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('userName' + '}'), request.user_name if request.user_name is not None else '')
+        else:
+            if request.user_name is not None:
+                query_params.append((self.__downcase_first_letter('userName'), request.user_name))  # noqa: E501
         if '{' + self.__downcase_first_letter('format') + '}' in path:
             path = path.replace('{' + self.__downcase_first_letter('format' + '}'), request.format if request.format is not None else '')
         else:
@@ -4561,6 +4571,8 @@ class TasksApi(object):
         header_params = {}
         if request.x_project_online_token is not None:
             header_params[self.__downcase_first_letter('x-project-online-token')] = request.x_project_online_token  # noqa: E501
+        if request.x_sharepoint_password is not None:
+            header_params[self.__downcase_first_letter('x-sharepoint-password')] = request.x_sharepoint_password  # noqa: E501
 
         form_params = []
         local_var_files = []
@@ -5876,6 +5888,136 @@ class TasksApi(object):
             collection_formats=collection_formats)
 
 
+    def create_new_project(self, request, **kwargs):  # noqa: E501
+        """Creates new project in Project Server\\Project Online instance.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param user_name str : The user name for the sharepoint site.
+        :param save_options ProjectServerSaveOptionsDTO : Dispensable save options for Project Server\\Project Online.
+        :param folder str : The document folder.
+        :param storage str : The document storage.
+        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_sharepoint_password str : The password for the SharePoint site.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.create_new_project_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.create_new_project_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.create_new_project_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.create_new_project_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def create_new_project_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Creates new project in Project Server\\Project Online instance.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request create_new_project_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_new_project" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `create_new_project`")  # noqa: E501
+        # verify the required parameter 'site_url' is set
+        if request.site_url is None:
+            raise ValueError("Missing the required parameter `site_url` when calling `create_new_project`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/projectOnline/{siteUrl}/{name}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.site_url is not None:
+            path_params[self.__downcase_first_letter('siteUrl')] = request.site_url  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('userName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('userName' + '}'), request.user_name if request.user_name is not None else '')
+        else:
+            if request.user_name is not None:
+                query_params.append((self.__downcase_first_letter('userName'), request.user_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+        if request.x_project_online_token is not None:
+            header_params[self.__downcase_first_letter('x-project-online-token')] = request.x_project_online_token  # noqa: E501
+        if request.x_sharepoint_password is not None:
+            header_params[self.__downcase_first_letter('x-sharepoint-password')] = request.x_sharepoint_password  # noqa: E501
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.save_options is not None:
+            body_params = request.save_options
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_project_list(self, request, **kwargs):  # noqa: E501
         """Gets the list of published projects in the current Project Online account.  # noqa: E501
 
@@ -5884,7 +6026,9 @@ class TasksApi(object):
 
         :param is_async bool
         :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
-        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (required)
+        :param user_name str : The user name for the sharepoint site.
+        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_sharepoint_password str : The password for the SharePoint site.
         :return: ProjectListResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5932,9 +6076,6 @@ class TasksApi(object):
         # verify the required parameter 'site_url' is set
         if request.site_url is None:
             raise ValueError("Missing the required parameter `site_url` when calling `get_project_list`")  # noqa: E501
-        # verify the required parameter 'x_project_online_token' is set
-        if request.x_project_online_token is None:
-            raise ValueError("Missing the required parameter `x_project_online_token` when calling `get_project_list`")  # noqa: E501
 
         collection_formats = {}
         path = '/tasks/projectOnline/projectList'
@@ -5946,10 +6087,17 @@ class TasksApi(object):
         else:
             if request.site_url is not None:
                 query_params.append((self.__downcase_first_letter('siteUrl'), request.site_url))  # noqa: E501
+        if '{' + self.__downcase_first_letter('userName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('userName' + '}'), request.user_name if request.user_name is not None else '')
+        else:
+            if request.user_name is not None:
+                query_params.append((self.__downcase_first_letter('userName'), request.user_name))  # noqa: E501
 
         header_params = {}
         if request.x_project_online_token is not None:
             header_params[self.__downcase_first_letter('x-project-online-token')] = request.x_project_online_token  # noqa: E501
+        if request.x_sharepoint_password is not None:
+            header_params[self.__downcase_first_letter('x-sharepoint-password')] = request.x_sharepoint_password  # noqa: E501
 
         form_params = []
         local_var_files = []
@@ -5975,6 +6123,136 @@ class TasksApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ProjectListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_project(self, request, **kwargs):  # noqa: E501
+        """Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param user_name str : The user name for the sharepoint site.
+        :param save_options ProjectServerSaveOptionsDTO : Dispensable save options for Project Server\\Project Online.
+        :param folder str : The document folder.
+        :param storage str : The document storage.
+        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_sharepoint_password str : The password for the SharePoint site.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.update_project_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.update_project_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.update_project_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.update_project_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def update_project_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request update_project_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_project" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `update_project`")  # noqa: E501
+        # verify the required parameter 'site_url' is set
+        if request.site_url is None:
+            raise ValueError("Missing the required parameter `site_url` when calling `update_project`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/projectOnline/{siteUrl}/{name}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.site_url is not None:
+            path_params[self.__downcase_first_letter('siteUrl')] = request.site_url  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('userName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('userName' + '}'), request.user_name if request.user_name is not None else '')
+        else:
+            if request.user_name is not None:
+                query_params.append((self.__downcase_first_letter('userName'), request.user_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+        if request.x_project_online_token is not None:
+            header_params[self.__downcase_first_letter('x-project-online-token')] = request.x_project_online_token  # noqa: E501
+        if request.x_sharepoint_password is not None:
+            header_params[self.__downcase_first_letter('x-sharepoint-password')] = request.x_sharepoint_password  # noqa: E501
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.save_options is not None:
+            body_params = request.save_options
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),

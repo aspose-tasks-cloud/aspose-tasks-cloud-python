@@ -34,7 +34,7 @@ class PutImportProjectFromDbRequest(object):
     :param connection_string The connection string to the source database.
     :param project_uid Uid of the project to import.
     :param filename The name of the resulting file.
-    :param format Format of the resulting file. The import to Mpp format is not supported.
+    :param format Format of the resulting file.
     :param folder The document folder.
     :param storage The document storage.
     :param database_schema Schema of Microsoft project database (if applicable)

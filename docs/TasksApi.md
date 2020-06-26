@@ -53,7 +53,9 @@ Method | HTTP request | Description
 [**delete_outline_code_by_index**](TasksApi.md#delete_outline_code_by_index) | **DELETE** /tasks/{name}/outlineCodes/{index} | Deletes a project outline code
 [**get_outline_code_by_index**](TasksApi.md#get_outline_code_by_index) | **GET** /tasks/{name}/outlineCodes/{index} | Get outline code by index.
 [**get_outline_codes**](TasksApi.md#get_outline_codes) | **GET** /tasks/{name}/outlineCodes | Get a project&#39;s outline codes.
+[**create_new_project**](TasksApi.md#create_new_project) | **POST** /tasks/projectOnline/{siteUrl}/{name} | Creates new project in Project Server\\Project Online instance.
 [**get_project_list**](TasksApi.md#get_project_list) | **GET** /tasks/projectOnline/projectList | Gets the list of published projects in the current Project Online account.
+[**update_project**](TasksApi.md#update_project) | **PUT** /tasks/projectOnline/{siteUrl}/{name} | Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.
 [**put_recalculate_project**](TasksApi.md#put_recalculate_project) | **PUT** /tasks/{name}/recalculate/project | Reschedules all project tasks ids, outline levels, start/finish dates, sets early/late dates, calculates slacks, work and cost fields.
 [**put_recalculate_project_resource_fields**](TasksApi.md#put_recalculate_project_resource_fields) | **PUT** /tasks/{name}/recalculate/resourceFields | Recalculate project resource fields
 [**put_recalculate_project_uncomplete_work_to_start_after**](TasksApi.md#put_recalculate_project_uncomplete_work_to_start_after) | **PUT** /tasks/{name}/recalculate/uncompleteWorkToStartAfter | Recalculate project uncomplete work
@@ -1066,7 +1068,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_assignment**
-> AssignmentItemResponse post_assignment(name, task_uid, resource_uid, units=units, file_name=file_name, storage=storage, folder=folder)
+> AssignmentItemResponse post_assignment(name, task_uid, resource_uid, units=units, cost=cost, file_name=file_name, storage=storage, folder=folder)
 
 Adds a new assignment to a project and returns assignment item in a response.
 
@@ -1087,14 +1089,15 @@ api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuratio
 name = 'name_example' # str | The name of the file.
 task_uid = 56 # int | The unique id of the task to be assigned.
 resource_uid = 56 # int | The unique id of the resource to be assigned.
-units = 1.2 # float | The units for the new assignment. Default value is 1. (optional)
+units = 1.2 # float | The units for the new assignment. If not specified, 'cost' value is used. (optional)
+cost = 8.14 # float | The cost for a new assignment. If not specified, default value is used. (optional)
 file_name = 'file_name_example' # str | The name of the project document to save changes to. If this parameter is omitted then the changes will be saved to the source project document. (optional)
 storage = 'storage_example' # str | The document storage. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 
 try:
     # Adds a new assignment to a project and returns assignment item in a response.
-    api_response = api_instance.post_assignment(name, task_uid, resource_uid, units=units, file_name=file_name, storage=storage, folder=folder)
+    api_response = api_instance.post_assignment(name, task_uid, resource_uid, units=units, cost=cost, file_name=file_name, storage=storage, folder=folder)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TasksApi->post_assignment: %s\n" % e)
@@ -1107,7 +1110,8 @@ Name | Type | Description  | Notes
  **name** | **str**| The name of the file. | 
  **task_uid** | **int**| The unique id of the task to be assigned. | 
  **resource_uid** | **int**| The unique id of the resource to be assigned. | 
- **units** | **float**| The units for the new assignment. Default value is 1. | [optional] 
+ **units** | **float**| The units for the new assignment. If not specified, &#39;cost&#39; value is used. | [optional] 
+ **cost** | **float**| The cost for a new assignment. If not specified, default value is used. | [optional] 
  **file_name** | **str**| The name of the project document to save changes to. If this parameter is omitted then the changes will be saved to the source project document. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
@@ -2078,7 +2082,7 @@ database_type = 'database_type_example' # str | The type of source database. The
 connection_string = 'connection_string_example' # str | The connection string to the source database.
 project_uid = 'project_uid_example' # str | Uid of the project to import.
 filename = 'filename_example' # str | The name of the resulting file.
-format = 'format_example' # str | Format of the resulting file. The import to Mpp format is not supported. (optional)
+format = 'format_example' # str | Format of the resulting file. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 storage = 'storage_example' # str | The document storage. (optional)
 database_schema = 'database_schema_example' # str | Schema of Microsoft project database (if applicable) (optional)
@@ -2099,7 +2103,7 @@ Name | Type | Description  | Notes
  **connection_string** | **str**| The connection string to the source database. | 
  **project_uid** | **str**| Uid of the project to import. | 
  **filename** | **str**| The name of the resulting file. | 
- **format** | **str**| Format of the resulting file. The import to Mpp format is not supported. | [optional] 
+ **format** | **str**| Format of the resulting file. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
  **database_schema** | **str**| Schema of Microsoft project database (if applicable) | [optional] 
@@ -2182,7 +2186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_import_project_from_project_online**
-> AsposeResponse put_import_project_from_project_online(name, site_url, guid, x_project_online_token, format=format, folder=folder, storage=storage)
+> AsposeResponse put_import_project_from_project_online(name, guid, site_url, user_name=user_name, format=format, folder=folder, storage=storage, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
 
 Imports project from Project Online and saves it to specified file.
 
@@ -2201,16 +2205,18 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
 name = 'name_example' # str | The name of the resulting file.
-site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
 guid = 'guid_example' # str | Guid of the project to import.
-x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
-format = 'format_example' # str | Format of the resulting file. The import to Mpp format is not supported. (optional)
+site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
+format = 'format_example' # str | Format of the resulting file. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 storage = 'storage_example' # str | The document storage. (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
 
 try:
     # Imports project from Project Online and saves it to specified file.
-    api_response = api_instance.put_import_project_from_project_online(name, site_url, guid, x_project_online_token, format=format, folder=folder, storage=storage)
+    api_response = api_instance.put_import_project_from_project_online(name, guid, site_url, user_name=user_name, format=format, folder=folder, storage=storage, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TasksApi->put_import_project_from_project_online: %s\n" % e)
@@ -2221,12 +2227,14 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The name of the resulting file. | 
- **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
  **guid** | **str**| Guid of the project to import. | 
- **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | 
- **format** | **str**| Format of the resulting file. The import to Mpp format is not supported. | [optional] 
+ **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **user_name** | **str**| The user name for the sharepoint site. | [optional] 
+ **format** | **str**| Format of the resulting file. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
+ **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
 
 ### Return type
 
@@ -2863,8 +2871,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_new_project**
+> AsposeResponse create_new_project(name, site_url, user_name=user_name, save_options=save_options, folder=folder, storage=storage, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
+
+Creates new project in Project Server\\Project Online instance.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
+save_options = asposetaskscloud.ProjectServerSaveOptionsDTO() # ProjectServerSaveOptionsDTO | Dispensable save options for Project Server\\Project Online. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
+
+try:
+    # Creates new project in Project Server\\Project Online instance.
+    api_response = api_instance.create_new_project(name, site_url, user_name=user_name, save_options=save_options, folder=folder, storage=storage, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->create_new_project: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **user_name** | **str**| The user name for the sharepoint site. | [optional] 
+ **save_options** | [**ProjectServerSaveOptionsDTO**](ProjectServerSaveOptionsDTO.md)| Dispensable save options for Project Server\\Project Online. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_project_list**
-> ProjectListResponse get_project_list(site_url, x_project_online_token)
+> ProjectListResponse get_project_list(site_url, user_name=user_name, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
 
 Gets the list of published projects in the current Project Online account.
 
@@ -2883,11 +2955,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
 site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
-x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
 
 try:
     # Gets the list of published projects in the current Project Online account.
-    api_response = api_instance.get_project_list(site_url, x_project_online_token)
+    api_response = api_instance.get_project_list(site_url, user_name=user_name, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TasksApi->get_project_list: %s\n" % e)
@@ -2898,11 +2972,77 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
- **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | 
+ **user_name** | **str**| The user name for the sharepoint site. | [optional] 
+ **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
 
 ### Return type
 
 [**ProjectListResponse**](ProjectListResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_project**
+> AsposeResponse update_project(name, site_url, user_name=user_name, save_options=save_options, folder=folder, storage=storage, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
+
+Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
+save_options = asposetaskscloud.ProjectServerSaveOptionsDTO() # ProjectServerSaveOptionsDTO | Dispensable save options for Project Server\\Project Online. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
+
+try:
+    # Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.
+    api_response = api_instance.update_project(name, site_url, user_name=user_name, save_options=save_options, folder=folder, storage=storage, x_project_online_token=x_project_online_token, x_sharepoint_password=x_sharepoint_password)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->update_project: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **user_name** | **str**| The user name for the sharepoint site. | [optional] 
+ **save_options** | [**ProjectServerSaveOptionsDTO**](ProjectServerSaveOptionsDTO.md)| Dispensable save options for Project Server\\Project Online. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### Authorization
 

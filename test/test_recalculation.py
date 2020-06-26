@@ -60,10 +60,7 @@ class TestRecalculation(BaseTestContext):
         put_recalculate_project_result = self.tasks_api.put_recalculate_project(put_recalculate_project_request)
         self.assertIsNotNone(put_recalculate_project_result)
         self.assertIsInstance(put_recalculate_project_result, ProjectRecalculateResponse)
-        self.assertEqual(ProjectValidationState.HASERRORS, put_recalculate_project_result.result.validation_state)
-        self.assertEqual('Actual start date of task is greater than actual finish date. Task name: ' + task.name +
-                         '; Actual start date: 10/20/2000 08:00:00; Actual finish date: 10/09/2000 18:00:00',
-                         put_recalculate_project_result.result.validation_error_message)
+        self.assertEqual(ProjectValidationState.VALID, put_recalculate_project_result.result.validation_state)
 
     def test_put_recalculate_project_resource_fields(self):
         filename = 'Home_move_plan.mpp'

@@ -40,7 +40,7 @@ class TestDocumentProperties(BaseTestContext):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, DocumentPropertiesResponse)
         self.assertIsNotNone(result.properties)
-        self.assertEqual(51, len(result.properties.list))
+        self.assertEqual(52, len(result.properties.list))
         self.assertEqual('Title', result.properties.list[0].name)
         self.assertEqual('Home Move', result.properties.list[0].value)
 

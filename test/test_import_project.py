@@ -69,8 +69,25 @@ class TestImportProject(BaseTestContext):
 
     @unittest.skip('Ignored because real credentials is required')
     def test_put_import_project_from_project_online(self):
-        put_request = PutImportProjectFromProjectOnlineRequest('NewProductDev.mpp', 'https://your_company_name.sharepoint.com',
-                                                            'E6426C44-D6CB-4B9C-AF16-48910ACE0F54', 'SOMESECRETTOKEN')
+        put_request = PutImportProjectFromProjectOnlineRequest('NewProductDev.mpp', 'E6426C44-D6CB-4B9C-AF16-48910ACE0F54',
+                                                               'https://your_company_name.sharepoint.com')
+        put_request.x_project_online_token = 'SOMESECRETTOKEN';
+        put_request.format = ProjectFileFormat.P6XML
+        put_result = self.tasks_api.put_import_project_from_project_online(put_request)
+        self.assertIsNotNone(put_result)
+        self.assertIsInstance(put_result, AsposeResponse)
+        get_request = DownloadFileRequest('NewProductDev.mpp')
+        get_result = self.tasks_api.download_file(get_request)
+        self.assertIsNotNone(get_result)
+        with open(get_result) as f:
+            self.assertTrue(f.readable())
+
+    @unittest.skip('Ignored because real credentials is required')
+    def test_put_import_project_from_project_online_by_login_with_password(self):
+        put_request = PutImportProjectFromProjectOnlineRequest('NewProductDev.mpp', 'E6426C44-D6CB-4B9C-AF16-48910ACE0F54',
+                                                               'https://your_company_name.sharepoint.com')
+        put_request.user_name = 'SomeUserName'
+        put_request.x_sharepoint_password = 'SomePassword'
         put_request.format = ProjectFileFormat.P6XML
         put_result = self.tasks_api.put_import_project_from_project_online(put_request)
         self.assertIsNotNone(put_result)

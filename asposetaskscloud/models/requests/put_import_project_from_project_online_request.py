@@ -31,22 +31,26 @@ class PutImportProjectFromProjectOnlineRequest(object):
     Request model for put_import_project_from_project_online operation.
     Initializes a new instance.
     :param name The name of the resulting file.
-    :param site_url The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
     :param guid Guid of the project to import.
-    :param x_project_online_token Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
-    :param format Format of the resulting file. The import to Mpp format is not supported.
+    :param site_url The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+    :param user_name The user name for the sharepoint site.
+    :param format Format of the resulting file.
     :param folder The document folder.
     :param storage The document storage.
+    :param x_project_online_token Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+    :param x_sharepoint_password The password for the SharePoint site.
     """
 
-    def __init__(self, name, site_url, guid, x_project_online_token, format=None, folder=None, storage=None):
+    def __init__(self, name, guid, site_url, user_name=None, format=None, folder=None, storage=None, x_project_online_token=None, x_sharepoint_password=None):
         self.name = name
-        self.site_url = site_url
         self.guid = guid
-        self.x_project_online_token = x_project_online_token
+        self.site_url = site_url
+        self.user_name = user_name
         self.format = format
         self.folder = folder
         self.storage = storage
+        self.x_project_online_token = x_project_online_token
+        self.x_sharepoint_password = x_sharepoint_password
 
 
 

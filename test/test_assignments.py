@@ -57,6 +57,24 @@ class TestAssignments(BaseTestContext):
         self.assertEqual(get_task_response.task.work, get_response.assignment.work)
         self.assertEqual(get_task_response.task.cost, get_response.assignment.cost)
 
+    def test_post_assignment_with_cost_instead_of_units(self):
+        filename = 'Cost_Res.mpp'
+        self.upload_file(filename)
+        request = PostAssignmentRequest(filename, 0, 1, None, 2)
+        result = self.tasks_api.post_assignment(request)
+        self.assertIsNotNone(result)
+        self.assertIsInstance(result, AssignmentItemResponse)
+        self.assertIsNotNone(result.assignment_item)
+
+        assignment_uid = result.assignment_item.uid
+        get_response = self.tasks_api.get_assignment(GetAssignmentRequest(filename, assignment_uid))
+
+        self.assertIsInstance(get_response, AssignmentResponse)
+        self.assertIsNotNone(get_response.assignment)
+        self.assertEqual(request.task_uid, get_response.assignment.task_uid)
+        self.assertEqual(request.resource_uid, get_response.assignment.resource_uid)
+        self.assertEqual(request.cost, get_response.assignment.cost)
+
     def test_get_assignment(self):
         filename = 'NewProductDev.mpp'
         self.upload_file(filename)

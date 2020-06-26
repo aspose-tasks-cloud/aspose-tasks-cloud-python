@@ -33,7 +33,7 @@ from asposetaskscloud.rest import ApiException
 class TestFolder(BaseTestContext):
     test_folder = 'Temp/SdkTests/TestData/Storage'
 
-    def test_create_folder(self): 
+    def test_create_folder(self):
         folder_uuid = str(uuid.uuid4())
         folder_path = self.test_folder + '/TestCreateFolder' + folder_uuid
         request = asposetaskscloud.models.requests.CreateFolderRequest(folder_path)
@@ -48,7 +48,7 @@ class TestFolder(BaseTestContext):
         self.tasks_api.create_folder(request)
         request = asposetaskscloud.models.requests.DeleteFolderRequest(folder_path)
         response = self.tasks_api.delete_folder(request)
-        self.assertIsNotNone(response, "Folder has not been created")
+        self.assertIsNotNone(response, "Folder has not been deleted")
 
     def test_get_files_list(self):
         request = asposetaskscloud.models.requests.GetFilesListRequest(self.test_folder)

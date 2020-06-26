@@ -30,7 +30,7 @@ import json
 import unittest
 import warnings
 import six
-from asposetaskscloud import ApiClient, TasksApi, UploadFileRequest, DeleteFileRequest
+from asposetaskscloud import ApiClient, TasksApi, UploadFileRequest, DeleteFileRequest, DeleteFolderRequest
 
 
 class BaseTestContext(unittest.TestCase):
@@ -62,6 +62,9 @@ class BaseTestContext(unittest.TestCase):
         self.uploaded_files.append(filename)
 
     def tearDown(self):
+
+        request = DeleteFolderRequest('Temp/SdkTests/TestData/Storage', recursive=True)
+        self.tasks_api.delete_folder(request)
         for file in self.uploaded_files:
             request = DeleteFileRequest(file)
             self.tasks_api.delete_file(request)

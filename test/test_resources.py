@@ -26,6 +26,8 @@
 #
 from datetime import datetime
 
+from dateutil.tz import tzutc
+
 from asposetaskscloud import GetResourcesRequest, ResourceItemsResponse, PostResourceRequest, ResourceItemResponse, \
     GetResourceRequest, ResourceResponse, Baseline, BaselineType, PutResourceRequest, CalculationMode, AsposeResponse, \
     DeleteResourceRequest
@@ -54,11 +56,11 @@ class TestResources(BaseTestContext):
         self.assertIsNotNone(get_result)
         self.assertIsInstance(get_result, ResourceResponse)
         self.assertEqual(10, get_result.resource.standard_rate)
-        self.assertEqual(datetime(2003, 1, 7, 8), get_result.resource.start)
+        self.assertEqual(datetime(2003, 1, 7, 8, tzinfo=tzutc()), get_result.resource.start)
         self.assertEqual('10.00:00:00', get_result.resource.work)
-        self.assertEqual(datetime(2003, 3, 17, 17), get_result.resource.finish)
+        self.assertEqual(datetime(2003, 3, 17, 17, tzinfo=tzutc()), get_result.resource.finish)
         self.assertIsNone(get_result.resource.overtime_work)
-        self.assertEqual(2430, get_result.resource.cost)
+        self.assertEqual(2015, get_result.resource.cost)
 
     def test_post_resource(self):
         filename = 'Home_move_plan.mpp'
@@ -102,9 +104,9 @@ class TestResources(BaseTestContext):
         self.assertEqual(BaselineType.BASELINE1, put_result.resource.baselines[0].baseline_number)
         self.assertEqual(44, put_result.resource.baselines[0].cost)
         self.assertEqual(resource.standard_rate, put_result.resource.standard_rate)
-        self.assertEqual(resource.start, put_result.resource.start)
+        self.assertEqual(resource.start.date(), put_result.resource.start.date())
         self.assertEqual(resource.work, put_result.resource.work)
-        self.assertEqual(resource.finish, put_result.resource.finish)
+        self.assertEqual(resource.finish.date(), put_result.resource.finish.date())
         self.assertEqual(resource.overtime_work, put_result.resource.overtime_work)
         self.assertEqual(resource.cost, put_result.resource.cost)
 

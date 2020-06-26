@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **task_uid** | **int** | Returns or sets a task unique id to which a resource is assigned. | [default to -1]
 **resource_uid** | **int** | Returns or sets a resource unique id assigned to a task. | [default to -1]
+**guid** | **str** | Returns or sets the global unique identifier of an assignment. | [optional] 
 **uid** | **int** | Returns or sets the unique identifier of an assignment. | 
 **percent_work_complete** | **int** | Returns or sets the amount of a work completed on an assignment. | 
 **actual_cost** | **float** | Returns or sets the actual cost incurred on an assignment. | 

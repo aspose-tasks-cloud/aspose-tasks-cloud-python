@@ -115,6 +115,7 @@ Name | Type | Description | Notes
 **baselines** | [**list[TaskBaseline]**](TaskBaseline.md) | Gets or sets the collection of baseline values of the task. | [optional] 
 **extended_attributes** | [**list[ExtendedAttribute]**](ExtendedAttribute.md) | Task extended attributes. | [optional] 
 **outline_codes** | [**list[OutlineCode]**](OutlineCode.md) | Task outline codes. | [optional] 
+**warning** | **bool** | Represents the flag which indicates that task has schedule discrepancies. | [default to False]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

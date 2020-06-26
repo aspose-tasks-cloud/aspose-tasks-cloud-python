@@ -39,7 +39,7 @@ class TestGetPageCount(BaseTestContext):
         result = self.tasks_api.get_page_count(request)
         self.assertIsNotNone(result)
         self.assertIsInstance(result, PageCountResponse)
-        self.assertEqual(2, result.page_count)
+        self.assertEqual(4, result.page_count)
 
     def test_get_page_count_with_enhanced_data(self):
         filename = 'Home_move_plan.mpp'
@@ -49,4 +49,4 @@ class TestGetPageCount(BaseTestContext):
         result = self.tasks_api.get_page_count(request)
         self.assertIsNotNone(result)
         self.assertIsInstance(result, PageCountResponse)
-        self.assertEqual(2, result.page_count)
+        self.assertEqual(4, result.page_count)

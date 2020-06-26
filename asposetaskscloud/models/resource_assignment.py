@@ -43,6 +43,7 @@ class ResourceAssignment(object):
     swagger_types = {
         'task_uid': 'int',
         'resource_uid': 'int',
+        'guid': 'str',
         'uid': 'int',
         'percent_work_complete': 'int',
         'actual_cost': 'float',
@@ -110,6 +111,7 @@ class ResourceAssignment(object):
     attribute_map = {
         'task_uid': 'taskUid',
         'resource_uid': 'resourceUid',
+        'guid': 'guid',
         'uid': 'uid',
         'percent_work_complete': 'percentWorkComplete',
         'actual_cost': 'actualCost',
@@ -174,11 +176,12 @@ class ResourceAssignment(object):
         'extended_attributes': 'extendedAttributes'
     }
 
-    def __init__(self, task_uid=-1, resource_uid=-1, uid=None, percent_work_complete=None, actual_cost=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_start=None, actual_work=None, acwp=None, confirmed=None, cost=None, cost_rate_table_type=None, cost_variance=None, cv=None, delay=None, finish=None, finish_variance=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, work_variance=None, has_fixed_rate_units=None, fixed_material=None, leveling_delay=None, leveling_delay_format=None, linked_fields=None, milestone=None, notes=None, overallocated=None, overtime_cost=None, overtime_work=None, peak_units=None, regular_work=None, remaining_cost=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, response_pending=None, start=None, stop=None, resume=None, start_variance=None, summary=None, sv=None, units=1.0, update_needed=None, vac=None, work=None, work_contour=None, bcws=None, bcwp=None, booking_type=None, actual_work_protected=None, actual_overtime_work_protected=None, creation_date=None, assn_owner=None, assn_owner_guid=None, budget_cost=None, budget_work=None, rate_scale=None, baselines=None, extended_attributes=None):  # noqa: E501
+    def __init__(self, task_uid=-1, resource_uid=-1, guid=None, uid=None, percent_work_complete=None, actual_cost=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_start=None, actual_work=None, acwp=None, confirmed=None, cost=None, cost_rate_table_type=None, cost_variance=None, cv=None, delay=None, finish=None, finish_variance=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, work_variance=None, has_fixed_rate_units=None, fixed_material=None, leveling_delay=None, leveling_delay_format=None, linked_fields=None, milestone=None, notes=None, overallocated=None, overtime_cost=None, overtime_work=None, peak_units=None, regular_work=None, remaining_cost=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, response_pending=None, start=None, stop=None, resume=None, start_variance=None, summary=None, sv=None, units=1.0, update_needed=None, vac=None, work=None, work_contour=None, bcws=None, bcwp=None, booking_type=None, actual_work_protected=None, actual_overtime_work_protected=None, creation_date=None, assn_owner=None, assn_owner_guid=None, budget_cost=None, budget_work=None, rate_scale=None, baselines=None, extended_attributes=None):  # noqa: E501
         """ResourceAssignment - a model defined in Swagger"""  # noqa: E501
 
         self._task_uid = None
         self._resource_uid = None
+        self._guid = None
         self._uid = None
         self._percent_work_complete = None
         self._actual_cost = None
@@ -247,6 +250,8 @@ class ResourceAssignment(object):
             self.task_uid = task_uid
         if resource_uid is not None:
             self.resource_uid = resource_uid
+        if guid is not None:
+            self.guid = guid
         if uid is not None:
             self.uid = uid
         if percent_work_complete is not None:
@@ -418,6 +423,27 @@ class ResourceAssignment(object):
         if resource_uid is None:
             raise ValueError("Invalid value for `resource_uid`, must not be `None`")  # noqa: E501
         self._resource_uid = resource_uid
+    @property
+    def guid(self):
+        """Gets the guid of this ResourceAssignment.  # noqa: E501
+
+        Returns or sets the global unique identifier of an assignment.  # noqa: E501
+
+        :return: The guid of this ResourceAssignment.  # noqa: E501
+        :rtype: str
+        """
+        return self._guid
+
+    @guid.setter
+    def guid(self, guid):
+        """Sets the guid of this ResourceAssignment.
+
+        Returns or sets the global unique identifier of an assignment.  # noqa: E501
+
+        :param guid: The guid of this ResourceAssignment.  # noqa: E501
+        :type: str
+        """
+        self._guid = guid
     @property
     def uid(self):
         """Gets the uid of this ResourceAssignment.  # noqa: E501

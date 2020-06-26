@@ -55,6 +55,7 @@ from asposetaskscloud.models.project_database_type import ProjectDatabaseType
 from asposetaskscloud.models.project_file_format import ProjectFileFormat
 from asposetaskscloud.models.project_info import ProjectInfo
 from asposetaskscloud.models.project_recalculation_result import ProjectRecalculationResult
+from asposetaskscloud.models.project_server_save_options_dto import ProjectServerSaveOptionsDTO
 from asposetaskscloud.models.project_validation_state import ProjectValidationState
 from asposetaskscloud.models.rate_format_type import RateFormatType
 from asposetaskscloud.models.rate_scale_type import RateScaleType
