@@ -24,10 +24,12 @@
 # </summary>
 # --------------------------------------------------------------------------------------------------------------------
 #
+from datetime import datetime
 
 from asposetaskscloud import PostAssignmentRequest, AssignmentItemResponse, GetAssignmentRequest, GetTaskRequest, \
     AssignmentResponse, TaskResponse, GetAssignmentsRequest, AssignmentItemsResponse, GetResourceAssignmentsRequest, \
-    AssignmentsResponse, PutAssignmentRequest, CalculationMode, DeleteAssignmentRequest, AsposeResponse
+    AssignmentsResponse, PutAssignmentRequest, CalculationMode, DeleteAssignmentRequest, AsposeResponse, \
+    WorkContourType, TimephasedData, TimeUnitType, TimephasedDataType, BaselineType, AssignmentBaseline, Baseline
 from test.base_test_context import BaseTestContext
 
 
@@ -124,6 +126,54 @@ class TestAssignments(BaseTestContext):
         self.assertIsInstance(assignment_response, AssignmentResponse)
         self.assertIsNotNone(assignment_response.assignment)
         self.assertEqual(0, assignment_response.assignment.task_uid)
+
+    def test_put_assignment_with_timephaseddata_and_baselines(self):
+        filename = 'sample.mpp'
+        self.upload_file(filename)
+        assignment_response = self.tasks_api.get_assignment(GetAssignmentRequest(filename, 1))
+        assignment = assignment_response.assignment
+        assignment.cost = 100
+        assignment.start = datetime(2001, 10, 10)
+        assignment.finish = datetime(2002, 10, 10)
+        assignment.baselines = [AssignmentBaseline(datetime(2002, 10, 10))]
+        assignment.actual_work = "10:10:10"
+        assignment.actual_cost = 100
+        assignment.actual_start = datetime(2001, 10, 10)
+        assignment.actual_finish = datetime(2002, 10, 10)
+        assignment.actual_overtime_work = "100:10:10"
+        assignment.work = "80:0:0"
+        assignment.uid = 1
+        assignment.vac = 10
+        assignment.work_contour = WorkContourType.CONTOURED
+        assignment.timephased_data = [
+            TimephasedData(assignment.uid, datetime(2001, 10, 10, 9, 0, 0, 0),
+                           datetime(2001, 10, 10, 14, 0, 0, 0), TimeUnitType.HOUR, "4:0:0",
+                           TimephasedDataType.ASSIGNMENTREMAININGWORK)
+        ]
+        put_response = self.tasks_api.put_assignment(
+            PutAssignmentRequest(filename, 1, assignment, CalculationMode.NONE, False))
+
+        self.assertIsInstance(put_response, AssignmentResponse)
+        self.assertIsNotNone(put_response.assignment)
+        self.assertEqual(assignment.uid, put_response.assignment.uid)
+        self.assertEqual(assignment.vac, put_response.assignment.vac)
+        self.assertEqual(assignment.cost, put_response.assignment.cost)
+        self.assertEqual(assignment.start, put_response.assignment.start)
+        self.assertEqual(assignment.finish, put_response.assignment.finish)
+        self.assertEqual("80.00:00:00", put_response.assignment.work)
+        self.assertEqual(assignment.actual_work, put_response.assignment.actual_work)
+        self.assertEqual(assignment.actual_start, put_response.assignment.actual_start)
+        self.assertEqual(assignment.actual_finish, put_response.assignment.actual_finish)
+        self.assertEqual("100.10:10:00", put_response.assignment.actual_overtime_work)
+        self.assertEqual(1, len(put_response.assignment.baselines))
+        self.assertEqual(assignment.baselines[0].start, put_response.assignment.baselines[0].start)
+        self.assertEqual(1, len(put_response.assignment.timephased_data))
+        self.assertEqual(assignment.timephased_data[0].uid, put_response.assignment.timephased_data[0].uid)
+        self.assertEqual("PT4H0M0S", put_response.assignment.timephased_data[0].value)
+        self.assertEqual(assignment.timephased_data[0].start, put_response.assignment.timephased_data[0].start)
+        self.assertEqual(assignment.timephased_data[0].finish, put_response.assignment.timephased_data[0].finish)
+        self.assertEqual(assignment.timephased_data[0].timephased_data_type,
+                         put_response.assignment.timephased_data[0].timephased_data_type)
 
     def test_delete_assignment(self):
         filename = 'NewProductDev.mpp'

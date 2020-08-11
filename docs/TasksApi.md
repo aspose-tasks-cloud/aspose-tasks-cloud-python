@@ -8,9 +8,9 @@ Method | HTTP request | Description
 [**delete_file**](TasksApi.md#delete_file) | **DELETE** /tasks/storage/file/{path} | Delete file
 [**download_file**](TasksApi.md#download_file) | **GET** /tasks/storage/file/{path} | Download file
 [**move_file**](TasksApi.md#move_file) | **PUT** /tasks/storage/file/move/{srcPath} | Move file
-[**upload_file**](TasksApi.md#upload_file) | **POST** /tasks/storage/file/{path} | Upload file
+[**upload_file**](TasksApi.md#upload_file) | **PUT** /tasks/storage/file/{path} | Upload file
 [**copy_folder**](TasksApi.md#copy_folder) | **PUT** /tasks/storage/folder/copy/{srcPath} | Copy folder
-[**create_folder**](TasksApi.md#create_folder) | **POST** /tasks/storage/folder/{path} | Create the folder
+[**create_folder**](TasksApi.md#create_folder) | **PUT** /tasks/storage/folder/{path} | Create the folder
 [**delete_folder**](TasksApi.md#delete_folder) | **DELETE** /tasks/storage/folder/{path} | Delete folder
 [**get_files_list**](TasksApi.md#get_files_list) | **GET** /tasks/storage/folder/{path} | Get all files and folders within a folder
 [**move_folder**](TasksApi.md#move_folder) | **PUT** /tasks/storage/folder/move/{srcPath} | Move folder
@@ -2206,7 +2206,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
 name = 'name_example' # str | The name of the resulting file.
 guid = 'guid_example' # str | Guid of the project to import.
-site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+site_url = 'site_url_example' # str | The URL of PWA (Project Web Access) API of Project Online
 user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
 format = 'format_example' # str | Format of the resulting file. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
@@ -2228,7 +2228,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The name of the resulting file. | 
  **guid** | **str**| Guid of the project to import. | 
- **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **site_url** | **str**| The URL of PWA (Project Web Access) API of Project Online | 
  **user_name** | **str**| The user name for the sharepoint site. | [optional] 
  **format** | **str**| Format of the resulting file. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
@@ -2891,7 +2891,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
 name = 'name_example' # str | The name of the file.
-site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+site_url = 'site_url_example' # str | The URL of PWA (Project Web Access) API of Project Online.
 user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
 save_options = asposetaskscloud.ProjectServerSaveOptionsDTO() # ProjectServerSaveOptionsDTO | Dispensable save options for Project Server\\Project Online. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
@@ -2912,7 +2912,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The name of the file. | 
- **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **site_url** | **str**| The URL of PWA (Project Web Access) API of Project Online. | 
  **user_name** | **str**| The user name for the sharepoint site. | [optional] 
  **save_options** | [**ProjectServerSaveOptionsDTO**](ProjectServerSaveOptionsDTO.md)| Dispensable save options for Project Server\\Project Online. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
@@ -2954,7 +2954,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
-site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+site_url = 'site_url_example' # str | The URL of PWA (Project Web Access) API of Project Online.
 user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
 x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
 x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
@@ -2971,7 +2971,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **site_url** | **str**| The URL of PWA (Project Web Access) API of Project Online. | 
  **user_name** | **str**| The user name for the sharepoint site. | [optional] 
  **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
  **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
@@ -3011,7 +3011,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
 name = 'name_example' # str | The name of the file.
-site_url = 'site_url_example' # str | The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+site_url = 'site_url_example' # str | The URL of PWA (Project Web Access) API of Project Online.
 user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
 save_options = asposetaskscloud.ProjectServerSaveOptionsDTO() # ProjectServerSaveOptionsDTO | Dispensable save options for Project Server\\Project Online. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
@@ -3032,7 +3032,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| The name of the file. | 
- **site_url** | **str**| The url of sharepoint site. For example, \&quot;https://your_company_name.sharepoint.com\&quot; | 
+ **site_url** | **str**| The URL of PWA (Project Web Access) API of Project Online. | 
  **user_name** | **str**| The user name for the sharepoint site. | [optional] 
  **save_options** | [**ProjectServerSaveOptionsDTO**](ProjectServerSaveOptionsDTO.md)| Dispensable save options for Project Server\\Project Online. | [optional] 
  **folder** | **str**| The document folder. | [optional] 

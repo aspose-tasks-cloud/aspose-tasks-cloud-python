@@ -68,6 +68,7 @@ Name | Type | Description | Notes
 **rate_scale** | [**RateScaleType**](RateScaleType.md) | Returns the time unit for the usage rate of the material resource assignment. | 
 **baselines** | [**list[AssignmentBaseline]**](AssignmentBaseline.md) | List of ResourceAssignment&#39;s Baseline values. | [optional] 
 **extended_attributes** | [**list[ExtendedAttribute]**](ExtendedAttribute.md) | ResourceAssignment extended attributes. | [optional] 
+**timephased_data** | [**list[TimephasedData]**](TimephasedData.md) | Represents a collection of TimephasedData objects. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -30,7 +30,7 @@ class CreateNewProjectRequest(object):
     Request model for create_new_project operation.
     Initializes a new instance.
     :param name The name of the file.
-    :param site_url The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+    :param site_url The URL of PWA (Project Web Access) API of Project Online.
     :param user_name The user name for the sharepoint site.
     :param save_options Dispensable save options for Project Server\\Project Online.
     :param folder The document folder.

@@ -105,7 +105,8 @@ class ResourceAssignment(object):
         'budget_work': 'str',
         'rate_scale': 'RateScaleType',
         'baselines': 'list[AssignmentBaseline]',
-        'extended_attributes': 'list[ExtendedAttribute]'
+        'extended_attributes': 'list[ExtendedAttribute]',
+        'timephased_data': 'list[TimephasedData]'
     }
 
     attribute_map = {
@@ -173,10 +174,11 @@ class ResourceAssignment(object):
         'budget_work': 'budgetWork',
         'rate_scale': 'rateScale',
         'baselines': 'baselines',
-        'extended_attributes': 'extendedAttributes'
+        'extended_attributes': 'extendedAttributes',
+        'timephased_data': 'timephasedData'
     }
 
-    def __init__(self, task_uid=-1, resource_uid=-1, guid=None, uid=None, percent_work_complete=None, actual_cost=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_start=None, actual_work=None, acwp=None, confirmed=None, cost=None, cost_rate_table_type=None, cost_variance=None, cv=None, delay=None, finish=None, finish_variance=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, work_variance=None, has_fixed_rate_units=None, fixed_material=None, leveling_delay=None, leveling_delay_format=None, linked_fields=None, milestone=None, notes=None, overallocated=None, overtime_cost=None, overtime_work=None, peak_units=None, regular_work=None, remaining_cost=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, response_pending=None, start=None, stop=None, resume=None, start_variance=None, summary=None, sv=None, units=1.0, update_needed=None, vac=None, work=None, work_contour=None, bcws=None, bcwp=None, booking_type=None, actual_work_protected=None, actual_overtime_work_protected=None, creation_date=None, assn_owner=None, assn_owner_guid=None, budget_cost=None, budget_work=None, rate_scale=None, baselines=None, extended_attributes=None):  # noqa: E501
+    def __init__(self, task_uid=-1, resource_uid=-1, guid=None, uid=None, percent_work_complete=None, actual_cost=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_start=None, actual_work=None, acwp=None, confirmed=None, cost=None, cost_rate_table_type=None, cost_variance=None, cv=None, delay=None, finish=None, finish_variance=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, work_variance=None, has_fixed_rate_units=None, fixed_material=None, leveling_delay=None, leveling_delay_format=None, linked_fields=None, milestone=None, notes=None, overallocated=None, overtime_cost=None, overtime_work=None, peak_units=None, regular_work=None, remaining_cost=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, response_pending=None, start=None, stop=None, resume=None, start_variance=None, summary=None, sv=None, units=1.0, update_needed=None, vac=None, work=None, work_contour=None, bcws=None, bcwp=None, booking_type=None, actual_work_protected=None, actual_overtime_work_protected=None, creation_date=None, assn_owner=None, assn_owner_guid=None, budget_cost=None, budget_work=None, rate_scale=None, baselines=None, extended_attributes=None, timephased_data=None):  # noqa: E501
         """ResourceAssignment - a model defined in Swagger"""  # noqa: E501
 
         self._task_uid = None
@@ -244,6 +246,7 @@ class ResourceAssignment(object):
         self._rate_scale = None
         self._baselines = None
         self._extended_attributes = None
+        self._timephased_data = None
         self.discriminator = None
 
         if task_uid is not None:
@@ -376,6 +379,8 @@ class ResourceAssignment(object):
             self.baselines = baselines
         if extended_attributes is not None:
             self.extended_attributes = extended_attributes
+        if timephased_data is not None:
+            self.timephased_data = timephased_data
 
     @property
     def task_uid(self):
@@ -1854,6 +1859,27 @@ class ResourceAssignment(object):
         :type: list[ExtendedAttribute]
         """
         self._extended_attributes = extended_attributes
+    @property
+    def timephased_data(self):
+        """Gets the timephased_data of this ResourceAssignment.  # noqa: E501
+
+        Represents a collection of TimephasedData objects.  # noqa: E501
+
+        :return: The timephased_data of this ResourceAssignment.  # noqa: E501
+        :rtype: list[TimephasedData]
+        """
+        return self._timephased_data
+
+    @timephased_data.setter
+    def timephased_data(self, timephased_data):
+        """Sets the timephased_data of this ResourceAssignment.
+
+        Represents a collection of TimephasedData objects.  # noqa: E501
+
+        :param timephased_data: The timephased_data of this ResourceAssignment.  # noqa: E501
+        :type: list[TimephasedData]
+        """
+        self._timephased_data = timephased_data
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

@@ -635,7 +635,7 @@ class TasksApi(object):
         auth_settings = ['JWT']  # noqa: E501
 
         return self.api_client.call_api(
-            path, 'POST',
+            path, 'PUT',
             path_params,
             query_params,
             header_params,
@@ -857,7 +857,7 @@ class TasksApi(object):
         auth_settings = ['JWT']  # noqa: E501
 
         return self.api_client.call_api(
-            path, 'POST',
+            path, 'PUT',
             path_params,
             query_params,
             header_params,
@@ -4474,7 +4474,7 @@ class TasksApi(object):
         :param is_async bool
         :param name str : The name of the resulting file. (required)
         :param guid str : Guid of the project to import. (required)
-        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param site_url str : The URL of PWA (Project Web Access) API of Project Online (required)
         :param user_name str : The user name for the sharepoint site.
         :param format str : Format of the resulting file.
         :param folder str : The document folder.
@@ -5896,7 +5896,7 @@ class TasksApi(object):
 
         :param is_async bool
         :param name str : The name of the file. (required)
-        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param site_url str : The URL of PWA (Project Web Access) API of Project Online. (required)
         :param user_name str : The user name for the sharepoint site.
         :param save_options ProjectServerSaveOptionsDTO : Dispensable save options for Project Server\\Project Online.
         :param folder str : The document folder.
@@ -6025,7 +6025,7 @@ class TasksApi(object):
         asynchronous HTTP request, please pass is_async=True
 
         :param is_async bool
-        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param site_url str : The URL of PWA (Project Web Access) API of Project Online. (required)
         :param user_name str : The user name for the sharepoint site.
         :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
         :param x_sharepoint_password str : The password for the SharePoint site.
@@ -6138,7 +6138,7 @@ class TasksApi(object):
 
         :param is_async bool
         :param name str : The name of the file. (required)
-        :param site_url str : The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\" (required)
+        :param site_url str : The URL of PWA (Project Web Access) API of Project Online. (required)
         :param user_name str : The user name for the sharepoint site.
         :param save_options ProjectServerSaveOptionsDTO : Dispensable save options for Project Server\\Project Online.
         :param folder str : The document folder.

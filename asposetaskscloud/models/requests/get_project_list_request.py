@@ -30,7 +30,7 @@ class GetProjectListRequest(object):
     """
     Request model for get_project_list operation.
     Initializes a new instance.
-    :param site_url The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+    :param site_url The URL of PWA (Project Web Access) API of Project Online.
     :param user_name The user name for the sharepoint site.
     :param x_project_online_token Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
     :param x_sharepoint_password The password for the SharePoint site.

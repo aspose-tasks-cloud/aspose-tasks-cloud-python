@@ -32,7 +32,7 @@ class PutImportProjectFromProjectOnlineRequest(object):
     Initializes a new instance.
     :param name The name of the resulting file.
     :param guid Guid of the project to import.
-    :param site_url The url of sharepoint site. For example, \"https://your_company_name.sharepoint.com\"
+    :param site_url The URL of PWA (Project Web Access) API of Project Online
     :param user_name The user name for the sharepoint site.
     :param format Format of the resulting file.
     :param folder The document folder.
