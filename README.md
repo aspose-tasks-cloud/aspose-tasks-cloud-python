@@ -16,7 +16,7 @@ This repository contains Aspose.Tasks Cloud SDK for Python source code. This SDK
 * Access assignment costs and budget
 
 ## How to use the SDK?
-The complete source code is available in this repository folder. You can either directly use it in your project via source code or get [PyPi](https://pypi.org/project/aspose-tasks-cloud ) (recommended). For more details, please visit our [documentation website](https://docs.aspose.cloud/display/taskscloud/Available+SDKs ).
+The complete source code is available in this repository folder. You can either directly use it in your project via source code or get [PyPi](https://pypi.org/project/aspose-tasks-cloud ) (recommended). For more details, please visit our [documentation website](https://docs.aspose.cloud/tasks/available-sdks/).
 
 ### Prerequisites
 
@@ -93,7 +93,7 @@ Your feedback is very important to us. Please feel free to contact us using our 
 [Website](https://www.aspose.cloud/)  
 [Product Home](https://products.aspose.cloud/tasks/family)  
 [API Reference](https://apireference.aspose.cloud/tasks/)  
-[Documentation](https://docs.aspose.cloud/display/taskscloud/Home)  
+[Documentation](https://docs.aspose.cloud/tasks/)  
 [Blog](https://blog.aspose.cloud/category/tasks/) 
  
 ## Other languages
