@@ -50,6 +50,8 @@ class BaseTestContext(unittest.TestCase):
         api_client.configuration.host = creds['BaseUrl']
         api_client.configuration.api_key['api_key'] = creds['AppKey']
         api_client.configuration.api_key['app_sid'] = creds['AppSid']
+        if 'AuthUrl' in creds:
+            api_client.configuration.auth_url = creds['AuthUrl']
         self.tasks_api = TasksApi(api_client)
         self.uploaded_files = []
         if six.PY3:

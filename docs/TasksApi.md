@@ -77,7 +77,8 @@ Method | HTTP request | Description
 [**get_tasks**](TasksApi.md#get_tasks) | **GET** /tasks/{name}/tasks | Get a project&#39;s tasks.
 [**post_task**](TasksApi.md#post_task) | **POST** /tasks/{name}/tasks | Add a new task to a project.
 [**post_task_recurring_info**](TasksApi.md#post_task_recurring_info) | **POST** /tasks/{name}/tasks/recurringInfo | Adds a new recurring task.
-[**put_move_task**](TasksApi.md#put_move_task) | **PUT** /tasks/{name}/tasks/{taskUid}/move | Move one task to another parent task
+[**post_tasks**](TasksApi.md#post_tasks) | **POST** /tasks/{name}/tasks/batch | Create multiple tasks by single request.
+[**put_move_task**](TasksApi.md#put_move_task) | **PUT** /tasks/{name}/tasks/{taskUid}/move | Move one task to another parent task.
 [**put_move_task_to_sibling**](TasksApi.md#put_move_task_to_sibling) | **PUT** /tasks/{name}/tasks/{taskUid}/moveToSibling | Move a task to another position under the same parent and the same outline level
 [**put_task**](TasksApi.md#put_task) | **PUT** /tasks/{name}/tasks/{taskUid} | Updates special task getting by task UID
 [**put_task_recurring_info**](TasksApi.md#put_task_recurring_info) | **PUT** /tasks/{name}/tasks/{taskUid}/recurringInfo | Updates existing task&#39;s recurring info. Note that task should be already recurring.
@@ -4289,10 +4290,68 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_tasks**
+> TaskItemsResponse post_tasks(name, requests, file_name=file_name, storage=storage, folder=folder)
+
+Create multiple tasks by single request.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+requests = [asposetaskscloud.TaskCreationRequest()] # list[TaskCreationRequest] | Requests to create tasks.
+file_name = 'file_name_example' # str | The name of the project document to save changes to. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Create multiple tasks by single request.
+    api_response = api_instance.post_tasks(name, requests, file_name=file_name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->post_tasks: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **requests** | [**list[TaskCreationRequest]**](TaskCreationRequest.md)| Requests to create tasks. | 
+ **file_name** | **str**| The name of the project document to save changes to. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**TaskItemsResponse**](TaskItemsResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **put_move_task**
 > AsposeResponse put_move_task(name, task_uid, parent_task_uid, file_name=file_name, storage=storage, folder=folder)
 
-Move one task to another parent task
+Move one task to another parent task.
 
 ### Example
 ```python
@@ -4316,7 +4375,7 @@ storage = 'storage_example' # str | The document storage. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 
 try:
-    # Move one task to another parent task
+    # Move one task to another parent task.
     api_response = api_instance.put_move_task(name, task_uid, parent_task_uid, file_name=file_name, storage=storage, folder=folder)
     pprint(api_response)
 except ApiException as e:

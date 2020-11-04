@@ -71,6 +71,7 @@ from asposetaskscloud.models.rollup_type import RollupType
 from asposetaskscloud.models.storage_exist import StorageExist
 from asposetaskscloud.models.storage_file import StorageFile
 from asposetaskscloud.models.task import Task
+from asposetaskscloud.models.task_creation_request import TaskCreationRequest
 from asposetaskscloud.models.task_item import TaskItem
 from asposetaskscloud.models.task_link import TaskLink
 from asposetaskscloud.models.task_link_type import TaskLinkType

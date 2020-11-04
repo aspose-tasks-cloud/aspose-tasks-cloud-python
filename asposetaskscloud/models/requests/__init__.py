@@ -76,6 +76,7 @@ from asposetaskscloud.models.requests.get_task_timephased_data_request import Ge
 from asposetaskscloud.models.requests.get_tasks_request import GetTasksRequest
 from asposetaskscloud.models.requests.post_task_request import PostTaskRequest
 from asposetaskscloud.models.requests.post_task_recurring_info_request import PostTaskRecurringInfoRequest
+from asposetaskscloud.models.requests.post_tasks_request import PostTasksRequest
 from asposetaskscloud.models.requests.put_move_task_request import PutMoveTaskRequest
 from asposetaskscloud.models.requests.put_move_task_to_sibling_request import PutMoveTaskToSiblingRequest
 from asposetaskscloud.models.requests.put_task_request import PutTaskRequest

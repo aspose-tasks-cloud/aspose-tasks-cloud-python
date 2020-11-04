@@ -78,6 +78,7 @@ from asposetaskscloud.models.rollup_type import RollupType
 from asposetaskscloud.models.storage_exist import StorageExist
 from asposetaskscloud.models.storage_file import StorageFile
 from asposetaskscloud.models.task import Task
+from asposetaskscloud.models.task_creation_request import TaskCreationRequest
 from asposetaskscloud.models.task_item import TaskItem
 from asposetaskscloud.models.task_link import TaskLink
 from asposetaskscloud.models.task_link_type import TaskLinkType
@@ -219,6 +220,7 @@ from asposetaskscloud.models.requests.get_task_timephased_data_request import Ge
 from asposetaskscloud.models.requests.get_tasks_request import GetTasksRequest
 from asposetaskscloud.models.requests.post_task_request import PostTaskRequest
 from asposetaskscloud.models.requests.post_task_recurring_info_request import PostTaskRecurringInfoRequest
+from asposetaskscloud.models.requests.post_tasks_request import PostTasksRequest
 from asposetaskscloud.models.requests.put_move_task_request import PutMoveTaskRequest
 from asposetaskscloud.models.requests.put_move_task_to_sibling_request import PutMoveTaskToSiblingRequest
 from asposetaskscloud.models.requests.put_task_request import PutTaskRequest

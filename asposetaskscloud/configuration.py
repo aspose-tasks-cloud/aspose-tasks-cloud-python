@@ -63,6 +63,8 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.api_version = "v3.0"
         # Temp file folder for downloading files
         self.temp_folder_path = None
+        # Optional detached auth url
+        self.auth_url = None
 
         # Authentication Settings
         # dict to store API key(s)
@@ -262,5 +264,5 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 3.0\n"\
-               "SDK Package Version: 20.8.0".\
+               "SDK Package Version: 20.11.0".\
                format(env=sys.platform, pyversion=sys.version)

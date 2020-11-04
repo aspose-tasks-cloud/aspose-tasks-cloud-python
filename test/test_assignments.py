@@ -157,7 +157,7 @@ class TestAssignments(BaseTestContext):
         self.assertIsNotNone(put_response.assignment)
         self.assertEqual(assignment.uid, put_response.assignment.uid)
         self.assertEqual(assignment.vac, put_response.assignment.vac)
-        self.assertEqual(assignment.cost, put_response.assignment.cost)
+        self.assertNotEqual(assignment.cost, put_response.assignment.cost, "Calculated fields must be overwritten")
         self.assertEqual(assignment.start, put_response.assignment.start)
         self.assertEqual(assignment.finish, put_response.assignment.finish)
         self.assertEqual("80.00:00:00", put_response.assignment.work)

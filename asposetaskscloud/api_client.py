@@ -77,12 +77,12 @@ class ApiClient(object):
 
         self.pool = ThreadPool()
         self.rest_client = rest.RESTClientObject(configuration)
-        self.default_headers = {'x-aspose-client': 'python sdk', 'x-aspose-version': '20.8'}
+        self.default_headers = {'x-aspose-client': 'python sdk', 'x-aspose-version': '20.11'}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'python sdk 20.8'
+        self.user_agent = 'python sdk 20.11'
 
     def __del__(self):
         self.pool.close()
@@ -154,11 +154,11 @@ class ApiClient(object):
             body = self.sanitize_for_serialization(body)
 
         # request url
-        url = ''
-        if six.PY3:
-            url = self.configuration.host + '/' + self.configuration.api_version + resource_path
-        else:
-            url = (self.configuration.host + '/' + self.configuration.api_version + resource_path).encode('utf8')
+        url = self.configuration.host
+        if resource_path:
+            url = url + '/' + self.configuration.api_version + resource_path
+        if not six.PY3:
+            url = url.encode('utf8')
 
         # perform request and return response
         response_data = self.request(

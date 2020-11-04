@@ -29,7 +29,7 @@ from datetime import datetime
 
 from asposetaskscloud import GetTasksRequest, TaskItemsResponse, GetTaskRequest, TaskResponse, DeleteTaskRequest, \
     AsposeResponse, PostTaskRequest, TaskItemResponse, PutTaskRequest, CalculationMode, GetTaskAssignmentsRequest, \
-    AssignmentsResponse, PutMoveTaskRequest, PutMoveTaskToSiblingRequest
+    AssignmentsResponse, PutMoveTaskRequest, PutMoveTaskToSiblingRequest, PostTasksRequest, TaskCreationRequest
 from asposetaskscloud.rest import ApiException
 from test.base_test_context import BaseTestContext
 
@@ -98,6 +98,26 @@ class TestTasks(BaseTestContext):
         self.assertIsNotNone(get_result)
         self.assertIsInstance(get_result, TaskResponse)
         self.assertIsNotNone(get_result.task)
+
+    def test_post_tasks(self):
+        filename = 'Home_move_plan.mpp'
+        self.upload_file(filename)
+        first_task_create_request = TaskCreationRequest(task_name="SomeFirstTaskName")
+        second_task_create_request = TaskCreationRequest(task_name="SomeSecondTaskNameWithParent", parent_task_uid=2)
+        post_request = PostTasksRequest(filename, [first_task_create_request, second_task_create_request])
+        post_result = self.tasks_api.post_tasks(post_request)
+        self.assertIsNotNone(post_result)
+        self.assertIsInstance(post_result, TaskItemsResponse)
+        self.assertIsNotNone(post_result.tasks)
+        self.assertEqual(len(post_request.requests), len(post_result.tasks.task_item))
+        newSubtaskUid = [t.uid for t in post_result.tasks.task_item if t.name == second_task_create_request.task_name][0]
+
+        get_request = GetTaskRequest(filename, second_task_create_request.parent_task_uid)
+        get_result = self.tasks_api.get_task(get_request)
+        self.assertIsNotNone(get_result)
+        self.assertIsInstance(get_result, TaskResponse)
+        self.assertIsNotNone(get_result.task)
+        self.assertIn(newSubtaskUid, get_result.task.subtasks_uids)
 
     def test_put_task(self):
         filename = 'Project2016.mpp'

@@ -57,8 +57,15 @@ class TasksApi(object):
     def __request_token(self):
         config = self.api_client.configuration
         api_version = config.api_version
+        request_url = ''
+        host = ''
         config.api_version = ''
-        request_url = "connect/token"
+        if config.auth_url is not None:
+                host = config.host
+                config.host = config.auth_url
+        else:
+                request_url = "connect/token"
+
         form_params = [('grant_type', 'client_credentials'), ('client_id', config.api_key['app_sid']),
                        ('client_secret', config.api_key['api_key'])]
 
@@ -72,6 +79,8 @@ class TasksApi(object):
                                         response_type='object',
                                         files={}, _return_http_data_only=True)
         access_token = data['access_token'] if six.PY3 else data['access_token'].encode('utf8')
+        if config.auth_url is not None:
+                config.host = host
         self.api_client.configuration.access_token = access_token
         self.api_client.configuration.api_version = api_version
 
@@ -8869,8 +8878,129 @@ class TasksApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def post_tasks(self, request, **kwargs):  # noqa: E501
+        """Create multiple tasks by single request.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param requests list[TaskCreationRequest] : Requests to create tasks. (required)
+        :param file_name str : The name of the project document to save changes to.
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: TaskItemsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.post_tasks_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.post_tasks_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.post_tasks_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.post_tasks_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def post_tasks_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Create multiple tasks by single request.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request post_tasks_request object with parameters
+        :return: TaskItemsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_tasks" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `post_tasks`")  # noqa: E501
+        # verify the required parameter 'requests' is set
+        if request.requests is None:
+            raise ValueError("Missing the required parameter `requests` when calling `post_tasks`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/tasks/batch'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.requests is not None:
+            body_params = request.requests
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TaskItemsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def put_move_task(self, request, **kwargs):  # noqa: E501
-        """Move one task to another parent task  # noqa: E501
+        """Move one task to another parent task.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
@@ -8901,7 +9031,7 @@ class TasksApi(object):
             return data
         
     def put_move_task_with_http_info(self, request, **kwargs):  # noqa: E501
-        """Move one task to another parent task  # noqa: E501
+        """Move one task to another parent task.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass is_async=True
