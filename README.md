@@ -81,32 +81,30 @@ Then import the package as follows.
 import asposetaskscloud
 ```
 
-## Extract MPP Document Properties via Python
+## Extract MPP Document Properties in Python
 
 ```python
-import asposetaskscloud
-import asposetaskscloud.models.requests
-api_client = asposetaskscloud.ApiClient()
-api_client.configuration.host = 'https://api.aspose.cloud'
-api_client.configuration.api_key['api_key'] = '' # Put your appKey here
-api_client.configuration.api_key['app_sid'] = '' # Put your appSid here
-tasks_api = asposetaskscloud.TasksApi(api_client)
-remote_name = 'SomeSeriousPlan.mpp'
+	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 
-upload_request = asposetaskscloud.models.requests.UploadFileRequest(file, remote_name)
-upload_result = self.tasks_api.upload_file(request)
-self.assertTrue(upload_result.code == 200, 'Error has occurred while uploading project file')
+	api_client = asposetaskscloud.ApiClient()
+	api_client.configuration.host = 'https://api.aspose.cloud'
+	api_client.configuration.api_key['api_key'] = 'MY_CLIENT_SECRET'
+	api_client.configuration.api_key['app_sid'] = 'MY_CLIENT_ID'
+	tasks_api = asposetaskscloud.TasksApi(api_client)
 
-request = asposetaskscloud.models.requests.GetDocumentPropertiesRequest(remote_name)
-result = tasks_api.get_document_properties(request)
-self.assertTrue(result.code == 200, 'Error has occurred while getting document properties')
+	file_name = 'SomeSeriousPlan.mpp'
+
+	upload_request = asposetaskscloud.models.requests.UploadFileRequest(os.path.join(self.remote_test_folder, file_name), file_name)
+	upload_result = self.tasks_api.upload_file(request)
+
+	request = asposetaskscloud.models.requests.GetDocumentPropertiesRequest(file_name)
+	result = tasks_api.get_document_properties(request)
 ```
-
 ## Aspose.Tasks Cloud SDKs in Popular Languages
 
 | .NET | PHP | Python| Node.js | Go |
 |---|---|---|---|---|
 | [GitHub](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-dotnet) |[GitHub](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-php) | [GitHub](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-python) | [GitHub](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-node) |[GitHub](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-go)|
-| [NuGet](https://www.nuget.org/packages/Aspose.tasks-Cloud/)| [Composer](https://packagist.org/packages/aspose/tasks-cloud-php) | [PIP](https://pypi.org/project/aspose-tasks-cloud/) | [NPM](https://www.npmjs.com/package/aspose-tasks-cloud) | [Go.Dev](https://pkg.go.dev/github.com/aspose-tasks-cloud/aspose-tasks-cloud-go/) |
+| [NuGet](https://www.nuget.org/packages/Aspose.tasks-Cloud/)| [Composer](https://packagist.org/packages/aspose/tasks-cloud-php) | [PIP](https://pypi.org/project/aspose-tasks-cloud/) | [NPM](https://www.npmjs.com/package/@asposecloud/aspose-tasks-cloud) | [Go.Dev](https://pkg.go.dev/github.com/aspose-tasks-cloud/aspose-tasks-cloud-go/) |
 
 [Product Page](https://products.aspose.cloud/tasks/python) | [Documentation](https://docs.aspose.cloud/display/taskscloud/Home) | [API Reference](https://apireference.aspose.cloud/tasks/) | [Code Samples](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-python) | [Blog](https://blog.aspose.cloud/category/tasks/) | [Free Support](https://forum.aspose.cloud/c/tasks) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
