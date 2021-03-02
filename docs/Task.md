@@ -116,6 +116,7 @@ Name | Type | Description | Notes
 **extended_attributes** | [**list[ExtendedAttribute]**](ExtendedAttribute.md) | Task extended attributes. | [optional] 
 **outline_codes** | [**list[OutlineCode]**](OutlineCode.md) | Task outline codes. | [optional] 
 **warning** | **bool** | Represents the flag which indicates that task has schedule discrepancies. | [default to False]
+**activity_id** | **str** | Represents activity id field - a task&#39;s unique identifier used by Primavera (only applicable to Primavera projects). | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

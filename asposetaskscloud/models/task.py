@@ -153,7 +153,8 @@ class Task(object):
         'baselines': 'list[TaskBaseline]',
         'extended_attributes': 'list[ExtendedAttribute]',
         'outline_codes': 'list[OutlineCode]',
-        'warning': 'bool'
+        'warning': 'bool',
+        'activity_id': 'str'
     }
 
     attribute_map = {
@@ -269,10 +270,11 @@ class Task(object):
         'baselines': 'baselines',
         'extended_attributes': 'extendedAttributes',
         'outline_codes': 'outlineCodes',
-        'warning': 'warning'
+        'warning': 'warning',
+        'activity_id': 'activityId'
     }
 
-    def __init__(self, uid=None, id=None, name=None, duration_text=None, duration=None, start=None, finish=None, start_text=None, finish_text=None, percent_complete=None, percent_work_complete=None, is_active=True, actual_cost=None, actual_duration=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_work_protected=None, actual_overtime_work_protected=None, actual_start=None, budget_work=None, budget_cost=None, constraint_date=None, constraint_type=None, contact=None, cost=None, cv=None, deadline=None, duration_variance=None, early_finish=None, early_start=None, is_effort_driven=None, is_external_task=None, external_task_project=None, external_id=None, finish_slack=None, finish_variance=None, fixed_cost=None, fixed_cost_accrual=None, free_slack=None, guid=None, hide_bar=None, ignore_resource_calendar=None, late_finish=None, late_start=None, is_level_assignments=True, can_leveling_split=True, leveling_delay=None, is_marked=None, is_milestone=None, is_critical=None, is_subproject=None, is_subproject_read_only=None, subproject_name=None, is_summary=None, subtasks_uids=None, outline_level=None, is_over_allocated=None, is_estimated=None, overtime_cost=None, overtime_work=None, physical_percent_complete=None, pre_leveled_finish=None, pre_leveled_start=None, is_recurring=None, regular_work=None, remaining_cost=None, remaining_duration=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, resume=None, is_resume_valid=None, stop=None, is_rollup=None, start_slack=None, start_variance=None, calendar_uid=-1, is_manual=None, manual_start=None, manual_finish=None, manual_duration=None, total_slack=None, type=None, wbs=None, priority=None, work=None, work_variance=None, notes_text=None, notes_rtf=None, acwp=None, bcws=None, bcwp=None, leveling_delay_format=None, predecessors=None, successors=None, ignore_warnings=False, is_expanded=None, display_on_timeline=None, display_as_summary=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, earned_value_method=None, is_published=True, status_manager=None, commitment_start=None, commitment_finish=None, commitment_type=None, baselines=None, extended_attributes=None, outline_codes=None, warning=False):  # noqa: E501
+    def __init__(self, uid=None, id=None, name=None, duration_text=None, duration=None, start=None, finish=None, start_text=None, finish_text=None, percent_complete=None, percent_work_complete=None, is_active=True, actual_cost=None, actual_duration=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_work_protected=None, actual_overtime_work_protected=None, actual_start=None, budget_work=None, budget_cost=None, constraint_date=None, constraint_type=None, contact=None, cost=None, cv=None, deadline=None, duration_variance=None, early_finish=None, early_start=None, is_effort_driven=None, is_external_task=None, external_task_project=None, external_id=None, finish_slack=None, finish_variance=None, fixed_cost=None, fixed_cost_accrual=None, free_slack=None, guid=None, hide_bar=None, ignore_resource_calendar=None, late_finish=None, late_start=None, is_level_assignments=True, can_leveling_split=True, leveling_delay=None, is_marked=None, is_milestone=None, is_critical=None, is_subproject=None, is_subproject_read_only=None, subproject_name=None, is_summary=None, subtasks_uids=None, outline_level=None, is_over_allocated=None, is_estimated=None, overtime_cost=None, overtime_work=None, physical_percent_complete=None, pre_leveled_finish=None, pre_leveled_start=None, is_recurring=None, regular_work=None, remaining_cost=None, remaining_duration=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, resume=None, is_resume_valid=None, stop=None, is_rollup=None, start_slack=None, start_variance=None, calendar_uid=-1, is_manual=None, manual_start=None, manual_finish=None, manual_duration=None, total_slack=None, type=None, wbs=None, priority=None, work=None, work_variance=None, notes_text=None, notes_rtf=None, acwp=None, bcws=None, bcwp=None, leveling_delay_format=None, predecessors=None, successors=None, ignore_warnings=False, is_expanded=None, display_on_timeline=None, display_as_summary=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, earned_value_method=None, is_published=True, status_manager=None, commitment_start=None, commitment_finish=None, commitment_type=None, baselines=None, extended_attributes=None, outline_codes=None, warning=False, activity_id=None):  # noqa: E501
         """Task - a model defined in Swagger"""  # noqa: E501
 
         self._uid = None
@@ -388,6 +390,7 @@ class Task(object):
         self._extended_attributes = None
         self._outline_codes = None
         self._warning = None
+        self._activity_id = None
         self.discriminator = None
 
         if uid is not None:
@@ -616,6 +619,8 @@ class Task(object):
             self.outline_codes = outline_codes
         if warning is not None:
             self.warning = warning
+        if activity_id is not None:
+            self.activity_id = activity_id
 
     @property
     def uid(self):
@@ -3154,6 +3159,27 @@ class Task(object):
         if warning is None:
             raise ValueError("Invalid value for `warning`, must not be `None`")  # noqa: E501
         self._warning = warning
+    @property
+    def activity_id(self):
+        """Gets the activity_id of this Task.  # noqa: E501
+
+        Represents activity id field - a task's unique identifier used by Primavera (only applicable to Primavera projects).  # noqa: E501
+
+        :return: The activity_id of this Task.  # noqa: E501
+        :rtype: str
+        """
+        return self._activity_id
+
+    @activity_id.setter
+    def activity_id(self, activity_id):
+        """Sets the activity_id of this Task.
+
+        Represents activity id field - a task's unique identifier used by Primavera (only applicable to Primavera projects).  # noqa: E501
+
+        :param activity_id: The activity_id of this Task.  # noqa: E501
+        :type: str
+        """
+        self._activity_id = activity_id
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

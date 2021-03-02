@@ -111,14 +111,16 @@ class TestResources(BaseTestContext):
         self.assertEqual(resource.cost, put_result.resource.cost)
 
     def test_delete_resource(self):
-        filename = 'Home_move_plan.mpp'
+        filename = 'Plan_with_resource.mpp'
         self.upload_file(filename)
-        delete_request = DeleteResourceRequest(filename, 0)
-        delete_result = self.tasks_api.delete_resource(delete_request)
-        self.assertIsNotNone(delete_result)
-        self.assertIsInstance(delete_result, AsposeResponse)
         get_request = GetResourcesRequest(filename)
         get_result = self.tasks_api.get_resources(get_request)
         self.assertIsNotNone(get_result)
         self.assertIsInstance(get_result, ResourceItemsResponse)
-        self.assertEqual(0, len(get_result.resources.resource_item))
+        resource_count_before_delete = len(get_result.resources.resource_item)
+        delete_request = DeleteResourceRequest(filename, 1)
+        delete_result = self.tasks_api.delete_resource(delete_request)
+        self.assertIsNotNone(delete_result)
+        self.assertIsInstance(delete_result, AsposeResponse)
+        get_result = self.tasks_api.get_resources(get_request)
+        self.assertGreater(resource_count_before_delete, len(get_result.resources.resource_item))
