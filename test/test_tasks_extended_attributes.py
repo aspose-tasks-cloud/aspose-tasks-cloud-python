@@ -64,8 +64,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
 
         new_extended_attribute = ExtendedAttribute(put_result.extended_attribute.field_id, lookup_value_id=112)
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
@@ -98,8 +96,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
 
         new_extended_attribute = ExtendedAttribute('188743742', date_value=datetime(2018, 3, 4, 12, 30, 0))
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
@@ -136,8 +132,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
         duration.time_unit = TimeUnitType.MINUTE
         new_extended_attribute = ExtendedAttribute('188743785', duration_value=duration)
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
@@ -172,8 +166,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
 
         new_extended_attribute = ExtendedAttribute('188743973', flag_value=True)
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
@@ -207,8 +199,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
 
         new_extended_attribute = ExtendedAttribute('188743944', numeric_value=115.99)
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
@@ -242,8 +232,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
 
         new_extended_attribute = ExtendedAttribute('188743985', numeric_value=99.99)
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
@@ -277,8 +265,6 @@ class TestTasksExtendedAttributes(BaseTestContext):
 
         new_extended_attribute = ExtendedAttribute('188743731', text_value='Test value')
         get_result.task.extended_attributes.append(new_extended_attribute)
-        get_result.task.baselines[0].start = datetime.now()
-        get_result.task.baselines[0].finish = datetime.now()
         put_request = PutTaskRequest(filename, 27, get_result.task)
         put_result = self.tasks_api.put_task(put_request)
         self.assertIsNotNone(put_result)
