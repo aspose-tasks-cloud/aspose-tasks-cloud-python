@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/api-v3.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/aspose-tasks-cloud) ![PyPI - Format](https://img.shields.io/pypi/format/aspose-tasks-cloud) ![PyPI - Downloads](https://img.shields.io/pypi/dm/aspose-tasks-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/aspose-tasks-cloud) [![GitHub license](https://img.shields.io/github/license/aspose-tasks-cloud/aspose-tasks-cloud-python)](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-php/blob/master/LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/Aspose-tasks-Cloud/aspose-tasks-cloud-python)
 
-# Manipulate Project Files via Python Cloud REST API
+# Manipulate MS Project Files in Python via Cloud REST API
 
-Aspose.Tasks for Cloud offers the ability to manipulate and convert Microsoft Project MPT, MPP, MPX & Oracle Primavera XER, XML, and PrimaveraP6XML files in the Cloud. [Aspose.Tasks Cloud SDK for Go](https://products.aspose.cloud/tasks/go) wraps the REST API to make it easier for the developers to integrate Task Management features in their own cloud-based Go applications.
+Aspose.Tasks for Cloud offers the ability to manipulate and convert Microsoft Project MPT, MPP, MPX & Oracle Primavera XER, XML, and PrimaveraP6XML files in Python. [Aspose.Tasks Cloud SDK for Python](https://products.aspose.cloud/tasks/python) wraps the REST API to make it easier for the developers to integrate MS Project Task Management features in their own cloud-based Python applications on Linux, MacOS, Windows or Android.
 
 Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/taskscloud/Developer+Guide) & [API Reference](https://apireference.aspose.cloud/tasks/) to know all about Aspose.Tasks Cloud API.
 
@@ -81,7 +81,7 @@ Then import the package as follows.
 import asposetaskscloud
 ```
 
-## Extract MPP Document Properties in Python
+## Convert MS Project MPP to PDF in Python
 
 ```python
 	# Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
@@ -97,8 +97,8 @@ import asposetaskscloud
 	upload_request = asposetaskscloud.models.requests.UploadFileRequest(os.path.join(self.remote_test_folder, file_name), file_name)
 	upload_result = self.tasks_api.upload_file(request)
 
-	request = asposetaskscloud.models.requests.GetDocumentPropertiesRequest(file_name)
-	result = tasks_api.get_document_properties(request)
+	request = asposetaskscloud.models.requests.GetReportPdfRequest(file_name, ReportType.MILESTONES)
+	result = tasks_api.get_report_pdf(request)
 ```
 ## Aspose.Tasks Cloud SDKs in Popular Languages
 
