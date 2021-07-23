@@ -95,7 +95,7 @@ import asposetaskscloud
 	file_name = 'SomeSeriousPlan.mpp'
 
 	upload_request = asposetaskscloud.models.requests.UploadFileRequest(os.path.join(self.remote_test_folder, file_name), file_name)
-	upload_result = self.tasks_api.upload_file(request)
+	upload_result = self.tasks_api.upload_file(upload_request)
 
 	request = asposetaskscloud.models.requests.GetReportPdfRequest(file_name, ReportType.MILESTONES)
 	result = tasks_api.get_report_pdf(request)
