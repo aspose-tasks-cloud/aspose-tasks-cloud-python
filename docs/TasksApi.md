@@ -2212,7 +2212,7 @@ user_name = 'user_name_example' # str | The user name for the sharepoint site. (
 format = 'format_example' # str | Format of the resulting file. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 storage = 'storage_example' # str | The document storage. (optional)
-x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
 x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
 
 try:
@@ -2234,7 +2234,7 @@ Name | Type | Description  | Notes
  **format** | **str**| Format of the resulting file. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
- **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_project_online_token** | **str**| Authorization token (SPOIDCRL) for SharePoint&#39;s PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
  **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
 
 ### Return type
@@ -2897,7 +2897,7 @@ user_name = 'user_name_example' # str | The user name for the sharepoint site. (
 save_options = asposetaskscloud.ProjectServerSaveOptionsDTO() # ProjectServerSaveOptionsDTO | Dispensable save options for Project Server\\Project Online. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 storage = 'storage_example' # str | The document storage. (optional)
-x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
 x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
 
 try:
@@ -2918,7 +2918,7 @@ Name | Type | Description  | Notes
  **save_options** | [**ProjectServerSaveOptionsDTO**](ProjectServerSaveOptionsDTO.md)| Dispensable save options for Project Server\\Project Online. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
- **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_project_online_token** | **str**| Authorization token (SPOIDCRL) for SharePoint&#39;s PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
  **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
 
 ### Return type
@@ -2957,7 +2957,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
 site_url = 'site_url_example' # str | The URL of PWA (Project Web Access) API of Project Online.
 user_name = 'user_name_example' # str | The user name for the sharepoint site. (optional)
-x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
 x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
 
 try:
@@ -2974,7 +2974,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **site_url** | **str**| The URL of PWA (Project Web Access) API of Project Online. | 
  **user_name** | **str**| The user name for the sharepoint site. | [optional] 
- **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_project_online_token** | **str**| Authorization token (SPOIDCRL) for SharePoint&#39;s PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
  **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
 
 ### Return type
@@ -3017,7 +3017,7 @@ user_name = 'user_name_example' # str | The user name for the sharepoint site. (
 save_options = asposetaskscloud.ProjectServerSaveOptionsDTO() # ProjectServerSaveOptionsDTO | Dispensable save options for Project Server\\Project Online. (optional)
 folder = 'folder_example' # str | The document folder. (optional)
 storage = 'storage_example' # str | The document storage. (optional)
-x_project_online_token = 'x_project_online_token_example' # str | Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
+x_project_online_token = 'x_project_online_token_example' # str | Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly (optional)
 x_sharepoint_password = 'x_sharepoint_password_example' # str | The password for the SharePoint site. (optional)
 
 try:
@@ -3038,7 +3038,7 @@ Name | Type | Description  | Notes
  **save_options** | [**ProjectServerSaveOptionsDTO**](ProjectServerSaveOptionsDTO.md)| Dispensable save options for Project Server\\Project Online. | [optional] 
  **folder** | **str**| The document folder. | [optional] 
  **storage** | **str**| The document storage. | [optional] 
- **x_project_online_token** | **str**| Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
+ **x_project_online_token** | **str**| Authorization token (SPOIDCRL) for SharePoint&#39;s PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly | [optional] 
  **x_sharepoint_password** | **str**| The password for the SharePoint site. | [optional] 
 
 ### Return type

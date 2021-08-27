@@ -82,6 +82,7 @@ class Task(object):
         'fixed_cost_accrual': 'CostAccrualType',
         'free_slack': 'int',
         'guid': 'str',
+        'has_overallocated_resource': 'bool',
         'hide_bar': 'bool',
         'ignore_resource_calendar': 'bool',
         'late_finish': 'datetime',
@@ -199,6 +200,7 @@ class Task(object):
         'fixed_cost_accrual': 'fixedCostAccrual',
         'free_slack': 'freeSlack',
         'guid': 'guid',
+        'has_overallocated_resource': 'hasOverallocatedResource',
         'hide_bar': 'hideBar',
         'ignore_resource_calendar': 'ignoreResourceCalendar',
         'late_finish': 'lateFinish',
@@ -274,7 +276,7 @@ class Task(object):
         'activity_id': 'activityId'
     }
 
-    def __init__(self, uid=None, id=None, name=None, duration_text=None, duration=None, start=None, finish=None, start_text=None, finish_text=None, percent_complete=None, percent_work_complete=None, is_active=True, actual_cost=None, actual_duration=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_work_protected=None, actual_overtime_work_protected=None, actual_start=None, budget_work=None, budget_cost=None, constraint_date=None, constraint_type=None, contact=None, cost=None, cv=None, deadline=None, duration_variance=None, early_finish=None, early_start=None, is_effort_driven=None, is_external_task=None, external_task_project=None, external_id=None, finish_slack=None, finish_variance=None, fixed_cost=None, fixed_cost_accrual=None, free_slack=None, guid=None, hide_bar=None, ignore_resource_calendar=None, late_finish=None, late_start=None, is_level_assignments=True, can_leveling_split=True, leveling_delay=None, is_marked=None, is_milestone=None, is_critical=None, is_subproject=None, is_subproject_read_only=None, subproject_name=None, is_summary=None, subtasks_uids=None, outline_level=None, is_over_allocated=None, is_estimated=None, overtime_cost=None, overtime_work=None, physical_percent_complete=None, pre_leveled_finish=None, pre_leveled_start=None, is_recurring=None, regular_work=None, remaining_cost=None, remaining_duration=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, resume=None, is_resume_valid=None, stop=None, is_rollup=None, start_slack=None, start_variance=None, calendar_uid=-1, is_manual=None, manual_start=None, manual_finish=None, manual_duration=None, total_slack=None, type=None, wbs=None, priority=None, work=None, work_variance=None, notes_text=None, notes_rtf=None, acwp=None, bcws=None, bcwp=None, leveling_delay_format=None, predecessors=None, successors=None, ignore_warnings=False, is_expanded=None, display_on_timeline=None, display_as_summary=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, earned_value_method=None, is_published=True, status_manager=None, commitment_start=None, commitment_finish=None, commitment_type=None, baselines=None, extended_attributes=None, outline_codes=None, warning=False, activity_id=None):  # noqa: E501
+    def __init__(self, uid=None, id=None, name=None, duration_text=None, duration=None, start=None, finish=None, start_text=None, finish_text=None, percent_complete=None, percent_work_complete=None, is_active=True, actual_cost=None, actual_duration=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_work_protected=None, actual_overtime_work_protected=None, actual_start=None, budget_work=None, budget_cost=None, constraint_date=None, constraint_type=None, contact=None, cost=None, cv=None, deadline=None, duration_variance=None, early_finish=None, early_start=None, is_effort_driven=None, is_external_task=None, external_task_project=None, external_id=None, finish_slack=None, finish_variance=None, fixed_cost=None, fixed_cost_accrual=None, free_slack=None, guid=None, has_overallocated_resource=None, hide_bar=None, ignore_resource_calendar=None, late_finish=None, late_start=None, is_level_assignments=True, can_leveling_split=True, leveling_delay=None, is_marked=None, is_milestone=None, is_critical=None, is_subproject=None, is_subproject_read_only=None, subproject_name=None, is_summary=None, subtasks_uids=None, outline_level=None, is_over_allocated=None, is_estimated=None, overtime_cost=None, overtime_work=None, physical_percent_complete=None, pre_leveled_finish=None, pre_leveled_start=None, is_recurring=None, regular_work=None, remaining_cost=None, remaining_duration=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, resume=None, is_resume_valid=None, stop=None, is_rollup=None, start_slack=None, start_variance=None, calendar_uid=-1, is_manual=None, manual_start=None, manual_finish=None, manual_duration=None, total_slack=None, type=None, wbs=None, priority=None, work=None, work_variance=None, notes_text=None, notes_rtf=None, acwp=None, bcws=None, bcwp=None, leveling_delay_format=None, predecessors=None, successors=None, ignore_warnings=False, is_expanded=None, display_on_timeline=None, display_as_summary=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, earned_value_method=None, is_published=True, status_manager=None, commitment_start=None, commitment_finish=None, commitment_type=None, baselines=None, extended_attributes=None, outline_codes=None, warning=False, activity_id=None):  # noqa: E501
         """Task - a model defined in Swagger"""  # noqa: E501
 
         self._uid = None
@@ -318,6 +320,7 @@ class Task(object):
         self._fixed_cost_accrual = None
         self._free_slack = None
         self._guid = None
+        self._has_overallocated_resource = None
         self._hide_bar = None
         self._ignore_resource_calendar = None
         self._late_finish = None
@@ -475,6 +478,8 @@ class Task(object):
             self.free_slack = free_slack
         if guid is not None:
             self.guid = guid
+        if has_overallocated_resource is not None:
+            self.has_overallocated_resource = has_overallocated_resource
         if hide_bar is not None:
             self.hide_bar = hide_bar
         if ignore_resource_calendar is not None:
@@ -1549,6 +1554,29 @@ class Task(object):
         :type: str
         """
         self._guid = guid
+    @property
+    def has_overallocated_resource(self):
+        """Gets the has_overallocated_resource of this Task.  # noqa: E501
+
+        Indicates whether the task has an resource assigned which has more work on assigned tasks than can be completed within normal working capacity.  # noqa: E501
+
+        :return: The has_overallocated_resource of this Task.  # noqa: E501
+        :rtype: bool
+        """
+        return self._has_overallocated_resource
+
+    @has_overallocated_resource.setter
+    def has_overallocated_resource(self, has_overallocated_resource):
+        """Sets the has_overallocated_resource of this Task.
+
+        Indicates whether the task has an resource assigned which has more work on assigned tasks than can be completed within normal working capacity.  # noqa: E501
+
+        :param has_overallocated_resource: The has_overallocated_resource of this Task.  # noqa: E501
+        :type: bool
+        """
+        if has_overallocated_resource is None:
+            raise ValueError("Invalid value for `has_overallocated_resource`, must not be `None`")  # noqa: E501
+        self._has_overallocated_resource = has_overallocated_resource
     @property
     def hide_bar(self):
         """Gets the hide_bar of this Task.  # noqa: E501

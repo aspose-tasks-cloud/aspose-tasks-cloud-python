@@ -4488,7 +4488,7 @@ class TasksApi(object):
         :param format str : Format of the resulting file.
         :param folder str : The document folder.
         :param storage str : The document storage.
-        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_project_online_token str : Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
         :param x_sharepoint_password str : The password for the SharePoint site.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -5910,7 +5910,7 @@ class TasksApi(object):
         :param save_options ProjectServerSaveOptionsDTO : Dispensable save options for Project Server\\Project Online.
         :param folder str : The document folder.
         :param storage str : The document storage.
-        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_project_online_token str : Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
         :param x_sharepoint_password str : The password for the SharePoint site.
         :return: AsposeResponse
                  If the method is called asynchronously,
@@ -6036,7 +6036,7 @@ class TasksApi(object):
         :param is_async bool
         :param site_url str : The URL of PWA (Project Web Access) API of Project Online. (required)
         :param user_name str : The user name for the sharepoint site.
-        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_project_online_token str : Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
         :param x_sharepoint_password str : The password for the SharePoint site.
         :return: ProjectListResponse
                  If the method is called asynchronously,
@@ -6152,7 +6152,7 @@ class TasksApi(object):
         :param save_options ProjectServerSaveOptionsDTO : Dispensable save options for Project Server\\Project Online.
         :param folder str : The document folder.
         :param storage str : The document storage.
-        :param x_project_online_token str : Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+        :param x_project_online_token str : Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
         :param x_sharepoint_password str : The password for the SharePoint site.
         :return: AsposeResponse
                  If the method is called asynchronously,

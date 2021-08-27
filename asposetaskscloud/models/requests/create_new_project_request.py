@@ -35,7 +35,7 @@ class CreateNewProjectRequest(object):
     :param save_options Dispensable save options for Project Server\\Project Online.
     :param folder The document folder.
     :param storage The document storage.
-    :param x_project_online_token Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
+    :param x_project_online_token Authorization token (SPOIDCRL) for SharePoint's PWA (Project Web Access). For example, in c# it can be retrieved using SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
     :param x_sharepoint_password The password for the SharePoint site.
     """
 
