@@ -49,7 +49,8 @@ class ExtendedAttribute(object):
         'numeric_value': 'float',
         'date_value': 'datetime',
         'flag_value': 'bool',
-        'text_value': 'str'
+        'text_value': 'str',
+        'is_error_value': 'bool'
     }
 
     attribute_map = {
@@ -61,10 +62,11 @@ class ExtendedAttribute(object):
         'numeric_value': 'numericValue',
         'date_value': 'dateValue',
         'flag_value': 'flagValue',
-        'text_value': 'textValue'
+        'text_value': 'textValue',
+        'is_error_value': 'isErrorValue'
     }
 
-    def __init__(self, field_id=None, attribute_type=None, value_guid=None, lookup_value_id=None, duration_value=None, numeric_value=None, date_value=None, flag_value=None, text_value=None):  # noqa: E501
+    def __init__(self, field_id=None, attribute_type=None, value_guid=None, lookup_value_id=None, duration_value=None, numeric_value=None, date_value=None, flag_value=None, text_value=None, is_error_value=None):  # noqa: E501
         """ExtendedAttribute - a model defined in Swagger"""  # noqa: E501
 
         self._field_id = None
@@ -76,6 +78,7 @@ class ExtendedAttribute(object):
         self._date_value = None
         self._flag_value = None
         self._text_value = None
+        self._is_error_value = None
         self.discriminator = None
 
         if field_id is not None:
@@ -96,6 +99,8 @@ class ExtendedAttribute(object):
             self.flag_value = flag_value
         if text_value is not None:
             self.text_value = text_value
+        if is_error_value is not None:
+            self.is_error_value = is_error_value
 
     @property
     def field_id(self):
@@ -294,6 +299,29 @@ class ExtendedAttribute(object):
         :type: str
         """
         self._text_value = text_value
+    @property
+    def is_error_value(self):
+        """Gets the is_error_value of this ExtendedAttribute.  # noqa: E501
+
+        Gets whether calculation of extended attribute's value resulted in an error.               # noqa: E501
+
+        :return: The is_error_value of this ExtendedAttribute.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_error_value
+
+    @is_error_value.setter
+    def is_error_value(self, is_error_value):
+        """Sets the is_error_value of this ExtendedAttribute.
+
+        Gets whether calculation of extended attribute's value resulted in an error.               # noqa: E501
+
+        :param is_error_value: The is_error_value of this ExtendedAttribute.  # noqa: E501
+        :type: bool
+        """
+        if is_error_value is None:
+            raise ValueError("Invalid value for `is_error_value`, must not be `None`")  # noqa: E501
+        self._is_error_value = is_error_value
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
