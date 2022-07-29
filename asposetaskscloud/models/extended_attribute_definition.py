@@ -56,6 +56,7 @@ class ExtendedAttributeDefinition(object):
         'phonetics_alias': 'str',
         'rollup_type': 'RollupType',
         'calculation_type': 'CalculationType',
+        'summary_rows_calculation_type': 'SummaryRowsCalculationType',
         'formula': 'str',
         'restrict_values': 'bool',
         'valuelist_sort_order': 'int',
@@ -81,6 +82,7 @@ class ExtendedAttributeDefinition(object):
         'phonetics_alias': 'phoneticsAlias',
         'rollup_type': 'rollupType',
         'calculation_type': 'calculationType',
+        'summary_rows_calculation_type': 'summaryRowsCalculationType',
         'formula': 'formula',
         'restrict_values': 'restrictValues',
         'valuelist_sort_order': 'valuelistSortOrder',
@@ -90,7 +92,7 @@ class ExtendedAttributeDefinition(object):
         'secondary_guid': 'secondaryGuid'
     }
 
-    def __init__(self, field_id=None, field_name=None, cf_type=None, guid=None, element_type=None, max_multi_values=None, user_def=None, alias=None, secondary_pid=None, auto_roll_down=None, default_guid=None, lookup_uid=None, phonetics_alias=None, rollup_type=None, calculation_type=None, formula=None, restrict_values=None, valuelist_sort_order=None, append_new_values=None, default=None, value_list=None, secondary_guid=None):  # noqa: E501
+    def __init__(self, field_id=None, field_name=None, cf_type=None, guid=None, element_type=None, max_multi_values=None, user_def=None, alias=None, secondary_pid=None, auto_roll_down=None, default_guid=None, lookup_uid=None, phonetics_alias=None, rollup_type=None, calculation_type=None, summary_rows_calculation_type=None, formula=None, restrict_values=None, valuelist_sort_order=None, append_new_values=None, default=None, value_list=None, secondary_guid=None):  # noqa: E501
         """ExtendedAttributeDefinition - a model defined in Swagger"""  # noqa: E501
 
         self._field_id = None
@@ -108,6 +110,7 @@ class ExtendedAttributeDefinition(object):
         self._phonetics_alias = None
         self._rollup_type = None
         self._calculation_type = None
+        self._summary_rows_calculation_type = None
         self._formula = None
         self._restrict_values = None
         self._valuelist_sort_order = None
@@ -147,6 +150,8 @@ class ExtendedAttributeDefinition(object):
             self.rollup_type = rollup_type
         if calculation_type is not None:
             self.calculation_type = calculation_type
+        if summary_rows_calculation_type is not None:
+            self.summary_rows_calculation_type = summary_rows_calculation_type
         if formula is not None:
             self.formula = formula
         if restrict_values is not None:
@@ -491,6 +496,29 @@ class ExtendedAttributeDefinition(object):
         if calculation_type is None:
             raise ValueError("Invalid value for `calculation_type`, must not be `None`")  # noqa: E501
         self._calculation_type = calculation_type
+    @property
+    def summary_rows_calculation_type(self):
+        """Gets the summary_rows_calculation_type of this ExtendedAttributeDefinition.  # noqa: E501
+
+        Gets or sets the type of calculation of the custom attribute's value for summary rows.  # noqa: E501
+
+        :return: The summary_rows_calculation_type of this ExtendedAttributeDefinition.  # noqa: E501
+        :rtype: SummaryRowsCalculationType
+        """
+        return self._summary_rows_calculation_type
+
+    @summary_rows_calculation_type.setter
+    def summary_rows_calculation_type(self, summary_rows_calculation_type):
+        """Sets the summary_rows_calculation_type of this ExtendedAttributeDefinition.
+
+        Gets or sets the type of calculation of the custom attribute's value for summary rows.  # noqa: E501
+
+        :param summary_rows_calculation_type: The summary_rows_calculation_type of this ExtendedAttributeDefinition.  # noqa: E501
+        :type: SummaryRowsCalculationType
+        """
+        if summary_rows_calculation_type is None:
+            raise ValueError("Invalid value for `summary_rows_calculation_type`, must not be `None`")  # noqa: E501
+        self._summary_rows_calculation_type = summary_rows_calculation_type
     @property
     def formula(self):
         """Gets the formula of this ExtendedAttributeDefinition.  # noqa: E501

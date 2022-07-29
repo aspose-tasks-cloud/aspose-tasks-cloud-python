@@ -41,6 +41,7 @@ class Resource(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'is_root': 'bool',
         'name': 'str',
         'uid': 'int',
         'id': 'int',
@@ -120,6 +121,7 @@ class Resource(object):
     }
 
     attribute_map = {
+        'is_root': 'isRoot',
         'name': 'name',
         'uid': 'uid',
         'id': 'id',
@@ -198,9 +200,10 @@ class Resource(object):
         'outline_codes': 'outlineCodes'
     }
 
-    def __init__(self, name=None, uid=None, id=None, guid=None, type=None, is_null=None, initials=None, phonetics=None, nt_account=None, windows_user_account=None, workgroup=None, material_label=None, code=None, group=None, email_address=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, max_units=1.0, peak_units=None, over_allocated=None, available_from=None, available_to=None, start=None, finish=None, can_level=True, accrue_at=None, work=None, regular_work=None, overtime_work=None, actual_work=None, remaining_work=None, actual_overtime_work=None, remaining_overtime_work=None, percent_work_complete=None, standard_rate=None, standard_rate_format=None, cost=None, overtime_rate_format=None, overtime_cost=None, cost_per_use=None, actual_cost=None, actual_overtime_cost=None, remaining_cost=None, remaining_overtime_cost=None, work_variance=None, cost_variance=None, sv=None, cv=None, acwp=None, calendar_uid=None, notes_text=None, notes=None, notes_rtf=None, bcws=None, bcwp=None, is_generic=None, is_inactive=None, is_enterprise=None, booking_type=None, actual_work_protected=None, actual_overtime_work_protected=None, active_directory_guid=None, creation_date=None, cost_center=None, is_cost_resource=None, team_assignment_pool=None, assignment_owner=None, assignment_owner_guid=None, is_budget=None, budget_work=None, budget_cost=None, overtime_rate=None, baselines=None, extended_attributes=None, outline_codes=None):  # noqa: E501
+    def __init__(self, is_root=None, name=None, uid=None, id=None, guid=None, type=None, is_null=None, initials=None, phonetics=None, nt_account=None, windows_user_account=None, workgroup=None, material_label=None, code=None, group=None, email_address=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, max_units=1.0, peak_units=None, over_allocated=None, available_from=None, available_to=None, start=None, finish=None, can_level=True, accrue_at=None, work=None, regular_work=None, overtime_work=None, actual_work=None, remaining_work=None, actual_overtime_work=None, remaining_overtime_work=None, percent_work_complete=None, standard_rate=None, standard_rate_format=None, cost=None, overtime_rate_format=None, overtime_cost=None, cost_per_use=None, actual_cost=None, actual_overtime_cost=None, remaining_cost=None, remaining_overtime_cost=None, work_variance=None, cost_variance=None, sv=None, cv=None, acwp=None, calendar_uid=None, notes_text=None, notes=None, notes_rtf=None, bcws=None, bcwp=None, is_generic=None, is_inactive=None, is_enterprise=None, booking_type=None, actual_work_protected=None, actual_overtime_work_protected=None, active_directory_guid=None, creation_date=None, cost_center=None, is_cost_resource=None, team_assignment_pool=None, assignment_owner=None, assignment_owner_guid=None, is_budget=None, budget_work=None, budget_cost=None, overtime_rate=None, baselines=None, extended_attributes=None, outline_codes=None):  # noqa: E501
         """Resource - a model defined in Swagger"""  # noqa: E501
 
+        self._is_root = None
         self._name = None
         self._uid = None
         self._id = None
@@ -279,6 +282,8 @@ class Resource(object):
         self._outline_codes = None
         self.discriminator = None
 
+        if is_root is not None:
+            self.is_root = is_root
         if name is not None:
             self.name = name
         if uid is not None:
@@ -432,6 +437,29 @@ class Resource(object):
         if outline_codes is not None:
             self.outline_codes = outline_codes
 
+    @property
+    def is_root(self):
+        """Gets the is_root of this Resource.  # noqa: E501
+
+                Gets the flag indicating whether resource is a root resource. Root resource is         a special resource which is intended to support internals of MS Project's formats         and is not intended to be used directly from the user's code.       # noqa: E501
+
+        :return: The is_root of this Resource.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_root
+
+    @is_root.setter
+    def is_root(self, is_root):
+        """Sets the is_root of this Resource.
+
+                Gets the flag indicating whether resource is a root resource. Root resource is         a special resource which is intended to support internals of MS Project's formats         and is not intended to be used directly from the user's code.       # noqa: E501
+
+        :param is_root: The is_root of this Resource.  # noqa: E501
+        :type: bool
+        """
+        if is_root is None:
+            raise ValueError("Invalid value for `is_root`, must not be `None`")  # noqa: E501
+        self._is_root = is_root
     @property
     def name(self):
         """Gets the name of this Resource.  # noqa: E501
