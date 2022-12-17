@@ -50,6 +50,7 @@ from asposetaskscloud.models.outline_value import OutlineValue
 from asposetaskscloud.models.outline_value_type import OutlineValueType
 from asposetaskscloud.models.page_size import PageSize
 from asposetaskscloud.models.presentation_format import PresentationFormat
+from asposetaskscloud.models.primavera_task_properties import PrimaveraTaskProperties
 from asposetaskscloud.models.probability_distribution_type import ProbabilityDistributionType
 from asposetaskscloud.models.project_database_type import ProjectDatabaseType
 from asposetaskscloud.models.project_file_format import ProjectFileFormat
@@ -120,6 +121,7 @@ from asposetaskscloud.models.outline_code_items import OutlineCodeItems
 from asposetaskscloud.models.outline_code_items_response import OutlineCodeItemsResponse
 from asposetaskscloud.models.outline_code_response import OutlineCodeResponse
 from asposetaskscloud.models.page_count_response import PageCountResponse
+from asposetaskscloud.models.primavera_task_properties_response import PrimaveraTaskPropertiesResponse
 from asposetaskscloud.models.project_ids_response import ProjectIdsResponse
 from asposetaskscloud.models.project_list import ProjectList
 from asposetaskscloud.models.project_list_response import ProjectListResponse

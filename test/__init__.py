@@ -21,6 +21,7 @@ from test.test_task_document_format import TestTaskDocumentFormat
 from test.test_task_links import TestTaskLinks
 from test.test_tasks import TestTasks
 from test.test_tasks_extended_attributes import TestTasksExtendedAttributes
+from test.test_tasks_primavera_properties import TestTasksPrimaveraProperties
 from test.test_timephased_data import TestTimephasedData
 from test.test_vba import TestVba
 from test.test_wbs import TestWbs

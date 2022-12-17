@@ -60,6 +60,7 @@ class AsposeResponse(object):
         'RecurringInfoResponse': 'RecurringInfoResponse',
         'ExtendedAttributeItemResponse': 'ExtendedAttributeItemResponse',
         'AssignmentResponse': 'AssignmentResponse',
+        'PrimaveraTaskPropertiesResponse': 'PrimaveraTaskPropertiesResponse',
         'CalendarItemsResponse': 'CalendarItemsResponse',
         'OutlineCodeItemsResponse': 'OutlineCodeItemsResponse',
         'ResourceResponse': 'ResourceResponse',

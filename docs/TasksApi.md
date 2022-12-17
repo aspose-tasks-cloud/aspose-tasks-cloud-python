@@ -70,6 +70,7 @@ Method | HTTP request | Description
 [**put_resource**](TasksApi.md#put_resource) | **PUT** /tasks/{name}/resources/{resourceUid} | Updates resource with the specified Uid
 [**get_risk_analysis_report**](TasksApi.md#get_risk_analysis_report) | **GET** /tasks/{name}/riskAnalysisReport | Performs a risk analysys using Monte Carlo simulation and creates a risk analysis report.
 [**delete_task**](TasksApi.md#delete_task) | **DELETE** /tasks/{name}/tasks/{taskUid} | Deletes a project task with all references to it and rebuilds tasks tree.
+[**get_primavera_task_properties**](TasksApi.md#get_primavera_task_properties) | **GET** /tasks/{name}/tasks/{taskUid}/primaveraProperties | Get primavera properties for a task with the specified Uid.
 [**get_task**](TasksApi.md#get_task) | **GET** /tasks/{name}/tasks/{taskUid} | Read project task.
 [**get_task_assignments**](TasksApi.md#get_task_assignments) | **GET** /tasks/{name}/tasks/{taskUid}/assignments | Get task assignments.
 [**get_task_recurring_info**](TasksApi.md#get_task_recurring_info) | **GET** /tasks/{name}/tasks/{taskUid}/recurringInfo | Get recurring info for a task with the specified Uid
@@ -3870,6 +3871,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_primavera_task_properties**
+> PrimaveraTaskPropertiesResponse get_primavera_task_properties(name, task_uid, folder=folder, storage=storage)
+
+Get primavera properties for a task with the specified Uid.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+task_uid = 56 # int | Uid of task to get primavera properties for.
+folder = 'folder_example' # str | The document folder. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Get primavera properties for a task with the specified Uid.
+    api_response = api_instance.get_primavera_task_properties(name, task_uid, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_primavera_task_properties: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **task_uid** | **int**| Uid of task to get primavera properties for. | 
+ **folder** | **str**| The document folder. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**PrimaveraTaskPropertiesResponse**](PrimaveraTaskPropertiesResponse.md)
 
 ### Authorization
 

@@ -57,6 +57,7 @@ from asposetaskscloud.models.outline_value import OutlineValue
 from asposetaskscloud.models.outline_value_type import OutlineValueType
 from asposetaskscloud.models.page_size import PageSize
 from asposetaskscloud.models.presentation_format import PresentationFormat
+from asposetaskscloud.models.primavera_task_properties import PrimaveraTaskProperties
 from asposetaskscloud.models.probability_distribution_type import ProbabilityDistributionType
 from asposetaskscloud.models.project_database_type import ProjectDatabaseType
 from asposetaskscloud.models.project_file_format import ProjectFileFormat
@@ -127,6 +128,7 @@ from asposetaskscloud.models.outline_code_items import OutlineCodeItems
 from asposetaskscloud.models.outline_code_items_response import OutlineCodeItemsResponse
 from asposetaskscloud.models.outline_code_response import OutlineCodeResponse
 from asposetaskscloud.models.page_count_response import PageCountResponse
+from asposetaskscloud.models.primavera_task_properties_response import PrimaveraTaskPropertiesResponse
 from asposetaskscloud.models.project_ids_response import ProjectIdsResponse
 from asposetaskscloud.models.project_list import ProjectList
 from asposetaskscloud.models.project_list_response import ProjectListResponse
@@ -214,6 +216,7 @@ from asposetaskscloud.models.requests.post_resource_request import PostResourceR
 from asposetaskscloud.models.requests.put_resource_request import PutResourceRequest
 from asposetaskscloud.models.requests.get_risk_analysis_report_request import GetRiskAnalysisReportRequest
 from asposetaskscloud.models.requests.delete_task_request import DeleteTaskRequest
+from asposetaskscloud.models.requests.get_primavera_task_properties_request import GetPrimaveraTaskPropertiesRequest
 from asposetaskscloud.models.requests.get_task_request import GetTaskRequest
 from asposetaskscloud.models.requests.get_task_assignments_request import GetTaskAssignmentsRequest
 from asposetaskscloud.models.requests.get_task_recurring_info_request import GetTaskRecurringInfoRequest
