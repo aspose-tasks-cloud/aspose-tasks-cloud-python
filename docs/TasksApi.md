@@ -88,6 +88,12 @@ Method | HTTP request | Description
 [**post_task_link**](TasksApi.md#post_task_link) | **POST** /tasks/{name}/taskLinks | Adds a new task link to a project.
 [**put_task_link**](TasksApi.md#put_task_link) | **PUT** /tasks/{name}/taskLinks/{index} | Updates existing task link.
 [**get_vba_project**](TasksApi.md#get_vba_project) | **GET** /tasks/{name}/vbaproject | Returns VBA project.
+[**create_table_text_style**](TasksApi.md#create_table_text_style) | **POST** /tasks/{name}/views/{viewUid}/tabletextstyles | Create table text style in specified view.
+[**delete_table_text_style**](TasksApi.md#delete_table_text_style) | **DELETE** /tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid} | Delete specified table text style from specified view.
+[**get_all_table_text_styles**](TasksApi.md#get_all_table_text_styles) | **GET** /tasks/{name}/views/{viewUid}/tabletextstyles | Read all table text styles from specified view.
+[**get_table_text_style**](TasksApi.md#get_table_text_style) | **GET** /tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid} | Read specified table text style from specified view.
+[**get_views**](TasksApi.md#get_views) | **GET** /tasks/{name}/views | Read all project views.
+[**update_table_text_style**](TasksApi.md#update_table_text_style) | **PUT** /tasks/{name}/views/{viewUid}/tabletextstyles | Update table text style in specified view.
 [**get_wbs_definition**](TasksApi.md#get_wbs_definition) | **GET** /tasks/{name}/wbsDefinition | Get a project&#39;s WBS Definition.
 [**put_renumber_wbs_code**](TasksApi.md#put_renumber_wbs_code) | **PUT** /tasks/{name}/renumberWbsCode | Renumber WBS code of passed tasks (if specified) or all project&#39;s tasks.
 
@@ -4921,6 +4927,358 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VbaProjectResponse**](VbaProjectResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_table_text_style**
+> AsposeResponse create_table_text_style(name, view_uid, table_text_style, file_name=file_name, storage=storage, folder=folder)
+
+Create table text style in specified view.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+view_uid = 56 # int | Uid of the view.
+table_text_style = asposetaskscloud.TableTextStyle() # TableTextStyle | A DTO of TableTextStyle to create
+file_name = 'file_name_example' # str | File name to save changes to. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Create table text style in specified view.
+    api_response = api_instance.create_table_text_style(name, view_uid, table_text_style, file_name=file_name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->create_table_text_style: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **view_uid** | **int**| Uid of the view. | 
+ **table_text_style** | [**TableTextStyle**](TableTextStyle.md)| A DTO of TableTextStyle to create | 
+ **file_name** | **str**| File name to save changes to. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_table_text_style**
+> AsposeResponse delete_table_text_style(name, view_uid, row_uid, field=field, file_name=file_name, storage=storage, folder=folder)
+
+Delete specified table text style from specified view.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+view_uid = 56 # int | Uid of the view.
+row_uid = 56 # int | Uid of the row.
+field = 'field_example' # str | Specifies exact field of the row (optional)
+file_name = 'file_name_example' # str | File name to save changes to. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Delete specified table text style from specified view.
+    api_response = api_instance.delete_table_text_style(name, view_uid, row_uid, field=field, file_name=file_name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->delete_table_text_style: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **view_uid** | **int**| Uid of the view. | 
+ **row_uid** | **int**| Uid of the row. | 
+ **field** | **str**| Specifies exact field of the row | [optional] 
+ **file_name** | **str**| File name to save changes to. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_all_table_text_styles**
+> TableTextStylesResponse get_all_table_text_styles(name, view_uid, storage=storage, folder=folder)
+
+Read all table text styles from specified view.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+view_uid = 56 # int | Uid of the view.
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read all table text styles from specified view.
+    api_response = api_instance.get_all_table_text_styles(name, view_uid, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_all_table_text_styles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **view_uid** | **int**| Uid of the view. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**TableTextStylesResponse**](TableTextStylesResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_table_text_style**
+> TableTextStyleResponse get_table_text_style(name, view_uid, row_uid, field=field, storage=storage, folder=folder)
+
+Read specified table text style from specified view.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+view_uid = 56 # int | Uid of the view.
+row_uid = 56 # int | Uid of the row.
+field = 'field_example' # str | Specifies exact field of the row (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read specified table text style from specified view.
+    api_response = api_instance.get_table_text_style(name, view_uid, row_uid, field=field, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_table_text_style: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **view_uid** | **int**| Uid of the view. | 
+ **row_uid** | **int**| Uid of the row. | 
+ **field** | **str**| Specifies exact field of the row | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**TableTextStyleResponse**](TableTextStyleResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_views**
+> ViewsResponse get_views(name, storage=storage, folder=folder)
+
+Read all project views.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read all project views.
+    api_response = api_instance.get_views(name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_views: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**ViewsResponse**](ViewsResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_table_text_style**
+> AsposeResponse update_table_text_style(name, view_uid, table_text_style, file_name=file_name, storage=storage, folder=folder)
+
+Update table text style in specified view.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+view_uid = 56 # int | Uid of the view.
+table_text_style = asposetaskscloud.TableTextStyle() # TableTextStyle | A DTO of TableTextStyle to update
+file_name = 'file_name_example' # str | File name to save changes to. (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Update table text style in specified view.
+    api_response = api_instance.update_table_text_style(name, view_uid, table_text_style, file_name=file_name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->update_table_text_style: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **view_uid** | **int**| Uid of the view. | 
+ **table_text_style** | [**TableTextStyle**](TableTextStyle.md)| A DTO of TableTextStyle to update | 
+ **file_name** | **str**| File name to save changes to. | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
 
 ### Authorization
 

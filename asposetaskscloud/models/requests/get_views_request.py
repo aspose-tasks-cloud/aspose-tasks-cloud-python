@@ -1,6 +1,6 @@
 # coding: utf-8
 # --------------------------------------------------------------------------------
-# <copyright company="Aspose" file="get_primavera_task_properties_request.py">
+# <copyright company="Aspose" file="get_views_request.py">
 #   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
@@ -26,20 +26,18 @@
 # --------------------------------------------------------------------------------
 
 
-class GetPrimaveraTaskPropertiesRequest(object):
+class GetViewsRequest(object):
     """
-    Request model for get_primavera_task_properties operation.
+    Request model for get_views operation.
     Initializes a new instance.
     :param name The name of the file.
-    :param task_uid Uid of task to get primavera properties for.
-    :param folder The document folder.
     :param storage The document storage.
+    :param folder The document folder.
     """
 
-    def __init__(self, name, task_uid, folder=None, storage=None):
+    def __init__(self, name, storage=None, folder=None):
         self.name = name
-        self.task_uid = task_uid
-        self.folder = folder
         self.storage = storage
+        self.folder = folder
 
 

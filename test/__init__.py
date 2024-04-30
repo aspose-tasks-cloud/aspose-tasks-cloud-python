@@ -24,4 +24,5 @@ from test.test_tasks_extended_attributes import TestTasksExtendedAttributes
 from test.test_tasks_primavera_properties import TestTasksPrimaveraProperties
 from test.test_timephased_data import TestTimephasedData
 from test.test_vba import TestVba
+from test.test_views import TestViews
 from test.test_wbs import TestWbs

@@ -1,6 +1,6 @@
 # coding: utf-8
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose" file="ProjectIdsResponse.py">
+# <copyright company="Aspose" file="TextItemType.py">
 #   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
@@ -29,9 +29,36 @@ import re  # noqa: F401
 import six
 
 
-class ProjectIdsResponse(object):
-    """ProjectIds response
+class TextItemType(object):
+    """Item type to change a text style for.
     """
+
+    """
+    allowed enum values
+    """
+    ROWCOLUMNTITLES = "RowColumnTitles"
+    CRITICALTASKS = "CriticalTasks"
+    NONCRITICALTASKS = "NoncriticalTasks"
+    MILESTONETASKS = "MilestoneTasks"
+    INACTIVETASKS = "InactiveTasks"
+    SUMMARYTASKS = "SummaryTasks"
+    ASSIGNMENTROW = "AssignmentRow"
+    TOPTIMESCALETIER = "TopTimescaleTier"
+    BOTTOMTIMESCALETIER = "BottomTimescaleTier"
+    MIDDLETIMESCALETIER = "MiddleTimescaleTier"
+    RESOURCES = "Resources"
+    OVERALLOCATEDRESOURCES = "OverallocatedResources"
+    TASKFILTERHIGHLIGHT = "TaskFilterHighlight"
+    BARTEXTBOTTOM = "BarTextBottom"
+    BARTEXTINSIDE = "BarTextInside"
+    BARTEXTLEFT = "BarTextLeft"
+    BARTEXTRIGHT = "BarTextRight"
+    BARTEXTTOP = "BarTextTop"
+    MARKEDTASKS = "MarkedTasks"
+    PROJECTSUMMARY = "ProjectSummary"
+    EXTERNALTASKS = "ExternalTasks"
+    ALLOCATED = "Allocated"
+    CHANGEDCELLS = "ChangedCells"
 
     """
     Attributes:
@@ -41,43 +68,15 @@ class ProjectIdsResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'project_ids': 'list[str]'
     }
 
     attribute_map = {
-        'project_ids': 'projectIds'
     }
 
-    def __init__(self, project_ids=None):  # noqa: E501
-        """ProjectIdsResponse - a model defined in Swagger"""  # noqa: E501
-
-        self._project_ids = None
+    def __init__(self):  # noqa: E501
+        """TextItemType - a model defined in Swagger"""  # noqa: E501
         self.discriminator = None
 
-        if project_ids is not None:
-            self.project_ids = project_ids
-
-    @property
-    def project_ids(self):
-        """Gets the project_ids of this ProjectIdsResponse.  # noqa: E501
-
-        UIds of the project  # noqa: E501
-
-        :return: The project_ids of this ProjectIdsResponse.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._project_ids
-
-    @project_ids.setter
-    def project_ids(self, project_ids):
-        """Sets the project_ids of this ProjectIdsResponse.
-
-        UIds of the project  # noqa: E501
-
-        :param project_ids: The project_ids of this ProjectIdsResponse.  # noqa: E501
-        :type: list[str]
-        """
-        self._project_ids = project_ids
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -112,7 +111,7 @@ class ProjectIdsResponse(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ProjectIdsResponse):
+        if not isinstance(other, TextItemType):
             return False
 
         return self.__dict__ == other.__dict__

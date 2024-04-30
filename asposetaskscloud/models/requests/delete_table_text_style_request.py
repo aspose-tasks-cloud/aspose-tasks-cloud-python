@@ -1,6 +1,6 @@
 # coding: utf-8
 # --------------------------------------------------------------------------------
-# <copyright company="Aspose" file="get_primavera_task_properties_request.py">
+# <copyright company="Aspose" file="delete_table_text_style_request.py">
 #   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
@@ -26,20 +26,26 @@
 # --------------------------------------------------------------------------------
 
 
-class GetPrimaveraTaskPropertiesRequest(object):
+class DeleteTableTextStyleRequest(object):
     """
-    Request model for get_primavera_task_properties operation.
+    Request model for delete_table_text_style operation.
     Initializes a new instance.
     :param name The name of the file.
-    :param task_uid Uid of task to get primavera properties for.
-    :param folder The document folder.
+    :param view_uid Uid of the view.
+    :param row_uid Uid of the row.
+    :param field Specifies exact field of the row
+    :param file_name File name to save changes to.
     :param storage The document storage.
+    :param folder The document folder.
     """
 
-    def __init__(self, name, task_uid, folder=None, storage=None):
+    def __init__(self, name, view_uid, row_uid, field=None, file_name=None, storage=None, folder=None):
         self.name = name
-        self.task_uid = task_uid
-        self.folder = folder
+        self.view_uid = view_uid
+        self.row_uid = row_uid
+        self.field = field
+        self.file_name = file_name
         self.storage = storage
+        self.folder = folder
 
 

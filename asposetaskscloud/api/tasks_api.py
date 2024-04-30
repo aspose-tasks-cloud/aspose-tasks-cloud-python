@@ -10230,6 +10230,745 @@ class TasksApi(object):
             collection_formats=collection_formats)
 
 
+    def create_table_text_style(self, request, **kwargs):  # noqa: E501
+        """Create table text style in specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param view_uid int : Uid of the view. (required)
+        :param table_text_style TableTextStyle : A DTO of TableTextStyle to create (required)
+        :param file_name str : File name to save changes to.
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.create_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.create_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.create_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.create_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def create_table_text_style_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Create table text style in specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request create_table_text_style_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_table_text_style" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `create_table_text_style`")  # noqa: E501
+        # verify the required parameter 'view_uid' is set
+        if request.view_uid is None:
+            raise ValueError("Missing the required parameter `view_uid` when calling `create_table_text_style`")  # noqa: E501
+        # verify the required parameter 'table_text_style' is set
+        if request.table_text_style is None:
+            raise ValueError("Missing the required parameter `table_text_style` when calling `create_table_text_style`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/views/{viewUid}/tabletextstyles'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.view_uid is not None:
+            path_params[self.__downcase_first_letter('viewUid')] = request.view_uid  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.table_text_style is not None:
+            body_params = request.table_text_style
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_table_text_style(self, request, **kwargs):  # noqa: E501
+        """Delete specified table text style from specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param view_uid int : Uid of the view. (required)
+        :param row_uid int : Uid of the row. (required)
+        :param field str : Specifies exact field of the row
+        :param file_name str : File name to save changes to.
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.delete_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.delete_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.delete_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.delete_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def delete_table_text_style_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Delete specified table text style from specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request delete_table_text_style_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_table_text_style" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `delete_table_text_style`")  # noqa: E501
+        # verify the required parameter 'view_uid' is set
+        if request.view_uid is None:
+            raise ValueError("Missing the required parameter `view_uid` when calling `delete_table_text_style`")  # noqa: E501
+        # verify the required parameter 'row_uid' is set
+        if request.row_uid is None:
+            raise ValueError("Missing the required parameter `row_uid` when calling `delete_table_text_style`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.view_uid is not None:
+            path_params[self.__downcase_first_letter('viewUid')] = request.view_uid  # noqa: E501
+        if request.row_uid is not None:
+            path_params[self.__downcase_first_letter('rowUid')] = request.row_uid  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('field') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('field' + '}'), request.field if request.field is not None else '')
+        else:
+            if request.field is not None:
+                query_params.append((self.__downcase_first_letter('field'), request.field))  # noqa: E501
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_all_table_text_styles(self, request, **kwargs):  # noqa: E501
+        """Read all table text styles from specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param view_uid int : Uid of the view. (required)
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: TableTextStylesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.get_all_table_text_styles_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_all_table_text_styles_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.get_all_table_text_styles_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_all_table_text_styles_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def get_all_table_text_styles_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Read all table text styles from specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request get_all_table_text_styles_request object with parameters
+        :return: TableTextStylesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_all_table_text_styles" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `get_all_table_text_styles`")  # noqa: E501
+        # verify the required parameter 'view_uid' is set
+        if request.view_uid is None:
+            raise ValueError("Missing the required parameter `view_uid` when calling `get_all_table_text_styles`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/views/{viewUid}/tabletextstyles'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.view_uid is not None:
+            path_params[self.__downcase_first_letter('viewUid')] = request.view_uid  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TableTextStylesResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_table_text_style(self, request, **kwargs):  # noqa: E501
+        """Read specified table text style from specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param view_uid int : Uid of the view. (required)
+        :param row_uid int : Uid of the row. (required)
+        :param field str : Specifies exact field of the row
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: TableTextStyleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.get_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.get_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def get_table_text_style_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Read specified table text style from specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request get_table_text_style_request object with parameters
+        :return: TableTextStyleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_table_text_style" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `get_table_text_style`")  # noqa: E501
+        # verify the required parameter 'view_uid' is set
+        if request.view_uid is None:
+            raise ValueError("Missing the required parameter `view_uid` when calling `get_table_text_style`")  # noqa: E501
+        # verify the required parameter 'row_uid' is set
+        if request.row_uid is None:
+            raise ValueError("Missing the required parameter `row_uid` when calling `get_table_text_style`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.view_uid is not None:
+            path_params[self.__downcase_first_letter('viewUid')] = request.view_uid  # noqa: E501
+        if request.row_uid is not None:
+            path_params[self.__downcase_first_letter('rowUid')] = request.row_uid  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('field') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('field' + '}'), request.field if request.field is not None else '')
+        else:
+            if request.field is not None:
+                query_params.append((self.__downcase_first_letter('field'), request.field))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TableTextStyleResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_views(self, request, **kwargs):  # noqa: E501
+        """Read all project views.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: ViewsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.get_views_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_views_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.get_views_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_views_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def get_views_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Read all project views.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request get_views_request object with parameters
+        :return: ViewsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_views" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `get_views`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/views'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ViewsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_table_text_style(self, request, **kwargs):  # noqa: E501
+        """Update table text style in specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file. (required)
+        :param view_uid int : Uid of the view. (required)
+        :param table_text_style TableTextStyle : A DTO of TableTextStyle to update (required)
+        :param file_name str : File name to save changes to.
+        :param storage str : The document storage.
+        :param folder str : The document folder.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.update_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.update_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.update_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.update_table_text_style_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def update_table_text_style_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Update table text style in specified view.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request update_table_text_style_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_table_text_style" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `update_table_text_style`")  # noqa: E501
+        # verify the required parameter 'view_uid' is set
+        if request.view_uid is None:
+            raise ValueError("Missing the required parameter `view_uid` when calling `update_table_text_style`")  # noqa: E501
+        # verify the required parameter 'table_text_style' is set
+        if request.table_text_style is None:
+            raise ValueError("Missing the required parameter `table_text_style` when calling `update_table_text_style`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/views/{viewUid}/tabletextstyles'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.view_uid is not None:
+            path_params[self.__downcase_first_letter('viewUid')] = request.view_uid  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.table_text_style is not None:
+            body_params = request.table_text_style
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+
     def get_wbs_definition(self, request, **kwargs):  # noqa: E501
         """Get a project&#39;s WBS Definition.  # noqa: E501
 

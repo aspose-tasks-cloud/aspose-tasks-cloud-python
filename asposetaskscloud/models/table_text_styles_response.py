@@ -1,6 +1,6 @@
 # coding: utf-8
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose" file="ProjectIdsResponse.py">
+# <copyright company="Aspose" file="TableTextStylesResponse.py">
 #   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
@@ -29,8 +29,8 @@ import re  # noqa: F401
 import six
 
 
-class ProjectIdsResponse(object):
-    """ProjectIds response
+class TableTextStylesResponse(object):
+    """TableTextStyles Response
     """
 
     """
@@ -41,43 +41,43 @@ class ProjectIdsResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'project_ids': 'list[str]'
+        'items': 'list[TableTextStyle]'
     }
 
     attribute_map = {
-        'project_ids': 'projectIds'
+        'items': 'items'
     }
 
-    def __init__(self, project_ids=None):  # noqa: E501
-        """ProjectIdsResponse - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, items=None):  # noqa: E501
+        """TableTextStylesResponse - a model defined in Swagger"""  # noqa: E501
 
-        self._project_ids = None
+        self._items = None
         self.discriminator = None
 
-        if project_ids is not None:
-            self.project_ids = project_ids
+        if items is not None:
+            self.items = items
 
     @property
-    def project_ids(self):
-        """Gets the project_ids of this ProjectIdsResponse.  # noqa: E501
+    def items(self):
+        """Gets the items of this TableTextStylesResponse.  # noqa: E501
 
-        UIds of the project  # noqa: E501
+        Array of table text styles of specified view  # noqa: E501
 
-        :return: The project_ids of this ProjectIdsResponse.  # noqa: E501
-        :rtype: list[str]
+        :return: The items of this TableTextStylesResponse.  # noqa: E501
+        :rtype: list[TableTextStyle]
         """
-        return self._project_ids
+        return self._items
 
-    @project_ids.setter
-    def project_ids(self, project_ids):
-        """Sets the project_ids of this ProjectIdsResponse.
+    @items.setter
+    def items(self, items):
+        """Sets the items of this TableTextStylesResponse.
 
-        UIds of the project  # noqa: E501
+        Array of table text styles of specified view  # noqa: E501
 
-        :param project_ids: The project_ids of this ProjectIdsResponse.  # noqa: E501
-        :type: list[str]
+        :param items: The items of this TableTextStylesResponse.  # noqa: E501
+        :type: list[TableTextStyle]
         """
-        self._project_ids = project_ids
+        self._items = items
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -112,7 +112,7 @@ class ProjectIdsResponse(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ProjectIdsResponse):
+        if not isinstance(other, TableTextStylesResponse):
             return False
 
         return self.__dict__ == other.__dict__

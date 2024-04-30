@@ -1,7 +1,7 @@
 # coding: utf-8
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose" file="PrimaveraTaskPropertiesResponse.py">
-#   Copyright (c) 2022 Aspose.Tasks Cloud
+#   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy

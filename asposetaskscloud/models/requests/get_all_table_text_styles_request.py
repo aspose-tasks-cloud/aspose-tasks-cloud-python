@@ -1,6 +1,6 @@
 # coding: utf-8
 # --------------------------------------------------------------------------------
-# <copyright company="Aspose" file="get_primavera_task_properties_request.py">
+# <copyright company="Aspose" file="get_all_table_text_styles_request.py">
 #   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
@@ -26,20 +26,20 @@
 # --------------------------------------------------------------------------------
 
 
-class GetPrimaveraTaskPropertiesRequest(object):
+class GetAllTableTextStylesRequest(object):
     """
-    Request model for get_primavera_task_properties operation.
+    Request model for get_all_table_text_styles operation.
     Initializes a new instance.
     :param name The name of the file.
-    :param task_uid Uid of task to get primavera properties for.
-    :param folder The document folder.
+    :param view_uid Uid of the view.
     :param storage The document storage.
+    :param folder The document folder.
     """
 
-    def __init__(self, name, task_uid, folder=None, storage=None):
+    def __init__(self, name, view_uid, storage=None, folder=None):
         self.name = name
-        self.task_uid = task_uid
-        self.folder = folder
+        self.view_uid = view_uid
         self.storage = storage
+        self.folder = folder
 
 

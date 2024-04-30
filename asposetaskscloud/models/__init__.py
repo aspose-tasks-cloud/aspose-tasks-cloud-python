@@ -6,6 +6,7 @@ from __future__ import absolute_import
 # import models into model package
 from asposetaskscloud.models.aspose_response import AsposeResponse
 from asposetaskscloud.models.assignment_item import AssignmentItem
+from asposetaskscloud.models.background_pattern import BackgroundPattern
 from asposetaskscloud.models.baseline import Baseline
 from asposetaskscloud.models.baseline_type import BaselineType
 from asposetaskscloud.models.booking_type import BookingType
@@ -15,6 +16,7 @@ from asposetaskscloud.models.calendar import Calendar
 from asposetaskscloud.models.calendar_exception import CalendarException
 from asposetaskscloud.models.calendar_exception_type import CalendarExceptionType
 from asposetaskscloud.models.calendar_item import CalendarItem
+from asposetaskscloud.models.colors import Colors
 from asposetaskscloud.models.confidence_level import ConfidenceLevel
 from asposetaskscloud.models.constraint_type import ConstraintType
 from asposetaskscloud.models.cost_accrual_type import CostAccrualType
@@ -30,10 +32,12 @@ from asposetaskscloud.models.error_details import ErrorDetails
 from asposetaskscloud.models.extended_attribute import ExtendedAttribute
 from asposetaskscloud.models.extended_attribute_definition import ExtendedAttributeDefinition
 from asposetaskscloud.models.extended_attribute_item import ExtendedAttributeItem
+from asposetaskscloud.models.field import Field
 from asposetaskscloud.models.file_versions import FileVersions
 from asposetaskscloud.models.files_list import FilesList
 from asposetaskscloud.models.files_upload_result import FilesUploadResult
 from asposetaskscloud.models.imported_project_type import ImportedProjectType
+from asposetaskscloud.models.item_type import ItemType
 from asposetaskscloud.models.link import Link
 from asposetaskscloud.models.link_element import LinkElement
 from asposetaskscloud.models.mask_type import MaskType
@@ -72,12 +76,14 @@ from asposetaskscloud.models.rollup_type import RollupType
 from asposetaskscloud.models.storage_exist import StorageExist
 from asposetaskscloud.models.storage_file import StorageFile
 from asposetaskscloud.models.summary_rows_calculation_type import SummaryRowsCalculationType
+from asposetaskscloud.models.table_text_style import TableTextStyle
 from asposetaskscloud.models.task import Task
 from asposetaskscloud.models.task_creation_request import TaskCreationRequest
 from asposetaskscloud.models.task_item import TaskItem
 from asposetaskscloud.models.task_link import TaskLink
 from asposetaskscloud.models.task_link_type import TaskLinkType
 from asposetaskscloud.models.task_type import TaskType
+from asposetaskscloud.models.text_item_type import TextItemType
 from asposetaskscloud.models.time_unit_type import TimeUnitType
 from asposetaskscloud.models.timephased_data import TimephasedData
 from asposetaskscloud.models.timephased_data_type import TimephasedDataType
@@ -87,6 +93,8 @@ from asposetaskscloud.models.vba_module import VbaModule
 from asposetaskscloud.models.vba_module_attribute import VbaModuleAttribute
 from asposetaskscloud.models.vba_project import VbaProject
 from asposetaskscloud.models.vba_reference import VbaReference
+from asposetaskscloud.models.view import View
+from asposetaskscloud.models.view_screen import ViewScreen
 from asposetaskscloud.models.wbs_code_mask import WBSCodeMask
 from asposetaskscloud.models.wbs_definition import WBSDefinition
 from asposetaskscloud.models.wbs_sequence import WBSSequence
@@ -132,6 +140,8 @@ from asposetaskscloud.models.resource_item_response import ResourceItemResponse
 from asposetaskscloud.models.resource_items import ResourceItems
 from asposetaskscloud.models.resource_items_response import ResourceItemsResponse
 from asposetaskscloud.models.resource_response import ResourceResponse
+from asposetaskscloud.models.table_text_style_response import TableTextStyleResponse
+from asposetaskscloud.models.table_text_styles_response import TableTextStylesResponse
 from asposetaskscloud.models.task_baseline import TaskBaseline
 from asposetaskscloud.models.task_item_response import TaskItemResponse
 from asposetaskscloud.models.task_items import TaskItems
@@ -141,4 +151,5 @@ from asposetaskscloud.models.task_links_response import TaskLinksResponse
 from asposetaskscloud.models.task_response import TaskResponse
 from asposetaskscloud.models.timephased_data_response import TimephasedDataResponse
 from asposetaskscloud.models.vba_project_response import VbaProjectResponse
+from asposetaskscloud.models.views_response import ViewsResponse
 from asposetaskscloud.models.wbs_definition_response import WBSDefinitionResponse
