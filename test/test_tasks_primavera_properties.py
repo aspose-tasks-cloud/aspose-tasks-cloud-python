@@ -26,7 +26,8 @@
 #
 from datetime import datetime
 
-from asposetaskscloud import GetPrimaveraTaskPropertiesRequest, PrimaveraTaskPropertiesResponse
+from asposetaskscloud import GetPrimaveraTaskPropertiesRequest, PrimaveraTaskPropertiesResponse, PrimaveraDurationType, \
+    PrimaveraActivityType, PrimaveraPercentCompleteType
 from test.base_test_context import BaseTestContext
 
 
@@ -52,3 +53,6 @@ class TestTasksPrimaveraProperties(BaseTestContext):
         self.assertEqual("Task Dependent", entity.raw_activity_type)
         self.assertEqual("Units", entity.raw_complete_percent_type)
         self.assertEqual("Not Started", entity.raw_status)
+        self.assertEqual(PrimaveraDurationType.FIXEDUNITS, entity.duration_type)
+        self.assertEqual(PrimaveraActivityType.TASKDEPENDENT, entity.activity_type)
+        self.assertEqual(PrimaveraPercentCompleteType.UNITS, entity.percent_complete_type)

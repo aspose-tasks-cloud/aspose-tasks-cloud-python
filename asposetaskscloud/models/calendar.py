@@ -41,6 +41,7 @@ class Calendar(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'guid': 'str',
         'name': 'str',
         'uid': 'int',
         'days': 'list[WeekDay]',
@@ -50,6 +51,7 @@ class Calendar(object):
     }
 
     attribute_map = {
+        'guid': 'guid',
         'name': 'name',
         'uid': 'uid',
         'days': 'days',
@@ -58,9 +60,10 @@ class Calendar(object):
         'is_baseline_calendar': 'isBaselineCalendar'
     }
 
-    def __init__(self, name=None, uid=None, days=None, is_base_calendar=None, base_calendar=None, is_baseline_calendar=None):  # noqa: E501
+    def __init__(self, guid=None, name=None, uid=None, days=None, is_base_calendar=None, base_calendar=None, is_baseline_calendar=None):  # noqa: E501
         """Calendar - a model defined in Swagger"""  # noqa: E501
 
+        self._guid = None
         self._name = None
         self._uid = None
         self._days = None
@@ -69,6 +72,8 @@ class Calendar(object):
         self._is_baseline_calendar = None
         self.discriminator = None
 
+        if guid is not None:
+            self.guid = guid
         if name is not None:
             self.name = name
         if uid is not None:
@@ -82,6 +87,27 @@ class Calendar(object):
         if is_baseline_calendar is not None:
             self.is_baseline_calendar = is_baseline_calendar
 
+    @property
+    def guid(self):
+        """Gets the guid of this Calendar.  # noqa: E501
+
+        Gets calendar's Guid.  # noqa: E501
+
+        :return: The guid of this Calendar.  # noqa: E501
+        :rtype: str
+        """
+        return self._guid
+
+    @guid.setter
+    def guid(self, guid):
+        """Sets the guid of this Calendar.
+
+        Gets calendar's Guid.  # noqa: E501
+
+        :param guid: The guid of this Calendar.  # noqa: E501
+        :type: str
+        """
+        self._guid = guid
     @property
     def name(self):
         """Gets the name of this Calendar.  # noqa: E501

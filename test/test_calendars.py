@@ -53,6 +53,7 @@ class TestCalendars(BaseTestContext):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, CalendarResponse)
         self.assertIsNotNone(result.calendar)
+        self.assertEqual('3F979F74-B9D3-4E5F-98DC-5E08060A0C30', result.calendar.guid)
         self.assertEqual('Standard', result.calendar.name)
         self.assertEqual(1, result.calendar.uid)
         self.assertTrue(result.calendar.is_base_calendar)

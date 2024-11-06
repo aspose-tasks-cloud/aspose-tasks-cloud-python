@@ -150,7 +150,7 @@ class View(object):
     def name(self):
         """Gets the name of this View.  # noqa: E501
 
-        Gets or sets the name of a View object.  # noqa: E501
+        Gets or sets the name of a view object.  # noqa: E501
 
         :return: The name of this View.  # noqa: E501
         :rtype: str
@@ -161,7 +161,7 @@ class View(object):
     def name(self, name):
         """Sets the name of this View.
 
-        Gets or sets the name of a View object.  # noqa: E501
+        Gets or sets the name of a view object.  # noqa: E501
 
         :param name: The name of this View.  # noqa: E501
         :type: str
