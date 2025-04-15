@@ -59,14 +59,30 @@ class TestTaskDocumentFormat(BaseTestContext):
         filename = 'Home_move_plan.mpp'
         self.upload_file(filename)
 
-        # SaveOptions parameters is a json-serialized representation of
-        # Aspose.Tasks's SaveOptions class or its format-specific inheritors (Like CsvOptions, etc):
-        # See Aspose.Tasks reference: https://apireference.aspose.com/net/tasks/aspose.tasks.saving/saveoptions
-        save_options_serialized = '{"TextDelimiter":"Comma","IncludeHeaders":false,"NonExistingTestProperty":false,"View":{"Columns":[{"Type":"GanttChartColumn","Name":"TestColumn1","Property":"Name","Width":120},{"Type":"GanttChartColumn","Name":"TestColumn2","Property":"Duration","Width":120}]}}'
-        post_request = PostTaskDocumentWithFormatRequest(filename, ProjectFileFormat.CSV, save_options_serialized)
-        post_result = self.tasks_api.post_task_document_with_format(post_request)
-        self.assertIsNotNone(post_result)
-        with open(post_result, encoding='utf-8', errors='ignore') as f:
-            self.assertTrue(f.readable())
-            self.assertIn('Five to Eight Weeks Before Moving,16 days', f.readline())
-            self.assertIn('Planning the Move,3 days', f.readline())
+        test_cases = [
+            {
+                "is_extended_fields": False,
+                "save_options": '{"TextDelimiter":"Comma","IncludeHeaders":false,"NonExistingTestProperty":false,"View":{"Columns":[{"Type":"GanttChartColumn","Name":"TestColumn1","Property":"Name","Width":120},{"Type":"GanttChartColumn","Name":"TestColumn2","Property":"Duration","Width":120}]}}',
+                "first_expected_line": "Five to Eight Weeks Before Moving,16 days",
+                "second_expected_line": "Planning the Move,3 days"
+            },
+            {
+                "is_extended_fields": True,
+                "save_options": '{"View":{"Columns":[{"Type":"GanttChartColumn","Name":"ID","Property":"Id","Width":120},{"Type":"GanttChartColumn","Name":"Active","Property":"IsActive","Width":120},{"Type":"GanttChartColumn","Name":"Name","Property":"Name","Width":120},{"Type":"GanttChartColumn","Name":"Duration","Property":"Duration","Width":120},{"Type":"GanttChartColumn","Name":"Start","Property":"Start","Width":120},{"Type":"GanttChartColumn","Name":"Finish","Property":"Finish","Width":120},{"Type":"GanttChartColumn","Name":"Predecessors","Property":"Predecessors","Width":120},{"Type":"GanttChartColumn","Name":"Successors","Property":"Successors","Width":120}]}}',
+                "first_expected_line": "ID;Active;Name;Duration;Start;Finish;Predecessors;Successors",
+                "second_expected_line": "1;True;Five to Eight Weeks Before Moving;16 days;1/1/2004 8:00:00 AM;1/22/2004 5:00:00 PM;;"
+            }
+        ]
+        for case in test_cases:
+            with self.subTest(is_extended_fields=case["is_extended_fields"]):
+                # SaveOptions parameters is a json-serialized representation of
+                # Aspose.Tasks's SaveOptions class or its format-specific inheritors (Like CsvOptions, etc):
+                # See Aspose.Tasks reference: https://apireference.aspose.com/net/tasks/aspose.tasks.saving/saveoptions
+                save_options_serialized = case["save_options"]
+                post_request = PostTaskDocumentWithFormatRequest(filename, ProjectFileFormat.CSV, save_options_serialized)
+                post_result = self.tasks_api.post_task_document_with_format(post_request)
+                self.assertIsNotNone(post_result)
+                with open(post_result, encoding='utf-8', errors='ignore') as f:
+                    self.assertTrue(f.readable())
+                    self.assertIn(case["first_expected_line"], f.readline())
+                    self.assertIn(case["second_expected_line"], f.readline())

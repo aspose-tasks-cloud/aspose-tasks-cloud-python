@@ -42,25 +42,30 @@ class ProjectRecalculationResult(object):
     """
     swagger_types = {
         'validation_state': 'ProjectValidationState',
-        'validation_error_message': 'str'
+        'validation_error_message': 'str',
+        'failed_task_uid': 'int'
     }
 
     attribute_map = {
         'validation_state': 'validationState',
-        'validation_error_message': 'validationErrorMessage'
+        'validation_error_message': 'validationErrorMessage',
+        'failed_task_uid': 'failedTaskUid'
     }
 
-    def __init__(self, validation_state=None, validation_error_message=None):  # noqa: E501
+    def __init__(self, validation_state=None, validation_error_message=None, failed_task_uid=None):  # noqa: E501
         """ProjectRecalculationResult - a model defined in Swagger"""  # noqa: E501
 
         self._validation_state = None
         self._validation_error_message = None
+        self._failed_task_uid = None
         self.discriminator = None
 
         if validation_state is not None:
             self.validation_state = validation_state
         if validation_error_message is not None:
             self.validation_error_message = validation_error_message
+        if failed_task_uid is not None:
+            self.failed_task_uid = failed_task_uid
 
     @property
     def validation_state(self):
@@ -102,6 +107,27 @@ class ProjectRecalculationResult(object):
         :type: str
         """
         self._validation_error_message = validation_error_message
+    @property
+    def failed_task_uid(self):
+        """Gets the failed_task_uid of this ProjectRecalculationResult.  # noqa: E501
+
+        Gets the task uid which caused the validation error.  # noqa: E501
+
+        :return: The failed_task_uid of this ProjectRecalculationResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._failed_task_uid
+
+    @failed_task_uid.setter
+    def failed_task_uid(self, failed_task_uid):
+        """Sets the failed_task_uid of this ProjectRecalculationResult.
+
+        Gets the task uid which caused the validation error.  # noqa: E501
+
+        :param failed_task_uid: The failed_task_uid of this ProjectRecalculationResult.  # noqa: E501
+        :type: int
+        """
+        self._failed_task_uid = failed_task_uid
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

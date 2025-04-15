@@ -71,6 +71,7 @@ class TestTaskLinks(BaseTestContext):
         self.assertEqual(TaskLinkType.STARTTOFINISH, get_result.task_links[0].link_type)
         self.assertEqual(9600, get_result.task_links[0].lag)
         self.assertEqual(TimeUnitType.DAY, get_result.task_links[0].lag_format)
+        self.assertEqual('16:00:00', get_result.task_links[0].link_lag_time_span)
 
     def test_delete_task_link(self):
         filename = 'NewProductDev.mpp'

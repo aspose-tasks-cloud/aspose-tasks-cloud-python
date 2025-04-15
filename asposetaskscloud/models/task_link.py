@@ -47,7 +47,8 @@ class TaskLink(object):
         'successor_uid': 'int',
         'link_type': 'TaskLinkType',
         'lag': 'int',
-        'lag_format': 'TimeUnitType'
+        'lag_format': 'TimeUnitType',
+        'link_lag_time_span': 'str'
     }
 
     attribute_map = {
@@ -57,10 +58,11 @@ class TaskLink(object):
         'successor_uid': 'successorUid',
         'link_type': 'linkType',
         'lag': 'lag',
-        'lag_format': 'lagFormat'
+        'lag_format': 'lagFormat',
+        'link_lag_time_span': 'linkLagTimeSpan'
     }
 
-    def __init__(self, link=None, index=None, predecessor_uid=None, successor_uid=None, link_type=None, lag=None, lag_format=None):  # noqa: E501
+    def __init__(self, link=None, index=None, predecessor_uid=None, successor_uid=None, link_type=None, lag=None, lag_format=None, link_lag_time_span=None):  # noqa: E501
         """TaskLink - a model defined in Swagger"""  # noqa: E501
 
         self._link = None
@@ -70,6 +72,7 @@ class TaskLink(object):
         self._link_type = None
         self._lag = None
         self._lag_format = None
+        self._link_lag_time_span = None
         self.discriminator = None
 
         if link is not None:
@@ -86,6 +89,8 @@ class TaskLink(object):
             self.lag = lag
         if lag_format is not None:
             self.lag_format = lag_format
+        if link_lag_time_span is not None:
+            self.link_lag_time_span = link_lag_time_span
 
     @property
     def link(self):
@@ -232,6 +237,29 @@ class TaskLink(object):
         if lag_format is None:
             raise ValueError("Invalid value for `lag_format`, must not be `None`")  # noqa: E501
         self._lag_format = lag_format
+    @property
+    def link_lag_time_span(self):
+        """Gets the link_lag_time_span of this TaskLink.  # noqa: E501
+
+        Gets or sets lag duration, depending on LagFormat.  # noqa: E501
+
+        :return: The link_lag_time_span of this TaskLink.  # noqa: E501
+        :rtype: str
+        """
+        return self._link_lag_time_span
+
+    @link_lag_time_span.setter
+    def link_lag_time_span(self, link_lag_time_span):
+        """Sets the link_lag_time_span of this TaskLink.
+
+        Gets or sets lag duration, depending on LagFormat.  # noqa: E501
+
+        :param link_lag_time_span: The link_lag_time_span of this TaskLink.  # noqa: E501
+        :type: str
+        """
+        if link_lag_time_span is None:
+            raise ValueError("Invalid value for `link_lag_time_span`, must not be `None`")  # noqa: E501
+        self._link_lag_time_span = link_lag_time_span
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **constraint_type** | [**ConstraintType**](ConstraintType.md) | Provides choices for the type of constraint that can be applied for scheduling a task. | 
 **contact** | **str** | The contact person for a task. | [optional] 
 **cost** | **float** | The projected or scheduled cost of a task. | 
+**outline_number** | **str** | Gets or sets a value of OutlineNumber. | [optional] 
 **cv** | **float** | The difference between the baseline cost and total cost for a task. | 
 **deadline** | **datetime** | The deadline for a task to be completed. | 
 **duration_variance** | **str** | Contains the difference between the total duration of a task and the baseline duration of a task. | 
@@ -118,6 +119,7 @@ Name | Type | Description | Notes
 **outline_codes** | [**list[OutlineCode]**](OutlineCode.md) | Task outline codes. | [optional] 
 **warning** | **bool** | Represents the flag which indicates that task has schedule discrepancies. | [default to False]
 **activity_id** | **str** | Represents activity id field - a task&#39;s unique identifier used by Primavera (only applicable to Primavera projects). | [optional] 
+**external_uid** | **int** | Contains the external task&#39;s Unique identifier when the task is external. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

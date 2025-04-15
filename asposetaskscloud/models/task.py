@@ -67,6 +67,7 @@ class Task(object):
         'constraint_type': 'ConstraintType',
         'contact': 'str',
         'cost': 'float',
+        'outline_number': 'str',
         'cv': 'float',
         'deadline': 'datetime',
         'duration_variance': 'str',
@@ -155,7 +156,8 @@ class Task(object):
         'extended_attributes': 'list[ExtendedAttribute]',
         'outline_codes': 'list[OutlineCode]',
         'warning': 'bool',
-        'activity_id': 'str'
+        'activity_id': 'str',
+        'external_uid': 'int'
     }
 
     attribute_map = {
@@ -185,6 +187,7 @@ class Task(object):
         'constraint_type': 'constraintType',
         'contact': 'contact',
         'cost': 'cost',
+        'outline_number': 'outlineNumber',
         'cv': 'cv',
         'deadline': 'deadline',
         'duration_variance': 'durationVariance',
@@ -273,10 +276,11 @@ class Task(object):
         'extended_attributes': 'extendedAttributes',
         'outline_codes': 'outlineCodes',
         'warning': 'warning',
-        'activity_id': 'activityId'
+        'activity_id': 'activityId',
+        'external_uid': 'externalUid'
     }
 
-    def __init__(self, uid=None, id=None, name=None, duration_text=None, duration=None, start=None, finish=None, start_text=None, finish_text=None, percent_complete=None, percent_work_complete=None, is_active=True, actual_cost=None, actual_duration=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_work_protected=None, actual_overtime_work_protected=None, actual_start=None, budget_work=None, budget_cost=None, constraint_date=None, constraint_type=None, contact=None, cost=None, cv=None, deadline=None, duration_variance=None, early_finish=None, early_start=None, is_effort_driven=None, is_external_task=None, external_task_project=None, external_id=None, finish_slack=None, finish_variance=None, fixed_cost=None, fixed_cost_accrual=None, free_slack=None, guid=None, has_overallocated_resource=None, hide_bar=None, ignore_resource_calendar=None, late_finish=None, late_start=None, is_level_assignments=True, can_leveling_split=True, leveling_delay=None, is_marked=None, is_milestone=None, is_critical=None, is_subproject=None, is_subproject_read_only=None, subproject_name=None, is_summary=None, subtasks_uids=None, outline_level=None, is_over_allocated=None, is_estimated=None, overtime_cost=None, overtime_work=None, physical_percent_complete=None, pre_leveled_finish=None, pre_leveled_start=None, is_recurring=None, regular_work=None, remaining_cost=None, remaining_duration=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, resume=None, is_resume_valid=None, stop=None, is_rollup=None, start_slack=None, start_variance=None, calendar_uid=-1, is_manual=None, manual_start=None, manual_finish=None, manual_duration=None, total_slack=None, type=None, wbs=None, priority=None, work=None, work_variance=None, notes_text=None, notes_rtf=None, acwp=None, bcws=None, bcwp=None, leveling_delay_format=None, predecessors=None, successors=None, ignore_warnings=False, is_expanded=None, display_on_timeline=None, display_as_summary=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, earned_value_method=None, is_published=True, status_manager=None, commitment_start=None, commitment_finish=None, commitment_type=None, baselines=None, extended_attributes=None, outline_codes=None, warning=False, activity_id=None):  # noqa: E501
+    def __init__(self, uid=None, id=None, name=None, duration_text=None, duration=None, start=None, finish=None, start_text=None, finish_text=None, percent_complete=None, percent_work_complete=None, is_active=True, actual_cost=None, actual_duration=None, actual_finish=None, actual_overtime_cost=None, actual_overtime_work=None, actual_work_protected=None, actual_overtime_work_protected=None, actual_start=None, budget_work=None, budget_cost=None, constraint_date=None, constraint_type=None, contact=None, cost=None, outline_number=None, cv=None, deadline=None, duration_variance=None, early_finish=None, early_start=None, is_effort_driven=None, is_external_task=None, external_task_project=None, external_id=None, finish_slack=None, finish_variance=None, fixed_cost=None, fixed_cost_accrual=None, free_slack=None, guid=None, has_overallocated_resource=None, hide_bar=None, ignore_resource_calendar=None, late_finish=None, late_start=None, is_level_assignments=True, can_leveling_split=True, leveling_delay=None, is_marked=None, is_milestone=None, is_critical=None, is_subproject=None, is_subproject_read_only=None, subproject_name=None, is_summary=None, subtasks_uids=None, outline_level=None, is_over_allocated=None, is_estimated=None, overtime_cost=None, overtime_work=None, physical_percent_complete=None, pre_leveled_finish=None, pre_leveled_start=None, is_recurring=None, regular_work=None, remaining_cost=None, remaining_duration=None, remaining_overtime_cost=None, remaining_overtime_work=None, remaining_work=None, resume=None, is_resume_valid=None, stop=None, is_rollup=None, start_slack=None, start_variance=None, calendar_uid=-1, is_manual=None, manual_start=None, manual_finish=None, manual_duration=None, total_slack=None, type=None, wbs=None, priority=None, work=None, work_variance=None, notes_text=None, notes_rtf=None, acwp=None, bcws=None, bcwp=None, leveling_delay_format=None, predecessors=None, successors=None, ignore_warnings=False, is_expanded=None, display_on_timeline=None, display_as_summary=None, hyperlink=None, hyperlink_address=None, hyperlink_sub_address=None, earned_value_method=None, is_published=True, status_manager=None, commitment_start=None, commitment_finish=None, commitment_type=None, baselines=None, extended_attributes=None, outline_codes=None, warning=False, activity_id=None, external_uid=None):  # noqa: E501
         """Task - a model defined in Swagger"""  # noqa: E501
 
         self._uid = None
@@ -305,6 +309,7 @@ class Task(object):
         self._constraint_type = None
         self._contact = None
         self._cost = None
+        self._outline_number = None
         self._cv = None
         self._deadline = None
         self._duration_variance = None
@@ -394,6 +399,7 @@ class Task(object):
         self._outline_codes = None
         self._warning = None
         self._activity_id = None
+        self._external_uid = None
         self.discriminator = None
 
         if uid is not None:
@@ -448,6 +454,8 @@ class Task(object):
             self.contact = contact
         if cost is not None:
             self.cost = cost
+        if outline_number is not None:
+            self.outline_number = outline_number
         if cv is not None:
             self.cv = cv
         if deadline is not None:
@@ -626,6 +634,8 @@ class Task(object):
             self.warning = warning
         if activity_id is not None:
             self.activity_id = activity_id
+        if external_uid is not None:
+            self.external_uid = external_uid
 
     @property
     def uid(self):
@@ -1215,6 +1225,27 @@ class Task(object):
         if cost is None:
             raise ValueError("Invalid value for `cost`, must not be `None`")  # noqa: E501
         self._cost = cost
+    @property
+    def outline_number(self):
+        """Gets the outline_number of this Task.  # noqa: E501
+
+        Gets or sets a value of OutlineNumber.  # noqa: E501
+
+        :return: The outline_number of this Task.  # noqa: E501
+        :rtype: str
+        """
+        return self._outline_number
+
+    @outline_number.setter
+    def outline_number(self, outline_number):
+        """Sets the outline_number of this Task.
+
+        Gets or sets a value of OutlineNumber.  # noqa: E501
+
+        :param outline_number: The outline_number of this Task.  # noqa: E501
+        :type: str
+        """
+        self._outline_number = outline_number
     @property
     def cv(self):
         """Gets the cv of this Task.  # noqa: E501
@@ -3208,6 +3239,29 @@ class Task(object):
         :type: str
         """
         self._activity_id = activity_id
+    @property
+    def external_uid(self):
+        """Gets the external_uid of this Task.  # noqa: E501
+
+        Contains the external task's Unique identifier when the task is external.  # noqa: E501
+
+        :return: The external_uid of this Task.  # noqa: E501
+        :rtype: int
+        """
+        return self._external_uid
+
+    @external_uid.setter
+    def external_uid(self, external_uid):
+        """Sets the external_uid of this Task.
+
+        Contains the external task's Unique identifier when the task is external.  # noqa: E501
+
+        :param external_uid: The external_uid of this Task.  # noqa: E501
+        :type: int
+        """
+        if external_uid is None:
+            raise ValueError("Invalid value for `external_uid`, must not be `None`")  # noqa: E501
+        self._external_uid = external_uid
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

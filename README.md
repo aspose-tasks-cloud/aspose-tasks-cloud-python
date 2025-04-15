@@ -34,6 +34,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/t
 XER, XLSX, HTML, XML, TXT, TIF, SVG, PNG, JPEG
 
 
+## Enhancements in Version 25.4
+- Enhanced Task model.
+- Enhanced TaskLink model.
+- Enhanced ProjectRecalculationResult model.
+
 ## Enhancements in Version 24.11
 - Enhanced reading data from Primavera-specific task's properties.
 
