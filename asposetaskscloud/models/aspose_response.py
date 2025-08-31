@@ -72,6 +72,7 @@ class AsposeResponse(object):
         'ProjectIdsResponse': 'ProjectIdsResponse',
         'AssignmentItemsResponse': 'AssignmentItemsResponse',
         'CalendarExceptionsResponse': 'CalendarExceptionsResponse',
+        'LevelingResponse': 'LevelingResponse',
         'ProjectListResponse': 'ProjectListResponse',
         'CalendarWorkWeeksResponse': 'CalendarWorkWeeksResponse',
         'TaskItemsResponse': 'TaskItemsResponse',

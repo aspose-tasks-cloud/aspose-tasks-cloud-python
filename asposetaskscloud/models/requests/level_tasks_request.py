@@ -1,6 +1,6 @@
-#
-# --------------------------------------------------------------------------------------------------------------------
-# <copyright company="Aspose" file="test_vba.py">
+# coding: utf-8
+# --------------------------------------------------------------------------------
+# <copyright company="Aspose" file="level_tasks_request.py">
 #   Copyright (c) 2020 Aspose.Tasks Cloud
 # </copyright>
 # <summary>
@@ -10,10 +10,10 @@
 #  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 #  copies of the Software, and to permit persons to whom the Software is
 #  furnished to do so, subject to the following conditions:
-#
+# 
 #  The above copyright notice and this permission notice shall be included in all
 #  copies or substantial portions of the Software.
-#
+# 
 #  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 #  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 #  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,22 +22,27 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 # </summary>
-# --------------------------------------------------------------------------------------------------------------------
-#
-from asposetaskscloud import GetVbaProjectRequest, VbaProjectResponse
-from test.base_test_context import BaseTestContext
+# coding: utf-8
+# --------------------------------------------------------------------------------
 
 
-class TestVba(BaseTestContext):
+class LevelTasksRequest(object):
+    """
+    Request model for level_tasks operation.
+    Initializes a new instance.
+    :param name The name of the file
+    :param options Options which specifies how to level resources.              If not specified, default leveling options will be used. 
+    :param file_name The name of the project document to save changes to.              If this parameter is omitted then the changes will be saved to the source project document.
+    :param folder The folder storage
+    :param storage The document storage.
+    """
 
-    def test_get_vba_project(self):
-        filename = 'VbaProject3.mpp'
-        self.upload_file(filename)
-        get_request = GetVbaProjectRequest(filename)
-        get_result = self.tasks_api.get_vba_project(get_request)
-        self.assertIsNotNone(get_result)
-        self.assertIsInstance(get_result, VbaProjectResponse)
-        self.assertIsNotNone(get_result.vba_project.modules)
-        self.assertEqual(8, len(get_result.vba_project.modules))
-        self.assertEqual('Module1', get_result.vba_project.modules[1].name)
-        self.assertTrue(get_result.vba_project.modules[1].source_code.startswith('Type MEMORYSTATUS'))
+    def __init__(self, name, options=None, file_name=None, folder=None, storage=None):
+        self.name = name
+        self.options = options
+        self.file_name = file_name
+        self.folder = folder
+        self.storage = storage
+
+
+

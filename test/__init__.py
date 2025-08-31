@@ -15,6 +15,7 @@ from test.test_read_project import TestReadProject
 from test.test_recalculation import TestRecalculation
 from test.test_recurring_info import TestRecurringInfo
 from test.test_report import TestReport
+from test.test_resource_level import TestResourceLevel
 from test.test_resources import TestResources
 from test.test_storage import TestStorage
 from test.test_task_document_format import TestTaskDocumentFormat

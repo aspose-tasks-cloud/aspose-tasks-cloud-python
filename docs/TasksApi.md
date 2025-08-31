@@ -61,6 +61,8 @@ Method | HTTP request | Description
 [**put_recalculate_project_uncomplete_work_to_start_after**](TasksApi.md#put_recalculate_project_uncomplete_work_to_start_after) | **PUT** /tasks/{name}/recalculate/uncompleteWorkToStartAfter | Recalculate project uncomplete work
 [**put_recalculate_project_work_as_complete**](TasksApi.md#put_recalculate_project_work_as_complete) | **PUT** /tasks/{name}/recalculate/projectWorkAsComplete | Recalculate project work as complete 
 [**get_report_pdf**](TasksApi.md#get_report_pdf) | **GET** /tasks/{name}/report | Returns created report in PDF format.
+[**clear_leveling**](TasksApi.md#clear_leveling) | **DELETE** /tasks/{name}/resourceLevel | Clears leveling delays that was previously added to the project during resource leveling.  If request body is empty, all leveling delays will be cleared.
+[**level_tasks**](TasksApi.md#level_tasks) | **PUT** /tasks/{name}/resourceLevel | Levels tasks for project’s resources. If request body is empty,  all project&#39;s resources with default leveling options will be leveled.
 [**delete_resource**](TasksApi.md#delete_resource) | **DELETE** /tasks/{name}/resources/{resourceUid} | Deletes a project resource with all references to it
 [**get_resource**](TasksApi.md#get_resource) | **GET** /tasks/{name}/resources/{resourceUid} | Get project resource.
 [**get_resource_assignments**](TasksApi.md#get_resource_assignments) | **GET** /tasks/{name}/resources/{resourceUid}/assignments | Get resource&#39;s assignments.
@@ -3341,6 +3343,122 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**file**](file.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clear_leveling**
+> AsposeResponse clear_leveling(name, task_uids=task_uids, file_name=file_name, folder=folder, storage=storage)
+
+Clears leveling delays that was previously added to the project during resource leveling.  If request body is empty, all leveling delays will be cleared.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+task_uids = [asposetaskscloud.list[int]()] # list[int] | The array containing task uids              for which leveling delay should be cleared.              If not specified, all leveling delays will be cleared.  (optional)
+file_name = 'file_name_example' # str | The name of the project document to save changes to.              If this parameter is omitted then the changes will be saved to the source project document. (optional)
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Clears leveling delays that was previously added to the project during resource leveling.  If request body is empty, all leveling delays will be cleared.
+    api_response = api_instance.clear_leveling(name, task_uids=task_uids, file_name=file_name, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->clear_leveling: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **task_uids** | **list[int]**| The array containing task uids              for which leveling delay should be cleared.              If not specified, all leveling delays will be cleared.  | [optional] 
+ **file_name** | **str**| The name of the project document to save changes to.              If this parameter is omitted then the changes will be saved to the source project document. | [optional] 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **level_tasks**
+> LevelingResponse level_tasks(name, options=options, file_name=file_name, folder=folder, storage=storage)
+
+Levels tasks for project’s resources. If request body is empty,  all project's resources with default leveling options will be leveled.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+options = asposetaskscloud.LevelingOptions() # LevelingOptions | Options which specifies how to level resources.              If not specified, default leveling options will be used.  (optional)
+file_name = 'file_name_example' # str | The name of the project document to save changes to.              If this parameter is omitted then the changes will be saved to the source project document. (optional)
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Levels tasks for project’s resources. If request body is empty,  all project's resources with default leveling options will be leveled.
+    api_response = api_instance.level_tasks(name, options=options, file_name=file_name, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->level_tasks: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **options** | [**LevelingOptions**](LevelingOptions.md)| Options which specifies how to level resources.              If not specified, default leveling options will be used.  | [optional] 
+ **file_name** | **str**| The name of the project document to save changes to.              If this parameter is omitted then the changes will be saved to the source project document. | [optional] 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**LevelingResponse**](LevelingResponse.md)
 
 ### Authorization
 

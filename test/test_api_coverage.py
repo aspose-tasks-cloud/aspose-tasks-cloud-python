@@ -37,9 +37,9 @@ class TestApiCoverage(BaseTestContext):
                test.TestDocumentProperties, test.TestExtendedAttributes, test.TestFile, test.TestFolder,
                test.TestGetPageCount, test.TestImportProject, test.TestOutlineCodes, test.TestProjectOnline,
                test.TestReadProject, test.TestRecalculation, test.TestRecurringInfo, test.TestReport,
-               test.TestResources, test.TestStorage, test.TestTaskDocumentFormat, test.TestTaskLinks, test.TestTasks,
-               test.TestTasksExtendedAttributes, test.TestTasksPrimaveraProperties, test.TestTimephasedData,
-               test.TestVba, test.TestViews, test.TestWbs]
+               test.TestResourceLevel, test.TestResources, test.TestStorage, test.TestTaskDocumentFormat,
+               test.TestTaskLinks, test.TestTasks, test.TestTasksExtendedAttributes, test.TestTasksPrimaveraProperties,
+               test.TestTimephasedData, test.TestVba, test.TestViews, test.TestWbs]
         test_methods = []
         uncovered_methods = ''
         for ar in arr:

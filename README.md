@@ -34,6 +34,10 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/t
 XER, XLSX, HTML, XML, TXT, TIF, SVG, PNG, JPEG
 
 
+## Enhancements in Version 25.8
+- Added new ability to level tasks for the resources.
+- Provided the ability to clear leveling delay that was previously added to the tasks during resource leveling.
+
 ## Enhancements in Version 25.4
 - Enhanced Task model.
 - Enhanced TaskLink model.
