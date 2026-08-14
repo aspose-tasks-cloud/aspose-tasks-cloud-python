@@ -36,6 +36,11 @@ from asposetaskscloud.models.field import Field
 from asposetaskscloud.models.file_versions import FileVersions
 from asposetaskscloud.models.files_list import FilesList
 from asposetaskscloud.models.files_upload_result import FilesUploadResult
+from asposetaskscloud.models.font_info import FontInfo
+from asposetaskscloud.models.group import Group
+from asposetaskscloud.models.group_criterion import GroupCriterion
+from asposetaskscloud.models.group_item import GroupItem
+from asposetaskscloud.models.group_on import GroupOn
 from asposetaskscloud.models.imported_project_type import ImportedProjectType
 from asposetaskscloud.models.item_type import ItemType
 from asposetaskscloud.models.leveling_options import LevelingOptions
@@ -76,6 +81,7 @@ from asposetaskscloud.models.recurring_info import RecurringInfo
 from asposetaskscloud.models.report_type import ReportType
 from asposetaskscloud.models.resource import Resource
 from asposetaskscloud.models.resource_assignment import ResourceAssignment
+from asposetaskscloud.models.resource_group_bucket import ResourceGroupBucket
 from asposetaskscloud.models.resource_item import ResourceItem
 from asposetaskscloud.models.resource_type import ResourceType
 from asposetaskscloud.models.rollup_type import RollupType
@@ -85,6 +91,7 @@ from asposetaskscloud.models.summary_rows_calculation_type import SummaryRowsCal
 from asposetaskscloud.models.table_text_style import TableTextStyle
 from asposetaskscloud.models.task import Task
 from asposetaskscloud.models.task_creation_request import TaskCreationRequest
+from asposetaskscloud.models.task_group_bucket import TaskGroupBucket
 from asposetaskscloud.models.task_item import TaskItem
 from asposetaskscloud.models.task_link import TaskLink
 from asposetaskscloud.models.task_link_type import TaskLinkType
@@ -131,6 +138,11 @@ from asposetaskscloud.models.extended_attribute_items import ExtendedAttributeIt
 from asposetaskscloud.models.extended_attribute_items_response import ExtendedAttributeItemsResponse
 from asposetaskscloud.models.extended_attribute_response import ExtendedAttributeResponse
 from asposetaskscloud.models.file_version import FileVersion
+from asposetaskscloud.models.group_items import GroupItems
+from asposetaskscloud.models.group_items_response import GroupItemsResponse
+from asposetaskscloud.models.group_response import GroupResponse
+from asposetaskscloud.models.grouped_resources_response import GroupedResourcesResponse
+from asposetaskscloud.models.grouped_tasks_response import GroupedTasksResponse
 from asposetaskscloud.models.leveling_response import LevelingResponse
 from asposetaskscloud.models.outline_code_items import OutlineCodeItems
 from asposetaskscloud.models.outline_code_items_response import OutlineCodeItemsResponse

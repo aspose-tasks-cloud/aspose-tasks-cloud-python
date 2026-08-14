@@ -56,6 +56,7 @@ class LinkElement(object):
         'AssignmentItems': 'AssignmentItems',
         'CalendarItems': 'CalendarItems',
         'DocumentProperty': 'DocumentProperty',
+        'GroupItems': 'GroupItems',
         'OutlineCodeItems': 'OutlineCodeItems',
         'ExtendedAttributeItems': 'ExtendedAttributeItems',
         'ResourceItems': 'ResourceItems'

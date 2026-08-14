@@ -12,6 +12,7 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/t
 - Import projects from Primavera DB formats or from databases with the specified connection string.
 - Get UIDs of all projects contained in the file & fetch the required assignment with the project based on UID.
 - Manage project tasks, resource data, calendars & Work Breakdown Structure (WBS).
+- Group project resources and tasks according to specified group definitions.
 - Perform risk analysis using Monte Carlo simulation and create a report.
 - Create and set project document properties & fetch all or specific existing properties.
 - Get a project's extended attributes, time-scaled data, or recurring info of a specific task.
@@ -33,6 +34,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/t
 ## Save Project Data As
 XER, XLSX, HTML, XML, TXT, TIF, SVG, PNG, JPEG
 
+
+## Enhancements in Version 26.7
+- Added ability to group project resources and tasks according to specified group definitions.
+- Added new model classes for group management: `Group`, `GroupItem`, `GroupCriterion`, `GroupOn`, `GroupResponse`, `GroupItems`, `GroupItemsResponse`, `GroupedResourcesResponse`, `GroupedTasksResponse`, `ResourceGroupBucket`, `TaskGroupBucket`, `FontInfo`.
+- Added API methods to get resource groups, task groups, grouped resources, and grouped tasks.
 
 ## Enhancements in Version 26.6
 - Added new property to TaskItem.

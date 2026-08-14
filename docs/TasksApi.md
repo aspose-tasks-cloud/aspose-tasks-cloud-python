@@ -50,6 +50,12 @@ Method | HTTP request | Description
 [**get_extended_attribute_by_index**](TasksApi.md#get_extended_attribute_by_index) | **GET** /tasks/{name}/extendedAttributes/{index} | Get a project extended attribute definition with the specified index.
 [**get_extended_attributes**](TasksApi.md#get_extended_attributes) | **GET** /tasks/{name}/extendedAttributes | Get a project&#39;s extended attributes.
 [**put_extended_attribute**](TasksApi.md#put_extended_attribute) | **PUT** /tasks/{name}/extendedAttributes | Add a new extended attribute definition to a project or  updates existing attribute definition (with the same FieldId).
+[**get_grouped_resources**](TasksApi.md#get_grouped_resources) | **GET** /tasks/{name}/resourceGroups/{groupUid}/resources | Returns the project resources grouped according to the specified resource group definition.
+[**get_grouped_tasks**](TasksApi.md#get_grouped_tasks) | **GET** /tasks/{name}/taskGroups/{groupUid}/tasks | Returns the project tasks grouped according to the specified task group definition.
+[**get_resource_group**](TasksApi.md#get_resource_group) | **GET** /tasks/{name}/resourceGroups/{groupUid} | Read a project&#39;s resource group definition with the specified Uid.
+[**get_resource_groups**](TasksApi.md#get_resource_groups) | **GET** /tasks/{name}/resourceGroups | Read the resource group definitions of a project.
+[**get_task_group**](TasksApi.md#get_task_group) | **GET** /tasks/{name}/taskGroups/{groupUid} | Read a project&#39;s task group definition with the specified Uid.
+[**get_task_groups**](TasksApi.md#get_task_groups) | **GET** /tasks/{name}/taskGroups | Read the task group definitions of a project.
 [**delete_outline_code_by_index**](TasksApi.md#delete_outline_code_by_index) | **DELETE** /tasks/{name}/outlineCodes/{index} | Deletes a project outline code
 [**get_outline_code_by_index**](TasksApi.md#get_outline_code_by_index) | **GET** /tasks/{name}/outlineCodes/{index} | Get outline code by index.
 [**get_outline_codes**](TasksApi.md#get_outline_codes) | **GET** /tasks/{name}/outlineCodes | Get a project&#39;s outline codes.
@@ -2703,6 +2709,338 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExtendedAttributeItemResponse**](ExtendedAttributeItemResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_grouped_resources**
+> GroupedResourcesResponse get_grouped_resources(name, group_uid, storage=storage, folder=folder)
+
+Returns the project resources grouped according to the specified resource group definition.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+group_uid = 56 # int | Group's Uid
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Returns the project resources grouped according to the specified resource group definition.
+    api_response = api_instance.get_grouped_resources(name, group_uid, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_grouped_resources: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **group_uid** | **int**| Group&#39;s Uid | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**GroupedResourcesResponse**](GroupedResourcesResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_grouped_tasks**
+> GroupedTasksResponse get_grouped_tasks(name, group_uid, storage=storage, folder=folder)
+
+Returns the project tasks grouped according to the specified task group definition.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+group_uid = 56 # int | Group's Uid
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Returns the project tasks grouped according to the specified task group definition.
+    api_response = api_instance.get_grouped_tasks(name, group_uid, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_grouped_tasks: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **group_uid** | **int**| Group&#39;s Uid | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**GroupedTasksResponse**](GroupedTasksResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_group**
+> GroupResponse get_resource_group(name, group_uid, storage=storage, folder=folder)
+
+Read a project's resource group definition with the specified Uid.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+group_uid = 56 # int | Group's Uid
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read a project's resource group definition with the specified Uid.
+    api_response = api_instance.get_resource_group(name, group_uid, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_resource_group: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **group_uid** | **int**| Group&#39;s Uid | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**GroupResponse**](GroupResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_groups**
+> GroupItemsResponse get_resource_groups(name, storage=storage, folder=folder)
+
+Read the resource group definitions of a project.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read the resource group definitions of a project.
+    api_response = api_instance.get_resource_groups(name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_resource_groups: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**GroupItemsResponse**](GroupItemsResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_task_group**
+> GroupResponse get_task_group(name, group_uid, storage=storage, folder=folder)
+
+Read a project's task group definition with the specified Uid.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+group_uid = 56 # int | Group's Uid
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read a project's task group definition with the specified Uid.
+    api_response = api_instance.get_task_group(name, group_uid, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_task_group: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **group_uid** | **int**| Group&#39;s Uid | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**GroupResponse**](GroupResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_task_groups**
+> GroupItemsResponse get_task_groups(name, storage=storage, folder=folder)
+
+Read the task group definitions of a project.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file.
+storage = 'storage_example' # str | The document storage. (optional)
+folder = 'folder_example' # str | The document folder. (optional)
+
+try:
+    # Read the task group definitions of a project.
+    api_response = api_instance.get_task_groups(name, storage=storage, folder=folder)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_task_groups: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file. | 
+ **storage** | **str**| The document storage. | [optional] 
+ **folder** | **str**| The document folder. | [optional] 
+
+### Return type
+
+[**GroupItemsResponse**](GroupItemsResponse.md)
 
 ### Authorization
 

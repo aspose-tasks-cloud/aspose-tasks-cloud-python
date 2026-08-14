@@ -67,12 +67,15 @@ class AsposeResponse(object):
         'ResourceResponse': 'ResourceResponse',
         'OutlineCodeResponse': 'OutlineCodeResponse',
         'TaskLinksResponse': 'TaskLinksResponse',
+        'GroupedResourcesResponse': 'GroupedResourcesResponse',
         'AssignmentItemResponse': 'AssignmentItemResponse',
         'WBSDefinitionResponse': 'WBSDefinitionResponse',
+        'GroupItemsResponse': 'GroupItemsResponse',
         'ProjectIdsResponse': 'ProjectIdsResponse',
         'AssignmentItemsResponse': 'AssignmentItemsResponse',
         'CalendarExceptionsResponse': 'CalendarExceptionsResponse',
         'LevelingResponse': 'LevelingResponse',
+        'GroupResponse': 'GroupResponse',
         'ProjectListResponse': 'ProjectListResponse',
         'CalendarWorkWeeksResponse': 'CalendarWorkWeeksResponse',
         'TaskItemsResponse': 'TaskItemsResponse',
@@ -87,6 +90,7 @@ class AsposeResponse(object):
         'CalendarItemResponse': 'CalendarItemResponse',
         'ResourceItemResponse': 'ResourceItemResponse',
         'DocumentPropertiesResponse': 'DocumentPropertiesResponse',
+        'GroupedTasksResponse': 'GroupedTasksResponse',
         'TaskItemResponse': 'TaskItemResponse'
     }
 
