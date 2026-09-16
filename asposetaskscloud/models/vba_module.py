@@ -43,21 +43,24 @@ class VbaModule(object):
     swagger_types = {
         'attributes': 'list[VbaModuleAttribute]',
         'name': 'str',
-        'source_code': 'str'
+        'source_code': 'str',
+        'type': 'VbaModuleType'
     }
 
     attribute_map = {
         'attributes': 'attributes',
         'name': 'name',
-        'source_code': 'sourceCode'
+        'source_code': 'sourceCode',
+        'type': 'type'
     }
 
-    def __init__(self, attributes=None, name=None, source_code=None):  # noqa: E501
+    def __init__(self, attributes=None, name=None, source_code=None, type=None):  # noqa: E501
         """VbaModule - a model defined in Swagger"""  # noqa: E501
 
         self._attributes = None
         self._name = None
         self._source_code = None
+        self._type = None
         self.discriminator = None
 
         if attributes is not None:
@@ -66,6 +69,8 @@ class VbaModule(object):
             self.name = name
         if source_code is not None:
             self.source_code = source_code
+        if type is not None:
+            self.type = type
 
     @property
     def attributes(self):
@@ -130,6 +135,29 @@ class VbaModule(object):
         :type: str
         """
         self._source_code = source_code
+    @property
+    def type(self):
+        """Gets the type of this VbaModule.  # noqa: E501
+
+        Gets the type of the module.  # noqa: E501
+
+        :return: The type of this VbaModule.  # noqa: E501
+        :rtype: VbaModuleType
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this VbaModule.
+
+        Gets the type of the module.  # noqa: E501
+
+        :param type: The type of this VbaModule.  # noqa: E501
+        :type: VbaModuleType
+        """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        self._type = type
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

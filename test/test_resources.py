@@ -56,9 +56,9 @@ class TestResources(BaseTestContext):
         self.assertIsNotNone(get_result)
         self.assertIsInstance(get_result, ResourceResponse)
         self.assertEqual(10, get_result.resource.standard_rate)
-        self.assertEqual(datetime(2003, 1, 7, 8, tzinfo=tzutc()), get_result.resource.start)
+        self.assertEqual(datetime(2003, 1, 7, 8), get_result.resource.start)
         self.assertEqual('10.00:00:00', get_result.resource.work)
-        self.assertEqual(datetime(2003, 3, 17, 17, tzinfo=tzutc()), get_result.resource.finish)
+        self.assertEqual(datetime(2003, 3, 17, 17), get_result.resource.finish)
         self.assertIsNone(get_result.resource.overtime_work)
         self.assertEqual(2015, get_result.resource.cost)
 

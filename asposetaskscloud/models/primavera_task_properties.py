@@ -75,7 +75,8 @@ class PrimaveraTaskProperties(object):
         'primary_constraint_type': 'PrimaveraConstraintType',
         'primary_constraint_date': 'datetime',
         'secondary_constraint_type': 'PrimaveraConstraintType',
-        'secondary_constraint_date': 'datetime'
+        'secondary_constraint_date': 'datetime',
+        'planned_duration': 'str'
     }
 
     attribute_map = {
@@ -113,10 +114,11 @@ class PrimaveraTaskProperties(object):
         'primary_constraint_type': 'primaryConstraintType',
         'primary_constraint_date': 'primaryConstraintDate',
         'secondary_constraint_type': 'secondaryConstraintType',
-        'secondary_constraint_date': 'secondaryConstraintDate'
+        'secondary_constraint_date': 'secondaryConstraintDate',
+        'planned_duration': 'plannedDuration'
     }
 
-    def __init__(self, sequence_number=None, activity_id=None, remaining_early_finish=None, remaining_early_start=None, remaining_late_start=None, remaining_late_finish=None, raw_duration_type=None, raw_activity_type=None, raw_complete_percent_type=None, raw_status=None, duration_percent_complete=None, physical_percent_complete=None, actual_non_labor_units=None, actual_labor_units=None, units_percent_complete=None, remaining_labor_units=None, remaining_non_labor_units=None, duration_type=None, activity_type=None, percent_complete_type=None, actual_labor_cost=None, actual_nonlabor_cost=None, actual_material_cost=None, actual_expense_cost=None, remaining_expense_cost=None, actual_total_cost=None, budgeted_total_cost=None, budgeted_labor_cost=None, budgeted_nonlabor_cost=None, budgeted_material_cost=None, budgeted_expense_cost=None, primary_constraint_type=None, primary_constraint_date=None, secondary_constraint_type=None, secondary_constraint_date=None):  # noqa: E501
+    def __init__(self, sequence_number=None, activity_id=None, remaining_early_finish=None, remaining_early_start=None, remaining_late_start=None, remaining_late_finish=None, raw_duration_type=None, raw_activity_type=None, raw_complete_percent_type=None, raw_status=None, duration_percent_complete=None, physical_percent_complete=None, actual_non_labor_units=None, actual_labor_units=None, units_percent_complete=None, remaining_labor_units=None, remaining_non_labor_units=None, duration_type=None, activity_type=None, percent_complete_type=None, actual_labor_cost=None, actual_nonlabor_cost=None, actual_material_cost=None, actual_expense_cost=None, remaining_expense_cost=None, actual_total_cost=None, budgeted_total_cost=None, budgeted_labor_cost=None, budgeted_nonlabor_cost=None, budgeted_material_cost=None, budgeted_expense_cost=None, primary_constraint_type=None, primary_constraint_date=None, secondary_constraint_type=None, secondary_constraint_date=None, planned_duration=None):  # noqa: E501
         """PrimaveraTaskProperties - a model defined in Swagger"""  # noqa: E501
 
         self._sequence_number = None
@@ -154,6 +156,7 @@ class PrimaveraTaskProperties(object):
         self._primary_constraint_date = None
         self._secondary_constraint_type = None
         self._secondary_constraint_date = None
+        self._planned_duration = None
         self.discriminator = None
 
         if sequence_number is not None:
@@ -226,6 +229,8 @@ class PrimaveraTaskProperties(object):
             self.secondary_constraint_type = secondary_constraint_type
         if secondary_constraint_date is not None:
             self.secondary_constraint_date = secondary_constraint_date
+        if planned_duration is not None:
+            self.planned_duration = planned_duration
 
     @property
     def sequence_number(self):
@@ -1022,6 +1027,29 @@ class PrimaveraTaskProperties(object):
         if secondary_constraint_date is None:
             raise ValueError("Invalid value for `secondary_constraint_date`, must not be `None`")  # noqa: E501
         self._secondary_constraint_date = secondary_constraint_date
+    @property
+    def planned_duration(self):
+        """Gets the planned_duration of this PrimaveraTaskProperties.  # noqa: E501
+
+        Gets the original or planned duration -- the total working time from the task planned start date to the planned finish date.  # noqa: E501
+
+        :return: The planned_duration of this PrimaveraTaskProperties.  # noqa: E501
+        :rtype: str
+        """
+        return self._planned_duration
+
+    @planned_duration.setter
+    def planned_duration(self, planned_duration):
+        """Sets the planned_duration of this PrimaveraTaskProperties.
+
+        Gets the original or planned duration -- the total working time from the task planned start date to the planned finish date.  # noqa: E501
+
+        :param planned_duration: The planned_duration of this PrimaveraTaskProperties.  # noqa: E501
+        :type: str
+        """
+        if planned_duration is None:
+            raise ValueError("Invalid value for `planned_duration`, must not be `None`")  # noqa: E501
+        self._planned_duration = planned_duration
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

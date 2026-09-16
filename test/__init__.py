@@ -8,6 +8,7 @@ from test.test_extended_attributes import TestExtendedAttributes
 from test.test_file import TestFile
 from test.test_folder import TestFolder
 from test.test_get_page_count import TestGetPageCount
+from test.test_groups import TestGroups
 from test.test_import_project import TestImportProject
 from test.test_outline_codes import TestOutlineCodes
 from test.test_project_online import TestProjectOnline

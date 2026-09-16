@@ -20,6 +20,7 @@ from asposetaskscloud.models.colors import Colors
 from asposetaskscloud.models.confidence_level import ConfidenceLevel
 from asposetaskscloud.models.constraint_type import ConstraintType
 from asposetaskscloud.models.cost_accrual_type import CostAccrualType
+from asposetaskscloud.models.create_vba_module_request import CreateVbaModuleRequest
 from asposetaskscloud.models.custom_field_type import CustomFieldType
 from asposetaskscloud.models.day_of_week import DayOfWeek
 from asposetaskscloud.models.day_type import DayType
@@ -101,9 +102,11 @@ from asposetaskscloud.models.time_unit_type import TimeUnitType
 from asposetaskscloud.models.timephased_data import TimephasedData
 from asposetaskscloud.models.timephased_data_type import TimephasedDataType
 from asposetaskscloud.models.timescale import Timescale
+from asposetaskscloud.models.update_vba_module_request import UpdateVbaModuleRequest
 from asposetaskscloud.models.value import Value
 from asposetaskscloud.models.vba_module import VbaModule
 from asposetaskscloud.models.vba_module_attribute import VbaModuleAttribute
+from asposetaskscloud.models.vba_module_type import VbaModuleType
 from asposetaskscloud.models.vba_project import VbaProject
 from asposetaskscloud.models.vba_reference import VbaReference
 from asposetaskscloud.models.view import View
@@ -169,6 +172,7 @@ from asposetaskscloud.models.task_link_response import TaskLinkResponse
 from asposetaskscloud.models.task_links_response import TaskLinksResponse
 from asposetaskscloud.models.task_response import TaskResponse
 from asposetaskscloud.models.timephased_data_response import TimephasedDataResponse
+from asposetaskscloud.models.vba_module_response import VbaModuleResponse
 from asposetaskscloud.models.vba_project_response import VbaProjectResponse
 from asposetaskscloud.models.views_response import ViewsResponse
 from asposetaskscloud.models.wbs_definition_response import WBSDefinitionResponse

@@ -95,7 +95,12 @@ Method | HTTP request | Description
 [**get_task_links**](TasksApi.md#get_task_links) | **GET** /tasks/{name}/taskLinks | Get tasks&#39; links of a project.
 [**post_task_link**](TasksApi.md#post_task_link) | **POST** /tasks/{name}/taskLinks | Adds a new task link to a project.
 [**put_task_link**](TasksApi.md#put_task_link) | **PUT** /tasks/{name}/taskLinks/{index} | Updates existing task link.
+[**clear_vba**](TasksApi.md#clear_vba) | **DELETE** /tasks/{name}/vbaproject | Clears all VBA macros from the project.
+[**delete_vba_module**](TasksApi.md#delete_vba_module) | **DELETE** /tasks/{name}/vbaproject/modules/{module} | Deletes a VBA module.
+[**get_vba_module**](TasksApi.md#get_vba_module) | **GET** /tasks/{name}/vbaproject/modules/{module} | Returns VBA module by name or index.
 [**get_vba_project**](TasksApi.md#get_vba_project) | **GET** /tasks/{name}/vbaproject | Returns VBA project.
+[**post_vba_module**](TasksApi.md#post_vba_module) | **POST** /tasks/{name}/vbaproject/modules | Adds a new VBA module.
+[**put_vba_module**](TasksApi.md#put_vba_module) | **PUT** /tasks/{name}/vbaproject/modules/{module} | Updates a VBA module&#39;s source code.
 [**create_table_text_style**](TasksApi.md#create_table_text_style) | **POST** /tasks/{name}/views/{viewUid}/tabletextstyles | Create table text style in specified view.
 [**delete_table_text_style**](TasksApi.md#delete_table_text_style) | **DELETE** /tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid} | Delete specified table text style from specified view.
 [**get_all_table_text_styles**](TasksApi.md#get_all_table_text_styles) | **GET** /tasks/{name}/views/{viewUid}/tabletextstyles | Read all table text styles from specified view.
@@ -5341,6 +5346,176 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **clear_vba**
+> AsposeResponse clear_vba(name, file_name=file_name, folder=folder, storage=storage)
+
+Clears all VBA macros from the project.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+file_name = 'file_name_example' # str | Optional output file name (optional)
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Clears all VBA macros from the project.
+    api_response = api_instance.clear_vba(name, file_name=file_name, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->clear_vba: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **file_name** | **str**| Optional output file name | [optional] 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_vba_module**
+> AsposeResponse delete_vba_module(name, module, file_name=file_name, folder=folder, storage=storage)
+
+Deletes a VBA module.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+module = 'module_example' # str | The module name or index
+file_name = 'file_name_example' # str | Optional output file name (optional)
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Deletes a VBA module.
+    api_response = api_instance.delete_vba_module(name, module, file_name=file_name, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->delete_vba_module: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **module** | **str**| The module name or index | 
+ **file_name** | **str**| Optional output file name | [optional] 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**AsposeResponse**](AsposeResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_vba_module**
+> VbaModuleResponse get_vba_module(name, module, folder=folder, storage=storage)
+
+Returns VBA module by name or index.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+module = 'module_example' # str | The module name or index
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Returns VBA module by name or index.
+    api_response = api_instance.get_vba_module(name, module, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->get_vba_module: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **module** | **str**| The module name or index | 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**VbaModuleResponse**](VbaModuleResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_vba_project**
 > VbaProjectResponse get_vba_project(name, folder=folder, storage=storage)
 
@@ -5383,6 +5558,124 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VbaProjectResponse**](VbaProjectResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_vba_module**
+> VbaModuleResponse post_vba_module(name, module, file_name=file_name, folder=folder, storage=storage)
+
+Adds a new VBA module.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+module = asposetaskscloud.CreateVbaModuleRequest() # CreateVbaModuleRequest | The module creation request
+file_name = 'file_name_example' # str | Optional output file name (optional)
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Adds a new VBA module.
+    api_response = api_instance.post_vba_module(name, module, file_name=file_name, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->post_vba_module: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **module** | [**CreateVbaModuleRequest**](CreateVbaModuleRequest.md)| The module creation request | 
+ **file_name** | **str**| Optional output file name | [optional] 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**VbaModuleResponse**](VbaModuleResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_vba_module**
+> VbaModuleResponse put_vba_module(name, module, update_request, file_name=file_name, folder=folder, storage=storage)
+
+Updates a VBA module's source code.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import asposetaskscloud
+from asposetaskscloud.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: JWT
+configuration = asposetaskscloud.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = asposetaskscloud.TasksApi(asposetaskscloud.ApiClient(configuration))
+name = 'name_example' # str | The name of the file
+module = 'module_example' # str | The module name or index
+update_request = asposetaskscloud.UpdateVbaModuleRequest() # UpdateVbaModuleRequest | The module update request
+file_name = 'file_name_example' # str | Optional output file name (optional)
+folder = 'folder_example' # str | The folder storage (optional)
+storage = 'storage_example' # str | The document storage. (optional)
+
+try:
+    # Updates a VBA module's source code.
+    api_response = api_instance.put_vba_module(name, module, update_request, file_name=file_name, folder=folder, storage=storage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TasksApi->put_vba_module: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the file | 
+ **module** | **str**| The module name or index | 
+ **update_request** | [**UpdateVbaModuleRequest**](UpdateVbaModuleRequest.md)| The module update request | 
+ **file_name** | **str**| Optional output file name | [optional] 
+ **folder** | **str**| The folder storage | [optional] 
+ **storage** | **str**| The document storage. | [optional] 
+
+### Return type
+
+[**VbaModuleResponse**](VbaModuleResponse.md)
 
 ### Authorization
 

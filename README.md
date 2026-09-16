@@ -35,6 +35,13 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/t
 XER, XLSX, HTML, XML, TXT, TIF, SVG, PNG, JPEG
 
 
+## Enhancements in Version 26.9
+- Added new VBA module management API methods: `GetVbaModule`, `DeleteVbaModule`, `ClearVba`, `PostVbaModule`, `PutVbaModule` (both sync and async versions).
+- Added new model classes for VBA module operations: `VbaModuleResponse`, `VbaModuleType`, `CreateVbaModuleRequest`, `UpdateVbaModuleRequest`.
+- Added new request classes for VBA module operations: `ClearVbaRequest`, `DeleteVbaModuleRequest`, `GetVbaModuleRequest`, `PostVbaModuleRequest`, `PutVbaModuleRequest`.
+- Added `Type` property to `VbaModule` model to specify the type of the VBA module.
+- Added `PlannedDuration` property to `PrimaveraTaskProperties` model for original or planned duration of a task.
+
 ## Enhancements in Version 26.7
 - Added ability to group project resources and tasks according to specified group definitions.
 - Added new model classes for group management: `Group`, `GroupItem`, `GroupCriterion`, `GroupOn`, `GroupResponse`, `GroupItems`, `GroupItemsResponse`, `GroupedResourcesResponse`, `GroupedTasksResponse`, `ResourceGroupBucket`, `TaskGroupBucket`, `FontInfo`.

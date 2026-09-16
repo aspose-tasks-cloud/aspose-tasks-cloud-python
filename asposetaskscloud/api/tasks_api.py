@@ -11036,6 +11036,357 @@ class TasksApi(object):
             collection_formats=collection_formats)
 
 
+    def clear_vba(self, request, **kwargs):  # noqa: E501
+        """Clears all VBA macros from the project.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file (required)
+        :param file_name str : Optional output file name
+        :param folder str : The folder storage
+        :param storage str : The document storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.clear_vba_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.clear_vba_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.clear_vba_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.clear_vba_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def clear_vba_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Clears all VBA macros from the project.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request clear_vba_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method clear_vba" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `clear_vba`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/vbaproject'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_vba_module(self, request, **kwargs):  # noqa: E501
+        """Deletes a VBA module.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file (required)
+        :param module str : The module name or index (required)
+        :param file_name str : Optional output file name
+        :param folder str : The folder storage
+        :param storage str : The document storage.
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.delete_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.delete_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.delete_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.delete_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def delete_vba_module_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Deletes a VBA module.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request delete_vba_module_request object with parameters
+        :return: AsposeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_vba_module" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `delete_vba_module`")  # noqa: E501
+        # verify the required parameter 'module' is set
+        if request.module is None:
+            raise ValueError("Missing the required parameter `module` when calling `delete_vba_module`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/vbaproject/modules/{module}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.module is not None:
+            path_params[self.__downcase_first_letter('module')] = request.module  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AsposeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_vba_module(self, request, **kwargs):  # noqa: E501
+        """Returns VBA module by name or index.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file (required)
+        :param module str : The module name or index (required)
+        :param folder str : The folder storage
+        :param storage str : The document storage.
+        :return: VbaModuleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.get_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.get_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.get_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def get_vba_module_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Returns VBA module by name or index.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request get_vba_module_request object with parameters
+        :return: VbaModuleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_vba_module" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `get_vba_module`")  # noqa: E501
+        # verify the required parameter 'module' is set
+        if request.module is None:
+            raise ValueError("Missing the required parameter `module` when calling `get_vba_module`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/vbaproject/modules/{module}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.module is not None:
+            path_params[self.__downcase_first_letter('module')] = request.module  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='VbaModuleResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_vba_project(self, request, **kwargs):  # noqa: E501
         """Returns VBA project.  # noqa: E501
 
@@ -11138,6 +11489,254 @@ class TasksApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='VbaProjectResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def post_vba_module(self, request, **kwargs):  # noqa: E501
+        """Adds a new VBA module.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file (required)
+        :param module CreateVbaModuleRequest : The module creation request (required)
+        :param file_name str : Optional output file name
+        :param folder str : The folder storage
+        :param storage str : The document storage.
+        :return: VbaModuleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.post_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.post_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.post_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.post_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def post_vba_module_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Adds a new VBA module.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request post_vba_module_request object with parameters
+        :return: VbaModuleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_vba_module" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `post_vba_module`")  # noqa: E501
+        # verify the required parameter 'module' is set
+        if request.module is None:
+            raise ValueError("Missing the required parameter `module` when calling `post_vba_module`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/vbaproject/modules'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.module is not None:
+            body_params = request.module
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='VbaModuleResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            is_async=params.get('is_async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def put_vba_module(self, request, **kwargs):  # noqa: E501
+        """Updates a VBA module&#39;s source code.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param name str : The name of the file (required)
+        :param module str : The module name or index (required)
+        :param update_request UpdateVbaModuleRequest : The module update request (required)
+        :param file_name str : Optional output file name
+        :param folder str : The folder storage
+        :param storage str : The document storage.
+        :return: VbaModuleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        try:
+            if kwargs.get('is_async'):
+                return self.put_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.put_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        except ApiException as e:
+            if e.status == 401:
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.put_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.put_vba_module_with_http_info(request, **kwargs)  # noqa: E501
+            return data
+        
+    def put_vba_module_with_http_info(self, request, **kwargs):  # noqa: E501
+        """Updates a VBA module&#39;s source code.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass is_async=True
+
+        :param is_async bool
+        :param request put_vba_module_request object with parameters
+        :return: VbaModuleResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        params = locals()
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_vba_module" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if request.name is None:
+            raise ValueError("Missing the required parameter `name` when calling `put_vba_module`")  # noqa: E501
+        # verify the required parameter 'module' is set
+        if request.module is None:
+            raise ValueError("Missing the required parameter `module` when calling `put_vba_module`")  # noqa: E501
+        # verify the required parameter 'update_request' is set
+        if request.update_request is None:
+            raise ValueError("Missing the required parameter `update_request` when calling `put_vba_module`")  # noqa: E501
+
+        collection_formats = {}
+        path = '/tasks/{name}/vbaproject/modules/{module}'
+        path_params = {}
+        if request.name is not None:
+            path_params[self.__downcase_first_letter('name')] = request.name  # noqa: E501
+        if request.module is not None:
+            path_params[self.__downcase_first_letter('module')] = request.module  # noqa: E501
+
+        query_params = []
+        if '{' + self.__downcase_first_letter('fileName') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('fileName' + '}'), request.file_name if request.file_name is not None else '')
+        else:
+            if request.file_name is not None:
+                query_params.append((self.__downcase_first_letter('fileName'), request.file_name))  # noqa: E501
+        if '{' + self.__downcase_first_letter('folder') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('folder' + '}'), request.folder if request.folder is not None else '')
+        else:
+            if request.folder is not None:
+                query_params.append((self.__downcase_first_letter('folder'), request.folder))  # noqa: E501
+        if '{' + self.__downcase_first_letter('storage') + '}' in path:
+            path = path.replace('{' + self.__downcase_first_letter('storage' + '}'), request.storage if request.storage is not None else '')
+        else:
+            if request.storage is not None:
+                query_params.append((self.__downcase_first_letter('storage'), request.storage))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = []
+
+        body_params = None
+        if request.update_request is not None:
+            body_params = request.update_request
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['JWT']  # noqa: E501
+
+        return self.api_client.call_api(
+            path, 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='VbaModuleResponse',  # noqa: E501
             auth_settings=auth_settings,
             is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),

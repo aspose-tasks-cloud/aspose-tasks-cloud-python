@@ -69,6 +69,7 @@ class AsposeResponse(object):
         'TaskLinksResponse': 'TaskLinksResponse',
         'GroupedResourcesResponse': 'GroupedResourcesResponse',
         'AssignmentItemResponse': 'AssignmentItemResponse',
+        'VbaModuleResponse': 'VbaModuleResponse',
         'WBSDefinitionResponse': 'WBSDefinitionResponse',
         'GroupItemsResponse': 'GroupItemsResponse',
         'ProjectIdsResponse': 'ProjectIdsResponse',

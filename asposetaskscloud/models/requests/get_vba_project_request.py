@@ -22,6 +22,7 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 # </summary>
+# coding: utf-8
 # --------------------------------------------------------------------------------
 
 
@@ -38,6 +39,5 @@ class GetVbaProjectRequest(object):
         self.name = name
         self.folder = folder
         self.storage = storage
-
 
 

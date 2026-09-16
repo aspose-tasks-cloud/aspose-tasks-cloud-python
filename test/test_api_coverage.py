@@ -35,7 +35,7 @@ class TestApiCoverage(BaseTestContext):
     def test_api_coverage(self):
         arr = [test.TestAssignments, test.TestCalendarExceptions, test.TestCalendarWorkWeeks, test.TestCalendars,
                test.TestDocumentProperties, test.TestExtendedAttributes, test.TestFile, test.TestFolder,
-               test.TestGetPageCount, test.TestImportProject, test.TestOutlineCodes, test.TestProjectOnline,
+               test.TestGetPageCount, test.TestGroups, test.TestImportProject, test.TestOutlineCodes, test.TestProjectOnline,
                test.TestReadProject, test.TestRecalculation, test.TestRecurringInfo, test.TestReport,
                test.TestResourceLevel, test.TestResources, test.TestStorage, test.TestTaskDocumentFormat,
                test.TestTaskLinks, test.TestTasks, test.TestTasksExtendedAttributes, test.TestTasksPrimaveraProperties,
